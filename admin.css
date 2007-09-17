@@ -1,0 +1,107 @@
+.options
+{
+list-style-type: none;  
+}
+
+.csv
+{
+float: right;
+}
+
+.csv a
+{
+border: none;
+}
+
+.pager
+{
+font-size: 0.9em;
+text-align: right;
+}
+
+.pager select, .pager input { font-size: 0.9em }
+
+
+
+#subsubmenu li {
+	display: inline;
+	line-height: 170%;
+	list-style: none;
+	text-align: center;
+}
+
+#subsubmenu {
+  font-size: 0.9em;
+	background: #CDD9E2;
+	border-bottom: none;
+	margin: 0;
+	color: #4F5D69;
+	padding: 2px 2em 0 5em;
+}
+
+#subsubmenu .current {
+	background: #f9fcfe;
+	border-top: 1px solid #045290;
+	color: black;
+}
+
+#subsubmenu a {
+	border: none;
+	color: #4F5D69;
+	font-size: 12px;
+	padding: 3px 1em 2px 1em;
+}
+
+#subsubmenu a:hover {
+	background: #89A5BB;
+	color: #393939;
+}
+
+#subsubmenu li {
+	line-height: 150%;
+}
+
+.audit
+{
+	width: 100%;
+}
+
+.alt
+{
+	background-color: #efefef;
+}
+
+.audit th
+{
+background-color: #ccc;
+text-align: left;
+}
+
+.audit td
+{
+vertical-align: top;
+}
+
+.audit textarea
+{
+width: 95%;
+}
+
+.audit ins
+{
+color: green;
+}
+
+.audit del
+{
+color: red;
+text-decoration: line-through;
+}
+
+.diff
+{
+border: 1px solid #999;
+padding: 2px;
+overflow: auto;
+max-height: 200px;
+}
