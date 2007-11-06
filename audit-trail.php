@@ -4,7 +4,7 @@ Plugin Name: Audit Trail
 Plugin URI: http://urbangiraffe.com/plugins/audit-trail/
 Description: Keep a log of exactly what is happening behind the scenes of your WordPress blog
 Author: John Godley
-Version: 1.0.5
+Version: 1.0.6
 Author URI: http://urbangiraffe.com
 ============================================================================================================
 
@@ -15,6 +15,7 @@ Author URI: http://urbangiraffe.com
 1.0.3 - Fix typos.  Add option to reverse post edit order
 1.0.4 - Support for Admin SSL
 1.0.5 - Fix expiry, stop logging auto-saves
+1.0.6 - Fix warning, allow searching by username
 
 ============================================================================================================
 This software is provided "as is" and any express or implied warranties, including, but not limited to, the

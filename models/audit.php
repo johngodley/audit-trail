@@ -94,7 +94,7 @@ class AT_Audit
 		global $wpdb;
 		
 		$pager->set_total ($wpdb->get_var ("SELECT COUNT(*) FROM {$wpdb->prefix}audit_trail ".$pager->to_conditions ('', array ('data'))));
-		$rows = $wpdb->get_results ("SELECT {$wpdb->prefix}audit_trail.*,{$wpdb->users}.user_nicename AS username FROM {$wpdb->prefix}audit_trail LEFT JOIN {$wpdb->users} ON {$wpdb->users}.ID={$wpdb->prefix}audit_trail.user_id ".$pager->to_limits ('', array ('data')), ARRAY_A);
+		$rows = $wpdb->get_results ("SELECT {$wpdb->prefix}audit_trail.*,{$wpdb->users}.user_nicename AS username FROM {$wpdb->prefix}audit_trail LEFT JOIN {$wpdb->users} ON {$wpdb->users}.ID={$wpdb->prefix}audit_trail.user_id ".$pager->to_limits ('', array ('data', "{$wpdb->users}.user_nicename")), ARRAY_A);
 		$data = array ();
 		if ($rows)
 		{
