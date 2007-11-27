@@ -1,6 +1,15 @@
 .options
 {
-list-style-type: none;  
+list-style-type: none;
+margin: 0;
+padding: 0;
+margin: 0.5em 0;
+}
+
+.options li
+{
+margin: 0; padding: 0;
+line-height: 1.8;
 }
 
 .csv
@@ -104,4 +113,17 @@ border: 1px solid #999;
 padding: 2px;
 overflow: auto;
 max-height: 200px;
+}
+
+fieldset
+{
+border: 1px solid #ccc;
+margin-bottom: 1em;
+padding-left: 1em;
+}
+
+legend
+{
+font-weight: bold;
+font-size: 1.2em;
 }

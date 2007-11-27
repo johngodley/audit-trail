@@ -4,7 +4,7 @@ Plugin Name: Audit Trail
 Plugin URI: http://urbangiraffe.com/plugins/audit-trail/
 Description: Keep a log of exactly what is happening behind the scenes of your WordPress blog
 Author: John Godley
-Version: 1.0.6
+Version: 1.0.7
 Author URI: http://urbangiraffe.com
 ============================================================================================================
 
@@ -16,6 +16,7 @@ Author URI: http://urbangiraffe.com
 1.0.4 - Support for Admin SSL
 1.0.5 - Fix expiry, stop logging auto-saves
 1.0.6 - Fix warning, allow searching by username
+1.0.7 - Fix favicon.ico logs, ignore certain users, track failed login attempts
 
 ============================================================================================================
 This software is provided "as is" and any express or implied warranties, including, but not limited to, the
@@ -221,13 +222,13 @@ class Audit_Trail extends AT_Plugin
 		$this->render_admin ('submenu', array ('url' => $url, 'sub' => $sub));
 
 		// Display version update message
-		$version = get_option ('audit_version');
-		if ($version == 'true' || $version === false)
-		{
-			$version = $this->version_update ('http://urbangiraffe.com/category/software/releases/audit-trail/feed/', 4);
-			if ($version && count ($version->items) > 0)
-				$this->render_admin ('version', array ('rss' => $version));
-		}
+		// $version = get_option ('audit_version');
+		// if ($version == 'true' || $version === false)
+		// {
+		// 	$version = $this->version_update ('http://urbangiraffe.com/category/software/releases/audit-trail/feed/', 4);
+		// 	if ($version && count ($version->items) > 0)
+		// 		$this->render_admin ('version', array ('rss' => $version));
+		// }
 
 		AT_Audit::expire (get_option ('audit_expiry') === false ? 30 : get_option ('audit_expiry'));
 		
@@ -261,11 +262,14 @@ class Audit_Trail extends AT_Plugin
 	{
 		if (isset ($_POST['save']))
 		{
-			update_option ('audit_methods', $_POST['methods']);
-			update_option ('audit_expiry',  intval ($_POST['expiry']));
-			update_option ('audit_post',    isset ($_POST['post']) ? true : false);
+			$_POST = stripslashes_deep ($_POST);
+			
+			update_option ('audit_methods',    $_POST['methods']);
+			update_option ('audit_expiry',     intval ($_POST['expiry']));
+			update_option ('audit_post',       isset ($_POST['post']) ? true : false);
 			update_option ('audit_post_order', isset ($_POST['post_order']) ? true : false);
-			update_option ('audit_version', isset ($_POST['version']) ? 'true' : 'false');
+			update_option ('audit_version',    isset ($_POST['version']) ? 'true' : 'false');
+			update_option ('audit_ignore',     preg_replace ('/[^0-9,]/', '', $_POST['ignore_users']));
 			
 			$this->render_message (__ ('Options have been updated', 'audit-trail'));
 		}
@@ -282,7 +286,7 @@ class Audit_Trail extends AT_Plugin
 		if ($expiry === false)
 			$expiry = 30;
 
-		$this->render_admin ('options', array ('methods' => $methods, 'current' => $current, 'expiry' => $expiry, 'post' => get_option ('audit_post'), 'post_order' => get_option ('audit_post_order'), 'version' => get_option ('audit_version') == 'false' ? false : true));
+		$this->render_admin ('options', array ('methods' => $methods, 'current' => $current, 'expiry' => $expiry, 'post' => get_option ('audit_post'), 'post_order' => get_option ('audit_post_order'), 'version' => get_option ('audit_version') == 'false' ? false : true, 'ignore_users' => get_option ('audit_ignore')));
 	}
 }
 

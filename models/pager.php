@@ -12,11 +12,13 @@
 // Lesser General Public License for more details.
 // ======================================================================================
 // @author     John Godley (http://urbangiraffe.com)
-// @version    0.2.4
+// @version    0.2.6
 // @copyright  Copyright &copy; 2007 John Godley, All Rights Reserved
 // ======================================================================================
 // 0.2.3 - Remember pager details in user data
 // 0.2.4 - Add phpdoc comments
+// 0.2.5 - Allow orderby to use tags to hide database columns
+// 0.2.6 - Fix sortable columns with only 1 page
 // ======================================================================================
 
 
@@ -50,6 +52,7 @@ class AT_Pager
 	var $order_by        = null;
 	var $order_original  = null;
 	var $order_direction = null;
+	var $order_tags      = array ();
 	var $steps           = array ();
 	var $search          = null;
 	var $filters         = array ();
@@ -66,7 +69,7 @@ class AT_Pager
 	 * @param string $id An ID for the pager to separate it from other pagers (typically the plugin name)
 	 * @return void
 	 **/
-	function AT_Pager ($data, $url, $orderby = '', $direction = 'DESC', $id = 'default')
+	function AT_Pager ($data, $url, $orderby = '', $direction = 'DESC', $id = 'default', $tags = '')
 	{
 		// Remove all pager params from the url
 		$this->id  = $id;
@@ -74,7 +77,7 @@ class AT_Pager
 		
 		if (isset ($data['curpage']))
 			$this->current_page = intval ($data['curpage']);
-			
+
 		global $user_ID;
 		$per_page = get_usermeta ($user_ID, 'ug_per_page');
 		if (isset ($data['perpage']))
@@ -92,7 +95,14 @@ class AT_Pager
 		
 		if (isset ($data['orderby']))
 			$this->order_by = $data['orderby'];
-			
+		
+		if (!empty ($tags))
+		{
+			$this->order_tags = $tags;
+			if (isset ($this->order_tags[$this->order_by]))
+				$this->order_by = $this->order_tags[$this->order_by];
+		}
+
 		$this->order_direction = $direction;
 		$this->order_original  = $orderby;
 		if (isset ($data['order']))
@@ -137,6 +147,7 @@ class AT_Pager
 	 * @todo explain
 	 * @return void
 	 **/
+	// XXX
 	
 	function is_secondary_sort ()
 	{
@@ -213,9 +224,11 @@ class AT_Pager
 	 * @return string SQL
 	 **/
 	
-	function to_limits ($conditions = '', $searches = '', $filters = '')
+	function to_limits ($conditions = '', $searches = '', $filters = '', $group = '')
 	{
 		$sql = $this->to_conditions ($conditions, $searches, $filters);
+		$sql .= ' '.$group.' ';
+
 		if (strlen ($this->order_by) > 0)
 		{
 			if (!$this->is_secondary_sort ())
@@ -254,7 +267,9 @@ class AT_Pager
 			else
 				$url = $url.'&amp;orderby='.$orderby;
 			
-			if ($this->order_by == $orderby)
+			if (!empty ($this->order_tags) && isset ($this->order_tags[$orderby]))
+				$dir = $this->order_direction == 'ASC' ? 'DESC' : 'ASC';
+			else if ($this->order_by == $orderby)
 				$dir = $this->order_direction == 'ASC' ? 'DESC' : 'ASC';
 			else
 				$dir = $this->order_direction;
@@ -331,25 +346,24 @@ class AT_Pager
 	
 	function sortable ($column, $text, $image = true)
 	{
-		if ($this->total > 1)
-		{
-			$url = $this->url ($this->current_page, $column);
-			if ($column == $this->order_by)
-			{
-				$dir = basename (dirname (dirname (__FILE__)));
-				if (strpos ($url, 'ASC') !== false)
-					$img = '<img align="bottom" src="'.get_bloginfo ('wpurl').'/wp-content/plugins/'.$dir.'/images/up.gif" alt="dir" width="16" height="7"/>';
-				else
-					$img = '<img align="bottom" src="'.get_bloginfo ('wpurl').'/wp-content/plugins/'.$dir.'/images/down.gif" alt="dir" width="16" height="7"/>';
-				
-				if ($image == false)
-					$img = '';
-			}
+		$url = $this->url ($this->current_page, $column);
+		
+		if (isset ($this->order_tags[$column]))
+			$column = $this->order_tags[$column];
 			
-			return '<a href="'.$url.'">'.$text.'</a>'.$img;
+		if ($column == $this->order_by)
+		{
+			$dir = basename (dirname (dirname (__FILE__)));
+			if (strpos ($url, 'ASC') !== false)
+				$img = '<img align="bottom" src="'.get_bloginfo ('wpurl').'/wp-content/plugins/'.$dir.'/images/up.gif" alt="dir" width="16" height="7"/>';
+			else
+				$img = '<img align="bottom" src="'.get_bloginfo ('wpurl').'/wp-content/plugins/'.$dir.'/images/down.gif" alt="dir" width="16" height="7"/>';
+			
+			if ($image == false)
+				$img = '';
 		}
 		
-		return $text;
+		return '<a href="'.$url.'">'.$text.'</a>'.$img;
 	}
 	
 	

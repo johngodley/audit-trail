@@ -32,7 +32,7 @@ class AT_Auditor extends AT_Plugin
 	function AT_Auditor ()
 	{
 		$this->register_plugin ('audit-trail', dirname (__FILE__));
-		
+
 		$this->add_filter ('audit_collect');
 		$this->add_action ('audit_listen');
 		$this->add_filter ('audit_show_operation');
@@ -72,13 +72,23 @@ class AT_Auditor extends AT_Plugin
 	
 	function audit_listen ($method)
 	{
+		$ignore = get_option ('audit_ignore');
+		if ($ignore)
+		{
+			$current = wp_get_current_user ();
+			$users   = explode (',', 'ignore');
+			
+			if (in_array ($current->ID, $users))
+				return;
+		}
+		
 		$actions = array ();
 		if ($method == 'post')
 			$actions = array ('delete_post', 'save_post', 'private_to_published');
 		else if ($method == 'attach')
 			$actions = array ('delete_attachment', 'add_attachment', 'edit_attachment');
 		else if ($method == 'user')
-			$actions = array ('wp_login', 'wp_logout', 'user_register', 'profile_update', 'delete_user', 'retrieve_password');
+			$actions = array ('wp_login', 'wp_logout', 'user_register', 'profile_update', 'delete_user', 'retrieve_password', 'login_errors');
 		else if ($method == 'theme')
 			$actions = array ('switch_theme');
 		else if ($method == 'link')
@@ -178,6 +188,7 @@ class AT_Auditor extends AT_Plugin
 				
 			case 'profile_update' : 
 			case 'wp_logout':
+			case 'login_failed' : 
 			case 'wp_login' :
 				$user = get_userdata ($item->item_id);
 				if ($user === false)
@@ -284,6 +295,10 @@ class AT_Auditor extends AT_Plugin
 				
 			case 'wp_logout' : 
 				$item->message = __ ('Logged Out', 'audit-trail');
+				break;
+				
+			case 'login_failed' : 
+				$item->message = __ ('Login failed', 'audit-trail');
 				break;
 				
 			case 'user_register' :
@@ -411,6 +426,17 @@ class AT_Auditor extends AT_Plugin
 		AT_Audit::create ('wp_logout', $user_ID);
 	}
 	
+	function login_errors ($errors)
+	{
+		if (strpos ($errors, __('<strong>ERROR</strong>: Incorrect password.')) !== false)
+		{
+			$login = get_userdatabylogin (sanitize_user ($_POST['log']));
+			AT_Audit::create ('login_failed', $login->ID, sanitize_user ($_POST['log']));
+		}
+
+		return $errors;
+	}
+	
 	function switch_theme ($newtheme)
 	{
 		AT_Audit::create ('switch_theme', '', $newtheme);
@@ -514,10 +540,14 @@ class AT_Auditor extends AT_Plugin
 	
 	function template_redirect ()
 	{
-		global $post, $posts;
-		if (isset ($_GET['preview']) && $_GET['preview'] == 'true')
-			return;
-		AT_Audit::create ('template_redirect', count ($posts) > 1 ? 0 : $post->ID, $_SERVER['REQUEST_URI']);
+		// Don't log 404's
+		if (!is_404 ())
+		{
+			global $post, $posts;
+			if (isset ($_GET['preview']) && $_GET['preview'] == 'true')
+				return;
+			AT_Audit::create ('template_redirect', count ($posts) > 1 ? 0 : $post->ID, $_SERVER['REQUEST_URI']);
+		}
 	}
 }
 
