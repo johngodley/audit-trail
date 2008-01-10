@@ -5,5 +5,5 @@
 </td>
 <td><?php echo $item->get_operation () ?></td>
 <td><?php echo $item->get_item (); ?></td>
-<td><?php echo date (str_replace ('F', 'M', get_option ('date_format')), $item->happened_at).' '.date ('H:i', $item->happened_at) ?></td>
+<td><?php echo date (str_replace ('F', 'M', get_option ('date_format')), $item->happened_at + (get_option('gmt_offset') * 3600)).' '.date ('H:i', $item->happened_at + (get_option('gmt_offset') * 3600)) ?></td>
 <td id="ip_<?php echo $item->id ?>"><?php echo long2ip ($item->ip); ?></td>
