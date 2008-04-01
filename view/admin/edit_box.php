@@ -1,4 +1,4 @@
-<?php if (count ($trail) > 0) : ?>
+<?php if (!defined ('ABSPATH')) die (); ?><?php if (count ($trail) > 0) : ?>
 <div id="audit-trail-box" class="dbx-group">
 	<div class="dbx-box-wrapper">
 		<fieldset id="audit-trail" class="dbx-box">

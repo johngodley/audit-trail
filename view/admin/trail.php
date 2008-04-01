@@ -1,7 +1,9 @@
-<div class="wrap">
+<?php if (!defined ('ABSPATH')) die (); ?><div class="wrap">
 	<div class="csv"><a title="Download as CSV" href="<?php echo $this->url () ?>/csv.php"><img src="<?php echo $this->url () ?>/images/csv.png" width="16" height="16" alt="Csv"/></a></div>
 	<h2><?php _e ('Audit Trail', 'audit-trail'); ?></h2>
 
+	<?php $this->submenu (true); ?>
+	
 	<?php $this->render_admin ('pager', array ('pager' => $pager)); ?>
 
 	<?php if (count ($trail) > 0) : ?>

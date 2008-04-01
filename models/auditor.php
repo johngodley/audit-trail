@@ -56,7 +56,7 @@ class AT_Auditor extends AT_Plugin
 		$items['link']     = __ ('Link management', 'audit-trail');
 		$items['category'] = __ ('Category management', 'audit-trail');
 		$items['comment']  = __ ('Comment management', 'audit-trail');
-		$items['viewing']  = __ ('Registered user page visits', 'audit-trail');
+		$items['viewing']  = __ ('User page visits', 'audit-trail');
 		$items['audit']    = __ ('Audit Trail actions', 'audit-trail');
 		
 		return $items;

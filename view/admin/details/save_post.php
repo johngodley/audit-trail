@@ -1,4 +1,4 @@
-<?php _e ('Title', 'audit-trail'); ?>:<br/>
+<?php if (!defined ('ABSPATH')) die (); ?><?php _e ('Title', 'audit-trail'); ?>:<br/>
 <input style="width: 95%" type="text" name="content" value="<?php echo htmlspecialchars ($post->post_title) ?>" readonly="readonly"/>
 <br/>
 

@@ -1,4 +1,4 @@
-<?php _e ('Login', 'audit-trail'); ?>:<br/>
+<?php if (!defined ('ABSPATH')) die (); ?><?php _e ('Login', 'audit-trail'); ?>:<br/>
 <input style="width: 95%" type="text" name="content" value="<?php echo htmlspecialchars ($user->user_login) ?>" readonly="readonly"/>
 <br/>
 

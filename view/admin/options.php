@@ -1,5 +1,7 @@
-<div class="wrap">
+<?php if (!defined ('ABSPATH')) die (); ?><div class="wrap">
 	<h2><?php _e ('Audit Trail Options', 'audit-trail'); ?></h2>
+	
+	<?php $this->submenu (true); ?>
 	
 	<form action="<?php echo $this->url ($_SERVER['REQUEST_URI']) ?>" method="post" accept-charset="utf-8">
 

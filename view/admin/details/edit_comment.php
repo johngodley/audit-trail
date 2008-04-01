@@ -1,4 +1,4 @@
-<?php _e ('Author', 'audit-trail'); ?>:<br/>
+<?php if (!defined ('ABSPATH')) die (); ?><?php _e ('Author', 'audit-trail'); ?>:<br/>
 <input style="width: 95%" type="text" name="content" value="<?php echo htmlspecialchars ($comment->comment_author) ?>" readonly="readonly"/>
 <br/>
 

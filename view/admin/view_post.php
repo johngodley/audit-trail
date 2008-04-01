@@ -1,4 +1,4 @@
-<div class="audit">
+<?php if (!defined ('ABSPATH')) die (); ?><div class="audit">
 	<?php echo $diff->show (); ?>
 </div>
 

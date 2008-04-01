@@ -1,4 +1,4 @@
-<div style="background-color: #CFEBF7; border:1px solid #2580B2; margin:1em 5% 10px; padding:0pt 1em 0pt 1em;">
+<?php if (!defined ('ABSPATH')) die (); ?><div style="background-color: #CFEBF7; border:1px solid #2580B2; margin:1em 5% 10px; padding:0pt 1em 0pt 1em;">
 	<h3><?php _e ('Audit Trail News', 'audit-trail'); ?></h3>
 
 	<?php foreach ($rss->items AS $item) : ?>

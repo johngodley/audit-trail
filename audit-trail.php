@@ -4,7 +4,7 @@ Plugin Name: Audit Trail
 Plugin URI: http://urbangiraffe.com/plugins/audit-trail/
 Description: Keep a log of exactly what is happening behind the scenes of your WordPress blog
 Author: John Godley
-Version: 1.0.8
+Version: 1.0.9
 Author URI: http://urbangiraffe.com
 ============================================================================================================
 
@@ -18,6 +18,7 @@ Author URI: http://urbangiraffe.com
 1.0.6 - Fix warning, allow searching by username
 1.0.7 - Fix favicon.ico logs, ignore certain users, track failed login attempts
 1.0.8 - Show log items according to blog timezone offset
+1.0.9 - WP 2.5 compatability
 
 ============================================================================================================
 This software is provided "as is" and any express or implied warranties, including, but not limited to, the
@@ -154,6 +155,14 @@ class Audit_Trail extends AT_Plugin
 	}
 	
 	
+	function is_25 ()
+	{
+		global $wp_version;
+		if (version_compare ('2.5', $wp_version) <= 0)
+			return true;
+		return false;
+	}
+	
 	/**
 	 * Injects CSS and JS into the audit trail section
 	 *
@@ -204,6 +213,21 @@ class Audit_Trail extends AT_Plugin
 	}
 	
 	
+	function submenu ($inwrap = false)
+	{
+		// Decide what to do
+		$sub = isset ($_GET['sub']) ? $_GET['sub'] : '';
+	  $url = explode ('&', $_SERVER['REQUEST_URI']);
+	  $url = $url[0];
+
+		if (!$this->is_25 () && $inwrap == false)
+			$this->render_admin ('submenu', array ('url' => $url, 'sub' => $sub, 'class' => 'id="subsubmenu"'));
+		else if ($this->is_25 () && $inwrap == true)
+			$this->render_admin ('submenu', array ('url' => $url, 'sub' => $sub, 'class' => 'class="subsubsub"', 'trail' => ' | '));
+			
+		return $sub;
+	}
+	
 	/**
 	 * Displays the admin screen
 	 *
@@ -216,20 +240,7 @@ class Audit_Trail extends AT_Plugin
 			return;
 			
 		// Decide what to do
-	  $url = explode ('&', $_SERVER['REQUEST_URI']);
-	  $url = $url[0];
-		$sub = isset ($_GET['sub']) ? $_GET['sub'] : '';
-		
-		$this->render_admin ('submenu', array ('url' => $url, 'sub' => $sub));
-
-		// Display version update message
-		// $version = get_option ('audit_version');
-		// if ($version == 'true' || $version === false)
-		// {
-		// 	$version = $this->version_update ('http://urbangiraffe.com/category/software/releases/audit-trail/feed/', 4);
-		// 	if ($version && count ($version->items) > 0)
-		// 		$this->render_admin ('version', array ('rss' => $version));
-		// }
+		$sub = $this->submenu ();
 
 		AT_Audit::expire (get_option ('audit_expiry') === false ? 30 : get_option ('audit_expiry'));
 		

@@ -1,4 +1,4 @@
-<div class="pager">
+<?php if (!defined ('ABSPATH')) die (); ?><div class="pager">
 	<form method="get" action="<?php echo $pager->url ?>">
 		<input type="hidden" name="page" value="audit-trail.php"/>
 		<input type="hidden" name="curpage" value="<?php echo $pager->current_page () ?>"/>

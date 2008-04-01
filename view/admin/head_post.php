@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo $this->url () ?>/post.css" type="text/css" media="screen"/>
+<?php if (!defined ('ABSPATH')) die (); ?><link rel="stylesheet" href="<?php echo $this->url () ?>/post.css" type="text/css" media="screen"/>
 
 <script type="text/javascript">
 var audit_base    = '<?php echo $this->url () ?>/';
