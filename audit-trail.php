@@ -81,18 +81,26 @@ class Audit_Trail extends AT_Plugin
 			
 			$this->add_action ('admin_menu');
 			$this->add_action ('activate_audit-trail/audit-trail.php', 'activate');
+			
+			wp_enqueue_script ('prototype');
+			
 			if (strstr ($_SERVER['REQUEST_URI'], 'audit-trail.php') !== false)
-			{
-				wp_enqueue_script ('prototype');
-				wp_enqueue_script ('scriptaculous');
 				$this->add_action ('admin_head');
-			}
 
-			if (get_option ('audit_post') && (strstr ($_SERVER['REQUEST_URI'], 'post.php') !== false || strstr ($_SERVER['REQUEST_URI'], 'page.php') !== false))
+			if (get_option ('audit_post') && (strpos ($_SERVER['REQUEST_URI'], 'post.php') !== false || strpos ($_SERVER['REQUEST_URI'], 'page.php') !== false))
 			{
 				$this->add_action ('admin_head',         'admin_post', 10);
-				$this->add_action ('edit_page_form',     'edit_box', 10);
-				$this->add_action ('edit_form_advanced', 'edit_box', 10);
+				
+				if ($this->is_25 ())
+				{
+					$this->add_action ('dbx_post_advanced',  'edit_box_advanced', 10);
+					$this->add_action ('edit_page_form',  'edit_box_advanced', 10);
+				}
+				else
+				{
+					$this->add_action ('edit_page_form',     'edit_box', 10);
+					$this->add_action ('edit_form_advanced', 'edit_box', 10);
+				}
 			}
 		}
 		
@@ -212,6 +220,11 @@ class Audit_Trail extends AT_Plugin
 		$this->render_admin ('edit_box', array ('trail' => AT_Audit::get_by_post ($post->ID)));
 	}
 	
+	function edit_box_advanced ()
+	{
+		global $post;
+		$this->render_admin ('edit_box_25', array ('trail' => AT_Audit::get_by_post ($post->ID)));
+	}
 	
 	function submenu ($inwrap = false)
 	{

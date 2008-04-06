@@ -13,7 +13,7 @@
 <?php if (strlen ($difftext) > 0) : ?>
 <br/>
 <?php _e ('Difference between this and current version', 'audit-trail'); ?>:
-<div class="diff">
+<div class="diff" style="width: 95%">
 	<?php echo $difftext ?>
 </div>
 <?php endif; ?>
