@@ -4,7 +4,7 @@ Plugin Name: Audit Trail
 Plugin URI: http://urbangiraffe.com/plugins/audit-trail/
 Description: Keep a log of exactly what is happening behind the scenes of your WordPress blog
 Author: John Godley
-Version: 1.0.9
+Version: 1.0.10
 Author URI: http://urbangiraffe.com
 ============================================================================================================
 
@@ -19,6 +19,7 @@ Author URI: http://urbangiraffe.com
 1.0.7 - Fix favicon.ico logs, ignore certain users, track failed login attempts
 1.0.8 - Show log items according to blog timezone offset
 1.0.9 - WP 2.5 compatability
+1.0.10 - Only include prototype on AT pages
 
 ============================================================================================================
 This software is provided "as is" and any express or implied warranties, including, but not limited to, the
@@ -82,13 +83,16 @@ class Audit_Trail extends AT_Plugin
 			$this->add_action ('admin_menu');
 			$this->add_action ('activate_audit-trail/audit-trail.php', 'activate');
 			
-			wp_enqueue_script ('prototype');
-			
 			if (strstr ($_SERVER['REQUEST_URI'], 'audit-trail.php') !== false)
+			{
+				wp_enqueue_script ('prototype');
 				$this->add_action ('admin_head');
+			}
 
 			if (get_option ('audit_post') && (strpos ($_SERVER['REQUEST_URI'], 'post.php') !== false || strpos ($_SERVER['REQUEST_URI'], 'page.php') !== false))
 			{
+				wp_enqueue_script ('prototype');
+
 				$this->add_action ('admin_head',         'admin_post', 10);
 				
 				if ($this->is_25 ())
