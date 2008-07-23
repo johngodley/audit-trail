@@ -76,7 +76,7 @@ class AT_Auditor extends AT_Plugin
 		if ($ignore)
 		{
 			$current = wp_get_current_user ();
-			$users   = explode (',', 'ignore');
+			$users   = explode (',', $ignore);
 			
 			if (in_array ($current->ID, $users))
 				return;
