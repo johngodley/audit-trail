@@ -60,8 +60,8 @@ class AT_AJAX extends AT_Plugin
 		do_action ('audit_restore', $item->id);
 
 		$_POST['ID']           = $item->item_id;
-		$_POST['post_content'] = wpdb::escape ($post->post_content);
-		$_POST['post_excerpt'] = wpdb::escape ($post->post_excerpt);
+		$_POST['post_content'] = $wpdb->escape ($post->post_content);
+		$_POST['post_excerpt'] = $wpdb->escape ($post->post_excerpt);
 		$_POST['post_title']   = $post->post_title;
 		$_POST['post_name']    = $post->post_name;
 		$_POST['post_author']  = $post->post_author;

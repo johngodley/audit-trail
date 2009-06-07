@@ -12,13 +12,15 @@
 // Lesser General Public License for more details.
 // ======================================================================================
 // @author     John Godley (http://urbangiraffe.com)
-// @version    0.2.6
+// @version    0.2.8
 // @copyright  Copyright &copy; 2007 John Godley, All Rights Reserved
 // ======================================================================================
 // 0.2.3 - Remember pager details in user data
 // 0.2.4 - Add phpdoc comments
 // 0.2.5 - Allow orderby to use tags to hide database columns
 // 0.2.6 - Fix sortable columns with only 1 page
+// 0.2.7 - Add a GROUP BY feature, make search work when position not 0
+// 0.2.8 - WP 2.7 functions
 // ======================================================================================
 
 
@@ -108,7 +110,7 @@ class AT_Pager
 		if (isset ($data['order']))
 			$this->order_direction = $data['order'];
 		
-		$this->search = $data['search'];
+		$this->search = isset($data['search']) ? $data['search'] : '';
 		$this->steps = array (10, 25, 50, 100, 250);
 		$this->url = str_replace ('&', '&amp;', $this->url);
 		$this->url = str_replace ('&&amp;', '&amp;', $this->url);
@@ -224,11 +226,13 @@ class AT_Pager
 	 * @return string SQL
 	 **/
 	
-	function to_limits ($conditions = '', $searches = '', $filters = '', $group = '')
+	function to_limits ($conditions = '', $searches = '', $filters = '', $group_by = '')
 	{
 		$sql = $this->to_conditions ($conditions, $searches, $filters);
-		$sql .= ' '.$group.' ';
-
+		
+		if ($group_by)
+			$sql .= ' '.$group_by.' ';
+			
 		if (strlen ($this->order_by) > 0)
 		{
 			if (!$this->is_secondary_sort ())
@@ -335,6 +339,17 @@ class AT_Pager
 	}
 	
 	
+	function sortable_class ($column, $class = true)
+	{
+		if ($column == $this->order_by)
+		{
+			if ($class)
+				printf (' class="sorted"');
+			else
+				echo ' sorted';
+		}
+	}
+	
 	/**
 	 * Return a string suitable for a sortable column heading
 	 *
@@ -346,6 +361,7 @@ class AT_Pager
 	
 	function sortable ($column, $text, $image = true)
 	{
+		$img = '';
 		$url = $this->url ($this->current_page, $column);
 		
 		if (isset ($this->order_tags[$column]))
@@ -353,11 +369,15 @@ class AT_Pager
 			
 		if ($column == $this->order_by)
 		{
-			$dir = basename (dirname (dirname (__FILE__)));
-			if (strpos ($url, 'ASC') !== false)
-				$img = '<img align="bottom" src="'.get_bloginfo ('wpurl').'/wp-content/plugins/'.$dir.'/images/up.gif" alt="dir" width="16" height="7"/>';
+			if (defined ('WP_PLUGIN_URL'))
+				$dir = WP_PLUGIN_URL.'/'.basename (dirname (dirname (__FILE__)));
 			else
-				$img = '<img align="bottom" src="'.get_bloginfo ('wpurl').'/wp-content/plugins/'.$dir.'/images/down.gif" alt="dir" width="16" height="7"/>';
+				$dir = get_bloginfo ('wpurl').'/wp-content/plugins/'.basename (dirname (dirname (__FILE__)));
+				
+			if (strpos ($url, 'ASC') !== false)
+				$img = '<img align="bottom" src="'.$dir.'/images/up.gif" alt="dir" width="16" height="7"/>';
+			else
+				$img = '<img align="bottom" src="'.$dir.'/images/down.gif" alt="dir" width="16" height="7"/>';
 			
 			if ($image == false)
 				$img = '';
@@ -393,7 +413,7 @@ class AT_Pager
 			{
 				if ($pos == $this->current_page)
 				{
-					$pages[] = $pos;
+					$pages[] = '<span class="active">'.$pos.'</span>';
 					$allow_dot = true;
 				}
 				else if ($pos == 1 || abs ($this->current_page - $pos) <= 2 || $pos == $this->total_pages ())
@@ -434,15 +454,28 @@ class AT_Pager
 	 * @return void
 	 **/
 	
-	function per_page ()
+	function per_page ($plugin = '')
 	{
 		?>
 		<select name="perpage">
 			<?php foreach ($this->steps AS $step) : ?>
-		  	<option value="<?php echo $step ?>"<?php if ($this->per_page == $step) echo ' selected="selected"' ?>><?php echo $step ?></option>
+		  	<option value="<?php echo $step ?>"<?php if ($this->per_page == $step) echo ' selected="selected"' ?>>
+					<?php printf (__ ('%d per-page', $plugin), $step) ?>
+				</option>
 			<?php endforeach; ?>
 		</select>
 		<?php
+	}
+	
+	function page_links ()
+	{
+		$text = sprintf( '<span class="displaying-num">' . __( 'Displaying %s&#8211;%s of %s' ) . '</span>',
+											number_format_i18n (($this->current_page () - 1) * $this->per_page + 1),
+											number_format_i18n ($this->current_page () * $this->per_page > $this->total ? $this->total : $this->current_page () * $this->per_page),
+											number_format_i18n ($this->total));
+
+		$links = paginate_links (array ('base' => str_replace ('99', '%#%', $this->url (99)), 'format' => '%#%', 'current' => $this->current_page (), 'total' => $this->total_pages (), 'end_size' => 3, 'mid_size' => 2, 'prev_next' => true));
+		return $text.$links;
 	}
 }
 

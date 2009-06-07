@@ -4,7 +4,7 @@
 		<input type="hidden" name="curpage" value="<?php echo $pager->current_page () ?>"/>
 
 		<?php _e ('Search', 'audit-trail'); ?>: 
-		<input type="text" name="search" value="<?php echo htmlspecialchars ($_GET['search']) ?>"/>
+		<input type="text" name="search" value="<?php echo isset($_GET['search']) ? htmlspecialchars ($_GET['search']) : '' ?>"/>
 		
 		<?php _e ('Results per page', 'audit-trail') ?>: 
 		<select name="perpage">

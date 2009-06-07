@@ -170,15 +170,15 @@ class AT_Audit
 		else if (isset ($_SERVER['HTTP_X_FORWARDED_FOR']))
 		  $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
 		
-		$operation = wpdb::escape ($operation);
+		$operation = $wpdb->escape ($operation);
 		$ip        = sprintf ('%u', ip2long ($ip));
 		if ($data != '')
-			$data = "'".wpdb::escape ($data)."'";
+			$data = "'".$wpdb->escape ($data)."'";
 		else
 			$data = 'NULL';
 			
 		if ($title != '')
-			$title = "'".wpdb::escape ($title)."'";
+			$title = "'".$wpdb->escape ($title)."'";
 		else
 			$title = 'NULL';	
 			

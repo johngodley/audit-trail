@@ -4,10 +4,9 @@ Plugin Name: Audit Trail
 Plugin URI: http://urbangiraffe.com/plugins/audit-trail/
 Description: Keep a log of exactly what is happening behind the scenes of your WordPress blog
 Author: John Godley
-Version: 1.0.10
+Version: 1.1
 Author URI: http://urbangiraffe.com
 ============================================================================================================
-
 0.1   - Initial release
 0.2   - Added versioning history
 0.3   - Made work with different database prefixes
@@ -20,7 +19,7 @@ Author URI: http://urbangiraffe.com
 1.0.8 - Show log items according to blog timezone offset
 1.0.9 - WP 2.5 compatability
 1.0.10 - Only include prototype on AT pages
-
+1.1    - WP 2.8 compatability
 ============================================================================================================
 This software is provided "as is" and any express or implied warranties, including, but not limited to, the
 implied warranties of merchantibility and fitness for a particular purpose are disclaimed. In no event shall
@@ -82,6 +81,7 @@ class Audit_Trail extends AT_Plugin
 			
 			$this->add_action ('admin_menu');
 			$this->add_action ('activate_audit-trail/audit-trail.php', 'activate');
+			$this->register_plugin_settings( __FILE__ );
 			
 			if (strstr ($_SERVER['REQUEST_URI'], 'audit-trail.php') !== false)
 			{
@@ -114,7 +114,13 @@ class Audit_Trail extends AT_Plugin
 		$this->add_action ('plugins_loaded');
 	}
 
-
+	
+	function plugin_settings ($links)	{
+		$settings_link = '<a href="tools.php?page='.basename( __FILE__ ).'">'.__('Trail', 'audit-trail').'</a>';
+		array_unshift( $links, $settings_link );
+		return $links;
+	}
+	
 	/**
 	 * After all the plugins have loaded this starts listening for all registered filters/actions
 	 *
@@ -208,7 +214,7 @@ class Audit_Trail extends AT_Plugin
 	function admin_menu ()
 	{
 		if (current_user_can ('edit_plugins') || current_user_can ('audit_trail'))
-  		add_management_page (__("Audit Trail",'audit-trail'), __("Audit Trail",'audit-trail'), "edit_post", basename (__FILE__), array ($this, "admin_screen"));
+  		add_management_page (__("Audit Trail",'audit-trail'), __("Audit Trail",'audit-trail'), "publish_posts", basename (__FILE__), array ($this, "admin_screen"));
 	}
 	
 	

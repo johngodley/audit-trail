@@ -1,13 +1,38 @@
 <?php if (!defined ('ABSPATH')) die (); ?><div class="wrap">
+		<?php screen_icon(); ?>
 	<div class="csv"><a title="Download as CSV" href="<?php echo $this->url () ?>/csv.php"><img src="<?php echo $this->url () ?>/images/csv.png" width="16" height="16" alt="Csv"/></a></div>
 	<h2><?php _e ('Audit Trail', 'audit-trail'); ?></h2>
 
 	<?php $this->submenu (true); ?>
 	
-	<?php $this->render_admin ('pager', array ('pager' => $pager)); ?>
+	<form method="get" action="<?php echo $this->url ($pager->url) ?>">
+		<?php $this->render_admin ('pager', array ('pager' => $pager)); ?>
+	
+		<div id="pager" class="tablenav">
+			<div class="alignleft actions">
+				<select name="action2" id="action2_select">
+					<option value="-1" selected="selected"><?php _e('Bulk Actions'); ?></option>
+					<option value="delete"><?php _e('Delete'); ?></option>
+				</select>
+				
+				<input type="submit" value="<?php _e('Apply'); ?>" name="doaction2" id="doaction2" class="button-secondary action" />
+				
+				<?php $pager->per_page ('audit-trail'); ?>
 
+				<input type="submit" value="<?php _e('Filter'); ?>" class="button-secondary" />
+
+				<br class="clear" />
+			</div>
+		
+			<div class="tablenav-pages">
+				<?php echo $pager->page_links (); ?>
+			</div>
+		</div>
+	</form>
+	
 	<?php if (count ($trail) > 0) : ?>
-	  <table class="audit" cellpadding="5">
+	  <table  class="widefat post fixed" cellpadding="5">
+		<thead>
 		  <tr>
 			  <th width="100"><?php echo $pager->sortable ('user_id', __ ('User','audit-trail')) ?></th>
 				<th><?php echo $pager->sortable ('operation', __ ('Action','audit-trail')) ?></th>
@@ -15,23 +40,15 @@
 				<th width="170"><?php echo $pager->sortable ('happened_at', __('Date','audit-trail')) ?></th>
 				<th width="100"><?php echo $pager->sortable ('ip', __('IP','audit-trail')) ?></th>
 			</tr>
-			
-			<tfoot>
-				<tr>
-					<td colspan="5">
-						<div class="pager">
-					<?php foreach ($pager->area_pages () AS $page) : ?>
-						<?php echo $page ?>
-					<?php endforeach; ?>&nbsp;
-					</div>
-				</td>
-			</tfoot>
-			
+		</thead>
+
+			<tbody>
 			<?php foreach ($trail AS $pos => $item) : ?>
 				<tr id="trail_<?php echo $item->id ?>"<?php if ($pos % 2 == 1) echo ' class="alt"'; ?>>
 					<?php $this->render_admin ('trail_item', array ('item' => $item)) ?>
 				</tr>
 			<?php endforeach; ?>
+			</tbody>
 		</table>
 		
 		<div style="clear: both"></div>
