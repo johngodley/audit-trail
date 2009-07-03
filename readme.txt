@@ -42,3 +42,50 @@ You can find full details of installing a plugin on the [plugin installation pag
 
 Full documentation can be found on the [Audit Trail Page](http://urbangiraffe.com/plugins/audit-trail/) page.
 
+== Changelog ==
+
+= 0.1    = 
+* Initial release
+
+= 0.2    = 
+* Added versioning history
+
+= 0.3    = 
+* Made work with different database prefixes
+
+= 1.0    = 
+* Revised code
+* More AJAX action
+* Extensible auditors
+
+= 1.0.3  = 
+* Fix typos.
+* Add option to reverse post edit order
+
+= 1.0.4  = 
+* Support for Admin SSL
+
+= 1.0.5  = 
+* Fix expiry
+* Stop logging auto-saves
+
+= 1.0.6  = 
+* Fix warning
+* Allow searching by username
+
+= 1.0.7  = 
+* Fix favicon.ico logs
+* Ignore certain users
+* Track failed login attempts
+
+= 1.0.8  = 
+* Show log items according to blog timezone offset
+
+= 1.0.9  = 
+* WP 2.5 compatibility
+
+= 1.0.10 = 
+* Only include prototype on AT pages
+
+= 1.1    = 
+* WP 2.8 compatibility

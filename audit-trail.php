@@ -7,20 +7,6 @@ Author: John Godley
 Version: 1.1
 Author URI: http://urbangiraffe.com
 ============================================================================================================
-0.1   - Initial release
-0.2   - Added versioning history
-0.3   - Made work with different database prefixes
-1.0   - Revised code, more AJAX action, extensible auditors
-1.0.3 - Fix typos.  Add option to reverse post edit order
-1.0.4 - Support for Admin SSL
-1.0.5 - Fix expiry, stop logging auto-saves
-1.0.6 - Fix warning, allow searching by username
-1.0.7 - Fix favicon.ico logs, ignore certain users, track failed login attempts
-1.0.8 - Show log items according to blog timezone offset
-1.0.9 - WP 2.5 compatability
-1.0.10 - Only include prototype on AT pages
-1.1    - WP 2.8 compatability
-============================================================================================================
 This software is provided "as is" and any express or implied warranties, including, but not limited to, the
 implied warranties of merchantibility and fitness for a particular purpose are disclaimed. In no event shall
 the copyright owner or contributors be liable for any direct, indirect, incidental, special, exemplary, or
