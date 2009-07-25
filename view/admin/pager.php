@@ -13,6 +13,6 @@
 			<?php endforeach; ?>
 		</select>
 		
-		<input type="submit" name="go" value="<?php _e ('go', 'audit-trail') ?>"/>
+		<input class="button-secondary" type="submit" name="go" value="<?php _e ('Go', 'audit-trail') ?>"/>
 	</form>
 </div>

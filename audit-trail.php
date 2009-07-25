@@ -4,7 +4,7 @@ Plugin Name: Audit Trail
 Plugin URI: http://urbangiraffe.com/plugins/audit-trail/
 Description: Keep a log of exactly what is happening behind the scenes of your WordPress blog
 Author: John Godley
-Version: 1.1
+Version: 1.1.1
 Author URI: http://urbangiraffe.com
 ============================================================================================================
 This software is provided "as is" and any express or implied warranties, including, but not limited to, the
@@ -65,33 +65,21 @@ class Audit_Trail extends AT_Plugin
 			
 			$this->register_plugin ('audit-trail', __FILE__);
 			
-			$this->add_action ('admin_menu');
-			$this->add_action ('activate_audit-trail/audit-trail.php', 'activate');
-			$this->register_plugin_settings( __FILE__ );
+			$this->add_action( 'admin_menu' );
+			$this->add_action( 'activate_audit-trail/audit-trail.php', 'activate' );
+
+			$this->add_action( 'admin_head', 'wp_print_styles' );
+			$this->add_action( 'admin_print_styles', 'wp_print_styles' );
+			$this->add_filter( 'contextual_help', 'contextual_help', 10, 2 );
+			$this->add_action( 'admin_footer' );
 			
-			if (strstr ($_SERVER['REQUEST_URI'], 'audit-trail.php') !== false)
-			{
-				wp_enqueue_script ('prototype');
-				$this->add_action ('admin_head');
+			// Ajax functions
+			if ( defined( 'DOING_AJAX' ) ) {
+				include_once dirname( __FILE__ ).'/ajax.php';
+				$this->ajax = new AuditAjax();
 			}
-
-			if (get_option ('audit_post') && (strpos ($_SERVER['REQUEST_URI'], 'post.php') !== false || strpos ($_SERVER['REQUEST_URI'], 'page.php') !== false))
-			{
-				wp_enqueue_script ('prototype');
-
-				$this->add_action ('admin_head',         'admin_post', 10);
-				
-				if ($this->is_25 ())
-				{
-					$this->add_action ('dbx_post_advanced',  'edit_box_advanced', 10);
-					$this->add_action ('edit_page_form',  'edit_box_advanced', 10);
-				}
-				else
-				{
-					$this->add_action ('edit_page_form',     'edit_box', 10);
-					$this->add_action ('edit_form_advanced', 'edit_box', 10);
-				}
-			}
+			
+			$this->register_plugin_settings( __FILE__ );
 		}
 		
 		// Add ourself to the Audit Trail functions
@@ -100,6 +88,18 @@ class Audit_Trail extends AT_Plugin
 		$this->add_action ('plugins_loaded');
 	}
 
+	function contextual_help($help, $screen) {
+		if ($screen == 'settings_page_audittrail' ) {
+			$help .= '<h5>' . __('Audit Trail Help') . '</h5><div class="metabox-prefs">';
+			$help .= '<a href="http://urbangiraffe.com/plugins/audit-trail/">'.__ ('Audit Trail Documentation', 'audit-trail').'</a><br/>';
+			$help .= '<a href="http://urbangiraffe.com/support/forum/audit-trail">'.__ ('Audit Trail Support Forum', 'audit-trail').'</a><br/>';
+			$help .= '<a href="http://urbangiraffe.com/tracker/projects/audit-trail/issues?set_filter=1&amp;tracker_id=1">'.__ ('Audit Trail Bug Tracker', 'audit-trail').'</a><br/>';
+			$help .= __ ('Please read the documentation and check the bug tracker before asking a question.', 'audit-trail');
+			$help .= '</div>';
+		}
+		
+		return $help;
+	}
 	
 	function plugin_settings ($links)	{
 		$settings_link = '<a href="tools.php?page='.basename( __FILE__ ).'">'.__('Trail', 'audit-trail').'</a>';
@@ -165,29 +165,6 @@ class Audit_Trail extends AT_Plugin
 		if (version_compare ('2.5', $wp_version) <= 0)
 			return true;
 		return false;
-	}
-	
-	/**
-	 * Injects CSS and JS into the audit trail section
-	 *
-	 * @return void
-	 **/
-	
-	function admin_head ()
-	{
-		$this->render_admin ('head');
-	}
-	
-	
-	/**
-	 * Inject CSS/JS for post editing screen
-	 *
-	 * @return void
-	 **/
-	
-	function admin_post ()
-	{
-		$this->render_admin ('head_post');
 	}
 	
 	
@@ -257,6 +234,8 @@ class Audit_Trail extends AT_Plugin
 			$this->screen_trail ();
 		else if ($sub == 'options')
 			$this->screen_options ();
+		else if ($sub == 'support')
+			$this->render_admin( 'support' );
 	}
 	
 	
@@ -279,9 +258,8 @@ class Audit_Trail extends AT_Plugin
 	 * @return void
 	 **/	
 	
-	function screen_options ()
-	{
-		if (isset ($_POST['save']))
+	function screen_options () {
+		if (isset ($_POST['save']) && check_admin_referer ('audittrail-update_options'))
 		{
 			$_POST = stripslashes_deep ($_POST);
 			
@@ -291,6 +269,7 @@ class Audit_Trail extends AT_Plugin
 			update_option ('audit_post_order', isset ($_POST['post_order']) ? true : false);
 			update_option ('audit_version',    isset ($_POST['version']) ? 'true' : 'false');
 			update_option ('audit_ignore',     preg_replace ('/[^0-9,]/', '', $_POST['ignore_users']));
+			update_option( 'audit_support',    isset( $_POST['support'] ) ? true : false );
 			
 			$this->render_message (__ ('Options have been updated', 'audit-trail'));
 		}
@@ -303,11 +282,76 @@ class Audit_Trail extends AT_Plugin
 		if (is_array ($methods))
 			ksort ($methods);
 
+		$support = get_option ('audit_support');
+
 		$expiry = get_option ('audit_expiry');
 		if ($expiry === false)
 			$expiry = 30;
 
-		$this->render_admin ('options', array ('methods' => $methods, 'current' => $current, 'expiry' => $expiry, 'post' => get_option ('audit_post'), 'post_order' => get_option ('audit_post_order'), 'version' => get_option ('audit_version') == 'false' ? false : true, 'ignore_users' => get_option ('audit_ignore')));
+		$this->render_admin ('options', array ('methods' => $methods, 'current' => $current, 'support' => $support, 'expiry' => $expiry, 'post' => get_option ('audit_post'), 'post_order' => get_option ('audit_post_order'), 'version' => get_option ('audit_version') == 'false' ? false : true, 'ignore_users' => get_option ('audit_ignore')));
+	}
+	
+	function wp_print_styles() {
+		if ( ( isset ($_GET['page']) && $_GET['page'] == 'audit-trail.php') ) {
+			echo '<link rel="stylesheet" href="'.$this->url ().'/admin.css" type="text/css" media="screen" title="no title" charset="utf-8"/>';
+
+			if (!function_exists ('wp_enqueue_style'))
+				echo '<style type="text/css" media="screen">
+				.subsubsub {
+					list-style: none;
+					margin: 8px 0 5px;
+					padding: 0;
+					white-space: nowrap;
+					font-size: 11px;
+					float: left;
+				}
+				.subsubsub li {
+					display: inline;
+					margin: 0;
+					padding: 0;
+				}
+				</style>';
+		}
+	}
+	
+	
+	function locales() {
+		$locales = array();
+		$readme  = @file_get_contents( dirname( __FILE__ ).'/readme.txt' );
+		if ( $readme ) {
+			if ( preg_match_all( '/^\* (.*?) by \[(.*?)\]\((.*?)\)/m', $readme, $matches ) ) {
+				foreach ( $matches[1] AS $pos => $match ) {
+					$locales[$match] = '<a href="'.$matches[3][$pos].'">'.$matches[2][$pos].'</a>';
+				}
+			}
+		}
+		
+		ksort( $locales );
+		return $locales;
+	}
+	
+	function admin_footer() {
+			if ( isset($_GET['page']) && $_GET['page'] == basename( __FILE__ ) ) {
+				$support = get_option ('audit_support');
+
+				if ( $support == false ) {
+	?>
+	<script type="text/javascript" charset="utf-8">
+		jQuery(function() {
+			jQuery('#support-annoy').animate( { opacity: 0.2, backgroundColor: 'red' } ).animate( { opacity: 1, backgroundColor: 'yellow' });
+		});
+	</script>
+	<?php
+				}
+			}
+		}
+		
+	function version() {
+		$plugin_data = implode ('', file (__FILE__));
+		
+		if (preg_match ('|Version:(.*)|i', $plugin_data, $version))
+			return trim ($version[1]);
+		return '';
 	}
 }
 

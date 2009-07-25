@@ -89,3 +89,7 @@ Full documentation can be found on the [Audit Trail Page](http://urbangiraffe.co
 
 = 1.1    = 
 * WP 2.8 compatibility
+
+= 1.1.1 =
+* jQueryify
+* Remove post edit difference - this has been built into WordPress for several versions now

@@ -7,7 +7,7 @@
 <br/>
 
 <?php _e ('Content', 'audit-trail'); ?>:<br/>
-<textarea rows="10" cols="5" readonly="readonly"><?php echo htmlspecialchars ($post->post_content)?></textarea><br/>
+<textarea rows="10" cols="40" style="width:95%" readonly="readonly"><?php echo htmlspecialchars ($post->post_content)?></textarea><br/>
 
 <?php $difftext = $diff->show (); ?>
 <?php if (strlen ($difftext) > 0) : ?>

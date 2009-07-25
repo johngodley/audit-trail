@@ -113,8 +113,9 @@ class AT_Auditor extends AT_Plugin
 	 * @param AT_Audit $item
 	 * @return AT_Audit
 	 **/
-	function audit_show_details ($item)
-	{
+	function audit_show_details ($item) {
+		include_once dirname( __FILE__ ).'/diff.php';
+		
 		global $wpdb;
 
 		switch ($item->operation)
@@ -240,13 +241,14 @@ class AT_Auditor extends AT_Plugin
 				
 			case 'private_to_published':
 				$post = get_post ($item->item_id);
-				$item->message = '<a href="post.php?action=edit&amp;post='.$post->ID.'">'.$post->post_title.'</a>';
+				if ( $post )
+					$item->message = '<a href="post.php?action=edit&amp;post='.$post->ID.'">'.$post->post_title.'</a>';
 				break;
 
 			case 'add_attachment' :
 			case 'edit_attachment' :
 				$post = get_post ($item->item_id);
-				$text = '<a href="upload.php?action=edit&amp;ID='.$item->item_id.'">'.basename ($item->data).'</a>';
+				$text = '<a href="media.php?action=edit&amp;attachment_id='.$item->item_id.'">'.basename ($item->data).'</a>';
 				if (!empty ($post) && $post->post_parent > 0)
 					$text .= ' (post <a href="post.php?action=edit&amp;post='.$post->post_parent.'">'.$post->post_parent.'</a>)';
 				$item->message = $text;
@@ -286,7 +288,7 @@ class AT_Auditor extends AT_Plugin
 				else
 					$text = __ ('Profile updated', 'audit-trail');
 					
-				$item->message = '<a href="#" onclick="return view_audit('.$item->id.')">'.$text.'</a>';
+				$item->message = '<a href="#'.$item->id.'" class="audit-view">'.$text.'</a>';
 				break;
 				
 			case 'wp_login' :
@@ -302,7 +304,7 @@ class AT_Auditor extends AT_Plugin
 				break;
 				
 			case 'user_register' :
-				$item->message = '<a href="#" onclick="return view_audit('.$item->id.')">'.__ ('New user registration', 'audit-trail').'</a>';
+				$item->message = '<a href="#'.$item->id.'" class="audit-view">'.__ ('New user registration', 'audit-trail').'</a>';
 				break;
 			
 			case 'retrieve_password' :
@@ -314,12 +316,12 @@ class AT_Auditor extends AT_Plugin
 				break;
 				
 			case 'add_link' : 
-				$item->message = '<a href="#" onclick="return view_audit('.$item->id.')">'.__ ('Add link', 'audit-trail').'</a>';
+				$item->message = '<a href="#'.$item->id.'" class="audit-view">'.__ ('Add link', 'audit-trail').'</a>';
 				break;
 
 			case 'edit_link':
 				$link = unserialize ($item->data);
-				$item->message = '<a href="#" onclick="return view_audit('.$item->id.')">'.__ ('Edit link', 'audit-trail').'</a>';
+				$item->message = '<a href="#'.$item->id.'" class="audit-view">'.__ ('Edit link', 'audit-trail').'</a>';
 				break;
 				
 			case 'delete_link':
@@ -327,11 +329,11 @@ class AT_Auditor extends AT_Plugin
 				break;
 				
 			case 'edit_category' :
-				$item->message = '<a href="#" onclick="return view_audit('.$item->id.')">'.__ ('Edit category ', 'audit-trail').'</a>';
+				$item->message = '<a href="#'.$item->id.'" class="audit-view">'.__ ('Edit category ', 'audit-trail').'</a>';
 				break;
 			
 			case 'add_category':
-				$item->message = '<a href="#" onclick="return view_audit('.$item->id.')">'.__ ('Add category', 'audit-trail').'</a>';
+				$item->message = '<a href="#'.$item->id.'" class="audit-view">'.__ ('Add category', 'audit-trail').'</a>';
 				break;
 				
 			case 'delete_category' :
@@ -339,7 +341,7 @@ class AT_Auditor extends AT_Plugin
 				break;
 				
 			case 'edit_comment' :
-				$item->message = '<a href="#" onclick="return view_audit('.$item->id.')">'.__ ('Edit comment', 'audit-trail').'</a>';
+				$item->message = '<a href="#'.$item->id.'" class="audit-view">'.__ ('Edit comment', 'audit-trail').'</a>';
 				break;
 
 			case 'delete_comment':
@@ -356,7 +358,7 @@ class AT_Auditor extends AT_Plugin
 					$text = __ ('Save post', 'audit-trail');
 				else
 					$text = __ ('Save page', 'audit-trail');
-				$item->message = '<a href="#" onclick="return view_audit('.$item->id.')">'.$text.'</a>';
+				$item->message = '<a href="#'.$item->id.'" class="audit-view">'.$text.'</a>';;
 				break;
 				
 			case 'private_to_published' :
@@ -364,7 +366,7 @@ class AT_Auditor extends AT_Plugin
 				break;
 				
 			case 'add_attachment' :
-				$item->message = '<a href="upload.php?action=edit&amp;ID='.$item->item_id.'">'.__ ('Add attachment', 'audit-trail').'</a>';
+				$item->message = '<a href="media.php?action=edit&amp;attachment_id='.$item->item_id.'">'.__ ('Add attachment', 'audit-trail').'</a>';
 				break;
 				
 			case 'delete_attachment' :
@@ -372,7 +374,7 @@ class AT_Auditor extends AT_Plugin
 				break;
 				
 			case 'edit_attachment' :
-				$item->message = '<a href="upload.php?action=edit&amp;ID='.$item->item_id.'">'.__ ('Edit attachment', 'audit-trail').'</a>';
+				$item->message = '<a href="media.php?action=edit&amp;attachment_id='.$item->item_id.'">'.__ ('Edit attachment', 'audit-trail').'</a>';
 				break;
 				
 			case 'template_redirect' :
@@ -380,7 +382,7 @@ class AT_Auditor extends AT_Plugin
 				break;
 				
 			case 'audit_restore' :
-				$item->message = '<a href="#" onclick="return view_audit('.$item->id.')">'.__ ('Restored','audit-trail').'</a>';
+				$item->message = '<a href="#'.$item->id.'" class="audit-view">'.__ ('Restored','audit-trail').'</a>';
 				break;
 		}
 		

@@ -22,42 +22,40 @@
  * @copyright Copyright (C) John Godley
  **/
 
-include ('../../../wp-config.php');
+class AuditAjax extends AT_Plugin {
+	function AuditAjax() {
+		$this->register_plugin( 'audit-trail', __FILE__ );
 
-class AT_AJAX extends AT_Plugin
-{
-	function AT_AJAX ($id, $command)
-	{
-		if (!current_user_can ('edit_plugins'))
-			die ('<p style="color: red">You are not allowed access to this resource</p>');
-		
-		$_POST = stripslashes_deep ($_POST);
-	
-		include (dirname (__FILE__).'/models/diff.php');
-		
-		$this->register_plugin ('drain-hole', __FILE__);
-		if (method_exists ($this, $command))
-			$this->$command ($id);
-		else
-			die ('<p style="color: red">That function is not defined</p>');
+		add_action( 'init', array( &$this, 'init' ) );
 	}
 
-	function show ($item)
-	{
-		$item = AT_Audit::get ($item);
-		$this->render_admin ('trail_details', array ('item' => $item));
+	function init() {
+		if ( current_user_can( 'manage_options' ) ) {
+			$this->register_ajax( 'at_view' );
+			$this->register_ajax( 'at_close' );
+		}
 	}
 	
-	function close ($item)
-	{
-		$item = AT_Audit::get ($item);
-		$this->render_admin ('trail_item', array ('item' => $item));
+	function at_view() {
+		if ( check_ajax_referer( 'audittrail_view' ) ) {
+			$id = intval( $_POST['id'] );
+
+			$item = AT_Audit::get( $id );
+			$this->render_admin( 'trail_details', array( 'item' => $item ) );
+
+			die();
+		}
+	}
+	
+	function at_close( $item ) {
+		if ( check_ajax_referer( 'audittrail_view' ) ) {
+			$id = intval( $_POST['id'] );
+
+			$item = AT_Audit::get ($id);
+			$this->render_admin ('trail_item', array ('item' => $item));
+			
+			die();
+		}
 	}
 }
 
-$id  = $_GET['id'];
-$cmd = $_GET['cmd'];
-
-$obj = new AT_AJAX ($id, $cmd);
-
-?>

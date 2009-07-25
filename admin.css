@@ -15,6 +15,7 @@ line-height: 1.8;
 .csv
 {
 float: right;
+padding: 4px;
 }
 
 .csv a
@@ -126,4 +127,35 @@ legend
 {
 font-weight: bold;
 font-size: 1.2em;
+}
+
+.bulleted li {
+list-style-type: square;
+margin-left: 20px;
+}
+
+.donations li
+{
+list-style-type: none;
+float: left;
+text-align: center;
+padding: 1em 2em;
+}
+
+.translators li
+{
+float: left;
+width: 300px;
+margin-left: 1.5em;
+}
+
+div .supporter strong
+{
+background-color: yellow;
+}
+
+
+.wrap h5
+{
+font-size: 1em;
 }
