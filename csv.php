@@ -25,10 +25,11 @@ include ('../../../wp-config.php');
 
 if (!current_user_can ('edit_plugins'))
 	die ('<p style="color: red">You are not allowed access to this resource</p>');
-		
-$id   = intval ($_GET['id']);
-$type = $_GET['type'];
 
+$id = 0;
+if ( isset( $_GET['id'] ) )
+	$id   = intval ($_GET['id']);
+	
 header ("Content-Type: application/vnd.ms-excel");
 header ("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); // Date in the past
@@ -58,16 +59,16 @@ if (count ($trail) > 0)
 {
 	echo "Date,Time,User,Operation,Item,IP\r\n";
 	
-	foreach ($trail AS $item)
-	{
-		$csv = array ();
-		$csv[] = escape (date ('Y-m-d', $item->happened_at));
-		$csv[] = escape (date ('H:i', $item->happened_at));
-		$csv[] = escape (strip_tags ($item->get_operation ()));
-		$csv[] = escape (strip_tags ($item->get_item ()));
-		$csv[] = escape (long2ip ($item->ip));
+	foreach ($trail AS $item) {
+		$csv = array();
+		$csv[] = escape( date ('Y-m-d', $item->happened_at));
+		$csv[] = escape( date ('H:i', $item->happened_at));
+		$csv[] = escape( $item->username );
+		$csv[] = escape( strip_tags ($item->get_operation ()));
+		$csv[] = escape( strip_tags ($item->get_item ()));
+		$csv[] = escape( long2ip ($item->ip));
 		
-		echo implode (',', $csv)."\r\n";
+		echo implode( ',', $csv )."\r\n";
 	}
 }
 

@@ -93,3 +93,7 @@ Full documentation can be found on the [Audit Trail Page](http://urbangiraffe.co
 = 1.1.1 =
 * jQueryify
 * Remove post edit difference - this has been built into WordPress for several versions now
+
+= 1.1.2 =
+* Don't save post differences
+* Fix username in CSV export

@@ -413,7 +413,7 @@ class AT_Auditor extends AT_Plugin
 	function save_post ($id)
 	{
 		if (!defined ('DOING_AJAX'))
-			AT_Audit::create ('save_post', $id, serialize (get_post ($id)));
+			AT_Audit::create ('save_post', $id );
 	}
 	
 	function wp_login ($user)
