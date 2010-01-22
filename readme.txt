@@ -12,7 +12,7 @@ Audit Trail is a plugin to keep track of what is going on inside your blog by mo
 
 Audit Trail is a plugin to keep track of what is going on inside your blog. It does this by recording certain actions (such as who logged in and when) and storing this information in the form of a log. Not only that but it records the full contents of posts (and pages) and allows you to restore a post to a previous version at any time.
 
-To summarize:
+To summarise:
 
 * Log of user actions inside your blog - useful for finding out who did what in a multi-user system
 * Post/page revisions and restorations - every change to a post or page is recorded and can be instantly restored to a previous version
@@ -97,3 +97,6 @@ Full documentation can be found on the [Audit Trail Page](http://urbangiraffe.co
 = 1.1.2 =
 * Don't save post differences
 * Fix username in CSV export
+
+= 1.1.3 =
+* Remove deep slashes
