@@ -1,0 +1,413 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Audit Trail ET\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-01-22 20:30+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Lembit Kivisik <lembit@designux.com>\n"
+"Language-Team: Lembit Kivisik <lembit@designux.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"X-Poedit-Language: Estonian\n"
+"X-Poedit-Country: ESTONIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+# Ei muutu WP liideses
+#: ../audit-trail.php:93
+msgid "Audit Trail Help"
+msgstr "Audit Trail abiinfo"
+
+#: ../audit-trail.php:94
+msgid "Audit Trail Documentation"
+msgstr "Audit Trail dokumentatsioon"
+
+#: ../audit-trail.php:95
+msgid "Audit Trail Support Forum"
+msgstr "Audit Trail foorum"
+
+#: ../audit-trail.php:96
+msgid "Audit Trail Bug Tracker"
+msgstr "Audit Trail <em>bug tracker</em>"
+
+#: ../audit-trail.php:97
+msgid "Please read the documentation and check the bug tracker before asking a question."
+msgstr "Palun tutvu dokumentatsiooni ning <em>bug tracker</em>'iga, enne, kui teatad veast või pöördud autori poole."
+
+# ?
+#: ../audit-trail.php:105
+msgid "Trail"
+msgstr "Trail"
+
+#: ../audit-trail.php:180
+msgid "Audit Trail"
+msgstr "Audit Trail"
+
+#: ../audit-trail.php:272
+msgid "Options have been updated"
+msgstr "Seaded salvestatud"
+
+#: ../models/auditor.php:52
+msgid "Post & page management"
+msgstr "Postituste ja lehtede haldus"
+
+#: ../models/auditor.php:53
+msgid "File attachments"
+msgstr "Meediafailide haldus"
+
+#: ../models/auditor.php:54
+msgid "User profiles & logins"
+msgstr "Kasutajad, sisselogimised"
+
+#: ../models/auditor.php:55
+msgid "Theme switching"
+msgstr "Teemade vahetused"
+
+#: ../models/auditor.php:56
+msgid "Link management"
+msgstr "Viidete haldus"
+
+#: ../models/auditor.php:57
+msgid "Category management"
+msgstr "Rubriikide haldus"
+
+#: ../models/auditor.php:58
+msgid "Comment management"
+msgstr "Kommentaaride haldus"
+
+#: ../models/auditor.php:59
+msgid "User page visits"
+msgstr "Sisseloginud kasutajate lehevaatamised"
+
+#: ../models/auditor.php:60
+msgid "Audit Trail actions"
+msgstr "Audit Trail tegevused"
+
+#: ../models/auditor.php:281
+msgid "Theme switch"
+msgstr "vahetas teemat"
+
+# ?
+#: ../models/auditor.php:287
+msgid "Profile updated for deleted user"
+msgstr "uuendas kustutatud kasutaja profiili"
+
+#: ../models/auditor.php:289
+msgid "Profile updated"
+msgstr "uuendas profiili"
+
+#: ../models/auditor.php:295
+msgid "Logged In"
+msgstr "logis sisse"
+
+#: ../models/auditor.php:299
+msgid "Logged Out"
+msgstr "logis välja"
+
+#: ../models/auditor.php:303
+msgid "Login failed"
+msgstr "sisselogimine ebaõnnestus"
+
+#: ../models/auditor.php:307
+msgid "New user registration"
+msgstr "registreerus kasutajaks"
+
+#: ../models/auditor.php:311
+msgid "Retrieve password"
+msgstr "vahetas kadunud parooli"
+
+#: ../models/auditor.php:315
+msgid "Delete user"
+msgstr "kustutas kasutaja"
+
+#: ../models/auditor.php:319
+msgid "Add link"
+msgstr "lisas viite"
+
+#: ../models/auditor.php:324
+msgid "Edit link"
+msgstr "muutis viidet"
+
+#: ../models/auditor.php:328
+msgid "Delete link"
+msgstr "kustutas viite"
+
+#: ../models/auditor.php:332
+msgid "Edit category "
+msgstr "muutis rubriiki"
+
+#: ../models/auditor.php:336
+msgid "Add category"
+msgstr "lisas rubriigi"
+
+#: ../models/auditor.php:340
+msgid "Delete category"
+msgstr "kustutas rubriigi"
+
+#: ../models/auditor.php:344
+msgid "Edit comment"
+msgstr "muutis kommentaari"
+
+#: ../models/auditor.php:348
+msgid "Delete comment"
+msgstr "kustutas kommentaari"
+
+#: ../models/auditor.php:352
+msgid "Delete post"
+msgstr "kustutas postituse"
+
+#: ../models/auditor.php:358
+msgid "Save post"
+msgstr "uuendas postitust"
+
+#: ../models/auditor.php:360
+msgid "Save page"
+msgstr "kustutas lehe"
+
+#: ../models/auditor.php:369
+msgid "Add attachment"
+msgstr "lisas manuse"
+
+#: ../models/auditor.php:377
+msgid "Edit attachment"
+msgstr "muutis manust"
+
+#: ../models/auditor.php:385
+msgid "Restored"
+msgstr "taastas"
+
+#: ../models/auditor.php:433
+msgid "<strong>ERROR</strong>: Incorrect password."
+msgstr "<strong>VIGA</strong>: vigane parool."
+
+#: ../models/pager.php:404
+msgid "Previous"
+msgstr "Eelmine"
+
+#: ../models/pager.php:405
+msgid "Next"
+msgstr "Järgmine"
+
+#: ../models/pager.php:463
+#, php-format
+msgid "%d per-page"
+msgstr "%d lk kohta"
+
+# ?
+#: ../models/pager.php:472
+#, php-format
+msgid "Displaying %s&#8211;%s of %s"
+msgstr "Kuvan %s&#8211;%s / %s"
+
+#: ../view/admin/options.php:4
+msgid "Audit Trail Options"
+msgstr "Audit Trail | Seaded"
+
+# Ei muutu WP liideses
+#: ../view/admin/options.php:11
+msgid "Actions to monitor"
+msgstr "Jälgitavad tegevused"
+
+#: ../view/admin/options.php:23
+msgid "There are no actions to monitor"
+msgstr "Tegevused puuduvad"
+
+#: ../view/admin/options.php:26
+msgid "Other Options"
+msgstr "Muu"
+
+#: ../view/admin/options.php:30
+msgid "Plugin Support"
+msgstr "Toeta plugina arendust"
+
+#: ../view/admin/options.php:33
+#, php-format
+msgid "Click this if you have <a href=\"%s\">supported</a> the author"
+msgstr "Mina olen <strong>hea</strong> ning olen <a href=\"%s\">toetanud</a> autorit selle plugina arendamisel"
+
+#: ../view/admin/options.php:37
+msgid "Auto-expire"
+msgstr "Logi aegub"
+
+#: ../view/admin/options.php:38
+msgid "days (0 for no expiry)"
+msgstr "päeva pärast (0 – piiramatu päevade arv)"
+
+#: ../view/admin/options.php:41
+msgid "Ignore users"
+msgstr "Eira kasutajaid"
+
+#: ../view/admin/options.php:42
+msgid "separate user IDs with a comma"
+msgstr "kasutajate numbrilised ID'd, eraldatud komaga"
+
+#: ../view/admin/options.php:46
+msgid "Save Options"
+msgstr "Salvesta muudatused"
+
+#: ../view/admin/pager.php:6
+msgid "Search"
+msgstr "Otsi"
+
+#: ../view/admin/pager.php:9
+msgid "Results per page"
+msgstr "Kuva tulemusi lk kohta"
+
+#: ../view/admin/pager.php:16
+msgid "Go"
+msgstr "Leia"
+
+#: ../view/admin/submenu.php:4
+msgid "Options"
+msgstr "Seaded"
+
+#: ../view/admin/submenu.php:5
+msgid "Support"
+msgstr "Tugi"
+
+#: ../view/admin/support.php:5
+msgid "Audit Trail | Support"
+msgstr "Audit Trail | Tugi"
+
+#: ../view/admin/support.php:9
+msgid "Audit Trail is free to use - life is wonderful and lovely!  However, it has required a great deal of time and effort to develop and if it has been useful you can help support this development by <strong>making a small donation</strong>."
+msgstr "Siit leiad viited plugina autori <strong>John Godley</strong> toetamiseks, kes on näinud palju vaeva, et see tarkvara <strong>tasuta</strong> Sinu jaoks valmistada. Järgneb tema enda ingliskeelne tekst, plugina dokumentatsiooni- jt viited leiad lehekülje lõpust.<br/><br/><em>Audit Trail is free to use - life is wonderful and lovely!  However, it has required a great deal of time and effort to develop and if it has been useful you can help support this development by <strong>making a small donation</strong>."
+
+#: ../view/admin/support.php:10
+msgid "This will act as an incentive for me to carry on developing, providing countless hours of support, and including new features and suggestions. You get some useful software and I get to carry on making it.  Everybody wins."
+msgstr "This will act as an incentive for me to carry on developing, providing countless hours of support, and including new features and suggestions. You get some useful software and I get to carry on making it.  Everybody wins.</em>"
+
+#: ../view/admin/support.php:13
+msgid "If you are using this plugin in a commercial setup, or feel that it's been particularly useful, then you may want to consider a <strong>commercial donation</strong>.  If you really really want to show your appreciation then there is the <strong>Super Smashing Great</strong> donation which, along with making my day, will earn you a badge of honour (125x125 image of your choosing + nofollow link) to be displayed on the Audit Trail page for a period of two months."
+msgstr "<em>If you are using this plugin in a commercial setup, or feel that it's been particularly useful, then you may want to consider a <strong>commercial donation</strong>.  If you really really want to show your appreciation then there is the <strong>Super Smashing Great</strong> donation which, along with making my day, will earn you a badge of honour (125x125 image of your choosing + nofollow link) to be displayed on the Audit Trail page for a period of two months.</em>"
+
+#: ../view/admin/support.php:36
+msgid "Individual<br/>Donation"
+msgstr "<em>Individual<br/>Donation</em>"
+
+#: ../view/admin/support.php:57
+msgid "Commercial<br/>Donation"
+msgstr "<em>Commercial<br/>Donation</em>"
+
+#: ../view/admin/support.php:78
+msgid "Super Smashing<br/>Great Donation"
+msgstr "<em>Super Smashing<br/>Great Donation</em>"
+
+#: ../view/admin/support.php:82
+msgid "Translations"
+msgstr "<em>Translations</em>"
+
+#: ../view/admin/support.php:84
+msgid "If you're multi-lingual then you may want to consider donating a translation:"
+msgstr "<em>If you're multi-lingual then you may want to consider donating a translation:</em>"
+
+#: ../view/admin/support.php:92
+msgid "All translators will have a link to their website placed on the plugin homepage at <a href=\"http://urbangiraffe.com/plugins/audit-trail/\">UrbanGiraffe</a> and <a href=\"http://wordpress.org/extend/plugins/audit-trail/\">WordPress.org</a>, in addition to being an individual supporter."
+msgstr "<em>All translators will have a link to their website placed on the plugin homepage at <a href=\"http://urbangiraffe.com/plugins/audit-trail/\">UrbanGiraffe</a> and <a href=\"http://wordpress.org/extend/plugins/audit-trail/\">WordPress.org</a>, in addition to being an individual supporter.</em>"
+
+#: ../view/admin/support.php:93
+msgid "Full details of producing a translation can be found in this <a href=\"http://urbangiraffe.com/articles/translating-wordpress-themes-and-plugins/\">guide to translating WordPress plugins</a>."
+msgstr "<em>Full details of producing a translation can be found in this <a href=\"http://urbangiraffe.com/articles/translating-wordpress-themes-and-plugins/\">guide to translating WordPress plugins</a>.</em>"
+
+#: ../view/admin/trail.php:16
+msgid "Bulk Actions"
+msgstr "Masstegevused"
+
+#: ../view/admin/trail.php:17
+msgid "Delete"
+msgstr "Kustuta"
+
+#: ../view/admin/trail.php:20
+msgid "Apply"
+msgstr "Rakenda"
+
+#: ../view/admin/trail.php:24
+msgid "Filter"
+msgstr "Filter"
+
+#: ../view/admin/trail.php:39
+#: ../view/admin/trail.php:49
+msgid "User"
+msgstr "Kasutaja"
+
+#: ../view/admin/trail.php:40
+#: ../view/admin/trail.php:50
+msgid "Action"
+msgstr "Tegevus"
+
+#: ../view/admin/trail.php:41
+#: ../view/admin/trail.php:51
+msgid "Target"
+msgstr "Objekt"
+
+#: ../view/admin/trail.php:42
+#: ../view/admin/trail.php:52
+msgid "Date"
+msgstr "Kuupäev"
+
+#: ../view/admin/trail.php:43
+#: ../view/admin/trail.php:53
+msgid "IP"
+msgstr "IP"
+
+#: ../view/admin/trail.php:74
+msgid "There is nothing to display!"
+msgstr "Pole midagi kuvada!"
+
+#: ../view/admin/version.php:2
+msgid "Audit Trail News"
+msgstr "Audit Trail uudised"
+
+# ?
+#: ../view/admin/version.php:5
+#, php-format
+msgid "%s ago"
+msgstr "%s tagasi"
+
+#: ../view/admin/details/edit_category.php:1
+#: ../view/admin/details/edit_link.php:1
+msgid "Name"
+msgstr "Nimi"
+
+#: ../view/admin/details/edit_category.php:5
+#: ../view/admin/details/edit_link.php:5
+#: ../view/admin/details/profile_update.php:9
+#: ../view/admin/details/save_post.php:5
+msgid "URL"
+msgstr "URL"
+
+#: ../view/admin/details/edit_category.php:9
+#: ../view/admin/details/edit_link.php:9
+msgid "Description"
+msgstr "Kirjeldus"
+
+#: ../view/admin/details/edit_comment.php:1
+msgid "Author"
+msgstr "Autor"
+
+#: ../view/admin/details/edit_comment.php:5
+#: ../view/admin/details/save_post.php:9
+msgid "Content"
+msgstr "Sisu"
+
+# ?
+#: ../view/admin/details/profile_update.php:1
+msgid "Login"
+msgstr "Login"
+
+#: ../view/admin/details/profile_update.php:5
+msgid "Email"
+msgstr "E-post"
+
+#: ../view/admin/details/save_post.php:1
+msgid "Title"
+msgstr "Pealkiri"
+
+#: ../view/admin/details/save_post.php:15
+msgid "Difference between this and current version"
+msgstr "Selle ja praeguse versiooni sisu vahe"
+

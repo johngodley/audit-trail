@@ -230,7 +230,8 @@ class AT_Auditor extends AT_Plugin
 			
 			case 'save_post' :
 				$post = unserialize ($item->data);
-				$item->message = '<a href="post.php?action=edit&amp;post='.$post->ID.'">'.$post->post_title.'</a>';
+				if ( $post )
+					$item->message = '<a href="post.php?action=edit&amp;post='.$post->ID.'">'.$post->post_title.'</a>';
 				break;
 				
 			case 'audit_restore' :
@@ -354,7 +355,7 @@ class AT_Auditor extends AT_Plugin
 				
 			case 'save_post' :
 				$post = unserialize ($item->data);
-				if ($post->post_type == 'post')
+				if ($post && $post->post_type == 'post')
 					$text = __ ('Save post', 'audit-trail');
 				else
 					$text = __ ('Save page', 'audit-trail');
@@ -378,7 +379,7 @@ class AT_Auditor extends AT_Plugin
 				break;
 				
 			case 'template_redirect' :
-				$item->message = 'View page';
+				$item->message = __( 'View page', 'audit-trail' );
 				break;
 				
 			case 'audit_restore' :

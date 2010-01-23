@@ -4,7 +4,7 @@ Plugin Name: Audit Trail
 Plugin URI: http://urbangiraffe.com/plugins/audit-trail/
 Description: Keep a log of exactly what is happening behind the scenes of your WordPress blog
 Author: John Godley
-Version: 1.1.3
+Version: 1.1.4
 Author URI: http://urbangiraffe.com
 ============================================================================================================
 This software is provided "as is" and any express or implied warranties, including, but not limited to, the
@@ -90,7 +90,7 @@ class Audit_Trail extends AT_Plugin
 
 	function contextual_help($help, $screen) {
 		if ($screen == 'settings_page_audittrail' ) {
-			$help .= '<h5>' . __('Audit Trail Help') . '</h5><div class="metabox-prefs">';
+			$help .= '<h5>' . __('Audit Trail Help', 'audit-trail') . '</h5><div class="metabox-prefs">';
 			$help .= '<a href="http://urbangiraffe.com/plugins/audit-trail/">'.__ ('Audit Trail Documentation', 'audit-trail').'</a><br/>';
 			$help .= '<a href="http://urbangiraffe.com/support/forum/audit-trail">'.__ ('Audit Trail Support Forum', 'audit-trail').'</a><br/>';
 			$help .= '<a href="http://urbangiraffe.com/tracker/projects/audit-trail/issues?set_filter=1&amp;tracker_id=1">'.__ ('Audit Trail Bug Tracker', 'audit-trail').'</a><br/>';
@@ -247,7 +247,13 @@ class Audit_Trail extends AT_Plugin
 	
 	function screen_trail ()
 	{
-		$pager = new AT_Pager ($_GET, $_SERVER['REQUEST_URI'], 'happened_at', 'DESC');
+		if ( isset( $_POST['item'] ) && isset( $_POST['action2'] ) && $_POST['action2'] == 'delete' ) {
+			foreach ( $_POST['item'] AS $id ) {
+				AT_Audit::delete( intval( $id ) );
+			}
+		}
+		
+		$pager = new AT_Pager ($_REQUEST, $_SERVER['REQUEST_URI'], 'happened_at', 'DESC');
 		$this->render_admin ('trail', array ('trail' => AT_Audit::get_all ($pager), 'pager' => $pager));
 	}
 	
@@ -361,4 +367,3 @@ class Audit_Trail extends AT_Plugin
  **/
 
 $obj = new Audit_Trail;
-?>

@@ -8,7 +8,7 @@
 	<form action="<?php echo $this->url ($_SERVER['REQUEST_URI']) ?>" method="post" accept-charset="utf-8" style="clear: both">
 		<?php wp_nonce_field ('audittrail-update_options'); ?>
 
-		<h3><?php _e ('Actions to monitor')?></h3>
+		<h3><?php _e('Actions to monitor', 'audit-trail')?></h3>
 
 		<?php if (count ($methods) > 0) : ?>
 			<ul class="options">
@@ -30,7 +30,7 @@
 				<th><label for="support"><?php _e ('Plugin Support', 'audit-trail'); ?>:</label></th>
 				<td>
 					<input type="checkbox" name="support" id="support"<?php if ($support) echo ' checked="checked"' ?>/>
-					<span class="sub"><?php printf( __( 'Click this if you have <a href="%s">supported</a> the author', 'audit-trail'), $this->base().'?page=search-unleashed.php&amp;sub=support'); ?></span>
+					<span class="sub"><?php printf( __( 'Click this if you have <a href="%s">supported</a> the author', 'audit-trail'), $this->base().'?page=audit-trail.php&amp;sub=support'); ?></span>
 				</td>
 			</tr>
 			<tr>

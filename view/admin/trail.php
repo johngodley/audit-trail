@@ -7,7 +7,7 @@
 
 	<?php $this->submenu (true); ?>
 	
-	<form method="get" action="<?php echo $this->url ($pager->url) ?>">
+	<form method="post" action="<?php echo $this->url ($pager->url) ?>">
 		<?php $this->render_admin ('pager', array ('pager' => $pager)); ?>
 	
 		<div id="pager" class="tablenav">
@@ -30,12 +30,12 @@
 				<?php echo $pager->page_links (); ?>
 			</div>
 		</div>
-	</form>
 	
 	<?php if (count ($trail) > 0) : ?>
 	  <table  class="widefat post fixed" cellpadding="5">
 		<thead>
 		  <tr>
+				<th style="" class="manage-column column-cb check-column" id="cb" scope="col"><input type="checkbox"></th>
 			  <th width="100"><?php echo $pager->sortable ('user_id', __ ('User','audit-trail')) ?></th>
 				<th><?php echo $pager->sortable ('operation', __ ('Action','audit-trail')) ?></th>
 				<th><?php echo $pager->sortable ('item_id', __ ('Target','audit-trail')) ?></th>
@@ -46,6 +46,7 @@
 		
 		<tfoot>
 		  <tr>
+				<th style="" class="manage-column column-cb check-column" scope="col"><input type="checkbox"></th>
 			  <th width="100"><?php echo $pager->sortable ('user_id', __ ('User','audit-trail')) ?></th>
 				<th><?php echo $pager->sortable ('operation', __ ('Action','audit-trail')) ?></th>
 				<th><?php echo $pager->sortable ('item_id', __ ('Target','audit-trail')) ?></th>
@@ -68,6 +69,7 @@
 				<?php echo $pager->page_links (); ?>
 			</div>
 		</div>
+		</form>
 		
 		<div style="clear: both"></div>
 	<?php else : ?>

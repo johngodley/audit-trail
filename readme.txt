@@ -21,6 +21,11 @@ To summarise:
 * Ability to track registered user page visits
 * Fully localized
 
+Audit Trail is available in:
+
+* English
+* Estonian (thanks to [Lembit Kivisik](http://designux.com/))
+
 == Installation ==
 
 The plugin is simple to install:
@@ -100,3 +105,7 @@ Full documentation can be found on the [Audit Trail Page](http://urbangiraffe.co
 
 = 1.1.3 =
 * Remove deep slashes
+
+= 1.1.4 =
+* Add Estonian
+* Put delete item back
