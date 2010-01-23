@@ -116,7 +116,7 @@ class Audit_Trail extends AT_Plugin
 	function plugins_loaded ()
 	{
 		$methods = get_option ('audit_methods');
-		if (!empty ($methods))
+		if (!empty ($methods) && is_array( $methods ) )
 		{
 			foreach ($methods AS $name)
 				do_action ('audit_listen', $name);
