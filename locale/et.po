@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Audit Trail ET\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-22 20:30+0200\n"
+"POT-Creation-Date: 2010-01-23 23:46+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Lembit Kivisik <lembit@designux.com>\n"
 "Language-Team: Lembit Kivisik <lembit@designux.com>\n"
@@ -17,7 +17,6 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-# Ei muutu WP liideses
 #: ../audit-trail.php:93
 msgid "Audit Trail Help"
 msgstr "Audit Trail abiinfo"
@@ -47,7 +46,7 @@ msgstr "Trail"
 msgid "Audit Trail"
 msgstr "Audit Trail"
 
-#: ../audit-trail.php:272
+#: ../audit-trail.php:278
 msgid "Options have been updated"
 msgstr "Seaded salvestatud"
 
@@ -87,100 +86,104 @@ msgstr "Sisseloginud kasutajate lehevaatamised"
 msgid "Audit Trail actions"
 msgstr "Audit Trail tegevused"
 
-#: ../models/auditor.php:281
+#: ../models/auditor.php:282
 msgid "Theme switch"
 msgstr "vahetas teemat"
 
 # ?
-#: ../models/auditor.php:287
+#: ../models/auditor.php:288
 msgid "Profile updated for deleted user"
 msgstr "uuendas kustutatud kasutaja profiili"
 
-#: ../models/auditor.php:289
+#: ../models/auditor.php:290
 msgid "Profile updated"
 msgstr "uuendas profiili"
 
-#: ../models/auditor.php:295
+#: ../models/auditor.php:296
 msgid "Logged In"
 msgstr "logis sisse"
 
-#: ../models/auditor.php:299
+#: ../models/auditor.php:300
 msgid "Logged Out"
 msgstr "logis välja"
 
-#: ../models/auditor.php:303
+#: ../models/auditor.php:304
 msgid "Login failed"
 msgstr "sisselogimine ebaõnnestus"
 
-#: ../models/auditor.php:307
+#: ../models/auditor.php:308
 msgid "New user registration"
 msgstr "registreerus kasutajaks"
 
-#: ../models/auditor.php:311
+#: ../models/auditor.php:312
 msgid "Retrieve password"
 msgstr "vahetas kadunud parooli"
 
-#: ../models/auditor.php:315
+#: ../models/auditor.php:316
 msgid "Delete user"
 msgstr "kustutas kasutaja"
 
-#: ../models/auditor.php:319
+#: ../models/auditor.php:320
 msgid "Add link"
 msgstr "lisas viite"
 
-#: ../models/auditor.php:324
+#: ../models/auditor.php:325
 msgid "Edit link"
 msgstr "muutis viidet"
 
-#: ../models/auditor.php:328
+#: ../models/auditor.php:329
 msgid "Delete link"
 msgstr "kustutas viite"
 
-#: ../models/auditor.php:332
+#: ../models/auditor.php:333
 msgid "Edit category "
 msgstr "muutis rubriiki"
 
-#: ../models/auditor.php:336
+#: ../models/auditor.php:337
 msgid "Add category"
 msgstr "lisas rubriigi"
 
-#: ../models/auditor.php:340
+#: ../models/auditor.php:341
 msgid "Delete category"
 msgstr "kustutas rubriigi"
 
-#: ../models/auditor.php:344
+#: ../models/auditor.php:345
 msgid "Edit comment"
 msgstr "muutis kommentaari"
 
-#: ../models/auditor.php:348
+#: ../models/auditor.php:349
 msgid "Delete comment"
 msgstr "kustutas kommentaari"
 
-#: ../models/auditor.php:352
+#: ../models/auditor.php:353
 msgid "Delete post"
 msgstr "kustutas postituse"
 
-#: ../models/auditor.php:358
+#: ../models/auditor.php:359
 msgid "Save post"
 msgstr "uuendas postitust"
 
-#: ../models/auditor.php:360
+#: ../models/auditor.php:361
 msgid "Save page"
 msgstr "kustutas lehe"
 
-#: ../models/auditor.php:369
+#: ../models/auditor.php:370
 msgid "Add attachment"
 msgstr "lisas manuse"
 
-#: ../models/auditor.php:377
+#: ../models/auditor.php:378
 msgid "Edit attachment"
 msgstr "muutis manust"
 
-#: ../models/auditor.php:385
+#: ../models/auditor.php:382
+msgid "View page"
+msgstr "vaatas"
+
+#: ../models/auditor.php:386
 msgid "Restored"
 msgstr "taastas"
 
-#: ../models/auditor.php:433
+#: ../models/auditor.php:434
 msgid "<strong>ERROR</strong>: Incorrect password."
 msgstr "<strong>VIGA</strong>: vigane parool."
 
@@ -207,7 +210,6 @@ msgstr "Kuvan %s&#8211;%s / %s"
 msgid "Audit Trail Options"
 msgstr "Audit Trail | Seaded"
 
-# Ei muutu WP liideses
 #: ../view/admin/options.php:11
 msgid "Actions to monitor"
 msgstr "Jälgitavad tegevused"
@@ -330,31 +332,31 @@ msgid "Filter"
 msgstr "Filter"
 
 #: ../view/admin/trail.php:39
-#: ../view/admin/trail.php:49
+#: ../view/admin/trail.php:50
 msgid "User"
 msgstr "Kasutaja"
 
 #: ../view/admin/trail.php:40
-#: ../view/admin/trail.php:50
+#: ../view/admin/trail.php:51
 msgid "Action"
 msgstr "Tegevus"
 
 #: ../view/admin/trail.php:41
-#: ../view/admin/trail.php:51
+#: ../view/admin/trail.php:52
 msgid "Target"
 msgstr "Objekt"
 
 #: ../view/admin/trail.php:42
-#: ../view/admin/trail.php:52
+#: ../view/admin/trail.php:53
 msgid "Date"
 msgstr "Kuupäev"
 
 #: ../view/admin/trail.php:43
-#: ../view/admin/trail.php:53
+#: ../view/admin/trail.php:54
 msgid "IP"
 msgstr "IP"
 
-#: ../view/admin/trail.php:74
+#: ../view/admin/trail.php:76
 msgid "There is nothing to display!"
 msgstr "Pole midagi kuvada!"
 

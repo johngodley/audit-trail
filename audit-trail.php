@@ -4,7 +4,7 @@ Plugin Name: Audit Trail
 Plugin URI: http://urbangiraffe.com/plugins/audit-trail/
 Description: Keep a log of exactly what is happening behind the scenes of your WordPress blog
 Author: John Godley
-Version: 1.1.4
+Version: 1.1.5
 Author URI: http://urbangiraffe.com
 ============================================================================================================
 This software is provided "as is" and any express or implied warranties, including, but not limited to, the
@@ -267,7 +267,7 @@ class Audit_Trail extends AT_Plugin
 	function screen_options () {
 		if (isset ($_POST['save']) && check_admin_referer ('audittrail-update_options'))
 		{
-			update_option ('audit_methods',    stripslashes( $_POST['methods'] ) );
+			update_option ('audit_methods',    stripslashes_deep( $_POST['methods'] ) );
 			update_option ('audit_expiry',     intval ($_POST['expiry']));
 			update_option ('audit_post',       isset ($_POST['post']) ? true : false);
 			update_option ('audit_post_order', isset ($_POST['post_order']) ? true : false);

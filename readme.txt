@@ -109,3 +109,6 @@ Full documentation can be found on the [Audit Trail Page](http://urbangiraffe.co
 = 1.1.4 =
 * Add Estonian
 * Put delete item back
+
+= 1.1.5 =
+* Fix actions to monitor
