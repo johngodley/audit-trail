@@ -25,7 +25,7 @@ Audit Trail is available in:
 
 * English
 * Estonian (thanks to [Lembit Kivisik](http://designux.com/))
-* Belorussian (thanks to [Marcis G](http://pc.de/7))
+* Belorussian (thanks to [Marcis G](http://pc.de/))
 
 == Installation ==
 
