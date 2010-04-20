@@ -25,6 +25,7 @@ Audit Trail is available in:
 
 * English
 * Estonian (thanks to [Lembit Kivisik](http://designux.com/))
+* Belorussian (thanks to [Marcis G](http://pc.de/7))
 
 == Installation ==
 
@@ -112,3 +113,6 @@ Full documentation can be found on the [Audit Trail Page](http://urbangiraffe.co
 
 = 1.1.5 =
 * Fix actions to monitor
+
+= 1.1.6 =
+* Add Belorussian translation
