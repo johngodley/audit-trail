@@ -4,7 +4,7 @@ Plugin Name: Audit Trail
 Plugin URI: http://urbangiraffe.com/plugins/audit-trail/
 Description: Keep a log of exactly what is happening behind the scenes of your WordPress blog
 Author: John Godley
-Version: 1.1.6
+Version: 1.1.7
 Author URI: http://urbangiraffe.com
 ============================================================================================================
 This software is provided "as is" and any express or implied warranties, including, but not limited to, the
@@ -322,6 +322,7 @@ class Audit_Trail extends AT_Plugin
 	function locales() {
 		$locales = array();
 		$readme  = @file_get_contents( dirname( __FILE__ ).'/readme.txt' );
+
 		if ( $readme ) {
 			if ( preg_match_all( '/^\* (.*?) by \[(.*?)\]\((.*?)\)/m', $readme, $matches ) ) {
 				foreach ( $matches[1] AS $pos => $match ) {
@@ -329,7 +330,7 @@ class Audit_Trail extends AT_Plugin
 				}
 			}
 		}
-		
+
 		ksort( $locales );
 		return $locales;
 	}

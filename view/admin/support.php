@@ -89,8 +89,6 @@
 		<?php endforeach; ?>
 	</ul>
 
-	<p style="clear: both"><br/><?php _e( 'All translators will have a link to their website placed on the plugin homepage at <a href="http://urbangiraffe.com/plugins/audit-trail/">UrbanGiraffe</a> and <a href="http://wordpress.org/extend/plugins/audit-trail/">WordPress.org</a>, in addition to being an individual supporter.', 'audit-trail' )?></p>
+	<p style="clear: both"><br/><?php _e( 'All translators will have a link to their website placed on the plugin homepage at <a href="http://urbangiraffe.com/plugins/audit-trail/">UrbanGiraffe</a>, in addition to being an individual supporter.', 'audit-trail' )?></p>
 	<p><?php _e( 'Full details of producing a translation can be found in this <a href="http://urbangiraffe.com/articles/translating-wordpress-themes-and-plugins/">guide to translating WordPress plugins</a>.', 'audit-trail' )?>
-	
-	<?php echo $this->contextual_help( '', 'settings_page_audittrail' ); ?>
 </div>

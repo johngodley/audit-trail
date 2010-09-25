@@ -1,0 +1,415 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Audit Trail ET\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-01-23 23:46+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: mao <470107626@qq.com>\n"
+"Language-Team: fotomen <maoay@syzychina.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: CHINA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../audit-trail.php:93
+msgid "Audit Trail Help"
+msgstr "审查跟踪帮助"
+
+#: ../audit-trail.php:94
+msgid "Audit Trail Documentation"
+msgstr "审查跟踪资料文档"
+
+#: ../audit-trail.php:95
+msgid "Audit Trail Support Forum"
+msgstr "审查跟踪支持论坛"
+
+#: ../audit-trail.php:96
+msgid "Audit Trail Bug Tracker"
+msgstr "审查跟踪bug定位"
+
+#: ../audit-trail.php:97
+msgid "Please read the documentation and check the bug tracker before asking a question."
+msgstr "问问题前请先阅读资料文档并且检查bug更改"
+
+# ?
+#: ../audit-trail.php:105
+msgid "Trail"
+msgstr "跟踪"
+
+#: ../audit-trail.php:180
+msgid "Audit Trail"
+msgstr "审查跟踪"
+
+#: ../audit-trail.php:278
+msgid "Options have been updated"
+msgstr "选项已经更新"
+
+#: ../models/auditor.php:52
+msgid "Post & page management"
+msgstr "文章页面管理"
+
+#: ../models/auditor.php:53
+msgid "File attachments"
+msgstr "文件附件"
+
+#: ../models/auditor.php:54
+msgid "User profiles & logins"
+msgstr "用户配置文件&登陆"
+
+#: ../models/auditor.php:55
+msgid "Theme switching"
+msgstr "主题转换"
+
+#: ../models/auditor.php:56
+msgid "Link management"
+msgstr "链接管理"
+
+#: ../models/auditor.php:57
+msgid "Category management"
+msgstr "类别管理"
+
+#: ../models/auditor.php:58
+msgid "Comment management"
+msgstr "评论管理"
+
+#: ../models/auditor.php:59
+msgid "User page visits"
+msgstr "用户页访问"
+
+#: ../models/auditor.php:60
+msgid "Audit Trail actions"
+msgstr "审查跟踪操作"
+
+#: ../models/auditor.php:282
+msgid "Theme switch"
+msgstr "主题转换"
+
+# ?
+#: ../models/auditor.php:288
+msgid "Profile updated for deleted user"
+msgstr "更新删除用户的资料"
+
+#: ../models/auditor.php:290
+msgid "Profile updated"
+msgstr "资料更新"
+
+#: ../models/auditor.php:296
+msgid "Logged In"
+msgstr "登入"
+
+#: ../models/auditor.php:300
+msgid "Logged Out"
+msgstr "登出"
+
+#: ../models/auditor.php:304
+msgid "Login failed"
+msgstr "登陆失败"
+
+#: ../models/auditor.php:308
+msgid "New user registration"
+msgstr "新用户注册"
+
+#: ../models/auditor.php:312
+msgid "Retrieve password"
+msgstr "恢复密码"
+
+#: ../models/auditor.php:316
+msgid "Delete user"
+msgstr "删除用户"
+
+#: ../models/auditor.php:320
+msgid "Add link"
+msgstr "添加链接"
+
+#: ../models/auditor.php:325
+msgid "Edit link"
+msgstr "编辑链接"
+
+#: ../models/auditor.php:329
+msgid "Delete link"
+msgstr "删除链接"
+
+#: ../models/auditor.php:333
+msgid "Edit category "
+msgstr "编辑类别"
+
+#: ../models/auditor.php:337
+msgid "Add category"
+msgstr "添加类别"
+
+#: ../models/auditor.php:341
+msgid "Delete category"
+msgstr "删除类别"
+
+#: ../models/auditor.php:345
+msgid "Edit comment"
+msgstr "编辑评论"
+
+#: ../models/auditor.php:349
+msgid "Delete comment"
+msgstr "删除评论"
+
+#: ../models/auditor.php:353
+msgid "Delete post"
+msgstr "删除文章"
+
+#: ../models/auditor.php:359
+msgid "Save post"
+msgstr "保存文章"
+
+#: ../models/auditor.php:361
+msgid "Save page"
+msgstr "保存页面"
+
+#: ../models/auditor.php:370
+msgid "Add attachment"
+msgstr "添加附件"
+
+#: ../models/auditor.php:378
+msgid "Edit attachment"
+msgstr "编辑附件"
+
+#: ../models/auditor.php:382
+msgid "View page"
+msgstr "查看页面"
+
+#: ../models/auditor.php:386
+msgid "Restored"
+msgstr "恢复"
+
+#: ../models/auditor.php:434
+msgid "<strong>ERROR</strong>: Incorrect password."
+msgstr "<strong>错误</strong>:密码错误."
+
+#: ../models/pager.php:404
+msgid "Previous"
+msgstr "上一个"
+
+#: ../models/pager.php:405
+msgid "Next"
+msgstr "下一个"
+
+#: ../models/pager.php:463
+#, php-format
+msgid "%d per-page"
+msgstr "%d 每页"
+
+# ?
+#: ../models/pager.php:472
+#, php-format
+msgid "Displaying %s&#8211;%s of %s"
+msgstr "显示 %s&#8211;%s / %s"
+
+#: ../view/admin/options.php:4
+msgid "Audit Trail Options"
+msgstr "审查跟踪选项"
+
+#: ../view/admin/options.php:11
+msgid "Actions to monitor"
+msgstr "操作监控"
+
+#: ../view/admin/options.php:23
+msgid "There are no actions to monitor"
+msgstr "没有操作被监控"
+
+#: ../view/admin/options.php:26
+msgid "Other Options"
+msgstr "其它选项"
+
+#: ../view/admin/options.php:30
+msgid "Plugin Support"
+msgstr "插件支持"
+
+#: ../view/admin/options.php:33
+#, php-format
+msgid "Click this if you have <a href=\"%s\">supported</a> the author"
+msgstr "点击如果你有 <a href=\"%s\">支持</a> 作者"
+
+#: ../view/admin/options.php:37
+msgid "Auto-expire"
+msgstr "自动终止"
+
+#: ../view/admin/options.php:38
+msgid "days (0 for no expiry)"
+msgstr "按天 (0 –无期限)"
+
+#: ../view/admin/options.php:41
+msgid "Ignore users"
+msgstr "忽略的用户"
+
+#: ../view/admin/options.php:42
+msgid "separate user IDs with a comma"
+msgstr "用逗号分割用户ID"
+
+#: ../view/admin/options.php:46
+msgid "Save Options"
+msgstr "保存选项"
+
+#: ../view/admin/pager.php:6
+msgid "Search"
+msgstr "搜索"
+
+#: ../view/admin/pager.php:9
+msgid "Results per page"
+msgstr "每页结果"
+
+#: ../view/admin/pager.php:16
+msgid "Go"
+msgstr "操作"
+
+#: ../view/admin/submenu.php:4
+msgid "Options"
+msgstr "选项"
+
+#: ../view/admin/submenu.php:5
+msgid "Support"
+msgstr "支持"
+
+#: ../view/admin/support.php:5
+msgid "Audit Trail | Support"
+msgstr "审查跟踪|支持"
+
+#: ../view/admin/support.php:9
+msgid "Audit Trail is free to use - life is wonderful and lovely!  However, it has required a great deal of time and effort to develop and if it has been useful you can help support this development by <strong>making a small donation</strong>."
+msgstr "审查跟踪是免费使用的.生活是美妙可爱的!然而,它还需要大量的时间和精力去完善,如果它对您有用,<strong>请小小的意思意思一下</strong>。"
+
+#: ../view/admin/support.php:10
+msgid "This will act as an incentive for me to carry on developing, providing countless hours of support, and including new features and suggestions. You get some useful software and I get to carry on making it.  Everybody wins."
+msgstr "这将作为一个激励我去进行开发,提供了无数小时的支持,包括新的特点和建议。你得到一些有用的软件,我去进行制作。每一个人都是赢家。"
+
+#: ../view/admin/support.php:13
+msgid "If you are using this plugin in a commercial setup, or feel that it's been particularly useful, then you may want to consider a <strong>commercial donation</strong>.  If you really really want to show your appreciation then there is the <strong>Super Smashing Great</strong> donation which, along with making my day, will earn you a badge of honour (125x125 image of your choosing + nofollow link) to be displayed on the Audit Trail page for a period of two months."
+msgstr "如果你使用这个插件或在一个应用在商业方面,并且觉得特别有用,那么你可能会考虑--商业捐赠。如果你真的想让你的善举为世人所知,那么令我开心的强大的捐赠,将让你获得了极高的荣誉(125x125像素你所选择的形象和nofollow链接)以上显示在审查跟踪页面的两个月。"
+
+#: ../view/admin/support.php:36
+msgid "Individual<br/>Donation"
+msgstr "<em>个体<br/>捐赠</em>"
+
+#: ../view/admin/support.php:57
+msgid "Commercial<br/>Donation"
+msgstr "<em>商业<br/>捐赠</em>"
+
+#: ../view/admin/support.php:78
+msgid "Super Smashing<br/>Great Donation"
+msgstr "<em>超级<br/>大捐赠</em>"
+
+#: ../view/admin/support.php:82
+msgid "Translations"
+msgstr "<em>翻译</em>"
+
+#: ../view/admin/support.php:84
+msgid "If you're multi-lingual then you may want to consider donating a translation:"
+msgstr "如果你是其它语言的使用者您可能会考虑提供一个翻译文件"
+
+#: ../view/admin/support.php:92
+msgid "All translators will have a link to their website placed on the plugin homepage at <a href=\"http://urbangiraffe.com/plugins/audit-trail/\">UrbanGiraffe</a> and <a href=\"http://wordpress.org/extend/plugins/audit-trail/\">WordPress.org</a>, in addition to being an individual supporter."
+msgstr "所有的翻译者将在插件的主页<a href=\"http://urbangiraffe.com/plugins/audit-trail/\">UrbanGiraffe</a> and <a href=\"http://wordpress.org/extend/plugins/audit-trail/\">WordPress.org</a> 有一个链接指向到自己的网站,除此之外成为个体支持者"
+
+#: ../view/admin/support.php:93
+msgid "Full details of producing a translation can be found in this <a href=\"http://urbangiraffe.com/articles/translating-wordpress-themes-and-plugins/\">guide to translating WordPress plugins</a>."
+msgstr "翻译说明<a href=\"http://urbangiraffe.com/articles/translating-wordpress-themes-and-plugins/\">guide to translating WordPress plugins</a>."
+
+#: ../view/admin/trail.php:16
+msgid "Bulk Actions"
+msgstr "批量操作"
+
+#: ../view/admin/trail.php:17
+msgid "Delete"
+msgstr "删除"
+
+#: ../view/admin/trail.php:20
+msgid "Apply"
+msgstr "应用"
+
+#: ../view/admin/trail.php:24
+msgid "Filter"
+msgstr "排除"
+
+#: ../view/admin/trail.php:39
+#: ../view/admin/trail.php:50
+msgid "User"
+msgstr "用户"
+
+#: ../view/admin/trail.php:40
+#: ../view/admin/trail.php:51
+msgid "Action"
+msgstr "功能"
+
+#: ../view/admin/trail.php:41
+#: ../view/admin/trail.php:52
+msgid "Target"
+msgstr "目标"
+
+#: ../view/admin/trail.php:42
+#: ../view/admin/trail.php:53
+msgid "Date"
+msgstr "日期"
+
+#: ../view/admin/trail.php:43
+#: ../view/admin/trail.php:54
+msgid "IP"
+msgstr "IP"
+
+#: ../view/admin/trail.php:76
+msgid "There is nothing to display!"
+msgstr "没有任何显示!"
+
+#: ../view/admin/version.php:2
+msgid "Audit Trail News"
+msgstr "审查跟踪消息"
+
+# ?
+#: ../view/admin/version.php:5
+#, php-format
+msgid "%s ago"
+msgstr "%s 之前"
+
+#: ../view/admin/details/edit_category.php:1
+#: ../view/admin/details/edit_link.php:1
+msgid "Name"
+msgstr "姓名"
+
+#: ../view/admin/details/edit_category.php:5
+#: ../view/admin/details/edit_link.php:5
+#: ../view/admin/details/profile_update.php:9
+#: ../view/admin/details/save_post.php:5
+msgid "URL"
+msgstr "URL"
+
+#: ../view/admin/details/edit_category.php:9
+#: ../view/admin/details/edit_link.php:9
+msgid "Description"
+msgstr "描述"
+
+#: ../view/admin/details/edit_comment.php:1
+msgid "Author"
+msgstr "作者"
+
+#: ../view/admin/details/edit_comment.php:5
+#: ../view/admin/details/save_post.php:9
+msgid "Content"
+msgstr "内容"
+
+# ?
+#: ../view/admin/details/profile_update.php:1
+msgid "Login"
+msgstr "登陆"
+
+#: ../view/admin/details/profile_update.php:5
+msgid "Email"
+msgstr "邮箱"
+
+#: ../view/admin/details/save_post.php:1
+msgid "Title"
+msgstr "标题"
+
+#: ../view/admin/details/save_post.php:15
+msgid "Difference between this and current version"
+msgstr "这个和当前版本的差别"
+
