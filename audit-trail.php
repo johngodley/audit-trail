@@ -70,7 +70,7 @@ class Audit_Trail extends AT_Plugin
 
 			$this->add_action( 'admin_head', 'wp_print_styles' );
 			$this->add_action( 'admin_print_styles', 'wp_print_styles' );
-			$this->add_filter( 'contextual_help', 'contextual_help', 10, 2 );
+//			$this->add_filter( 'contextual_help', 'contextual_help', 10, 2 );
 			$this->add_action( 'admin_footer' );
 			
 			// Ajax functions
