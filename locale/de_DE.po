@@ -1,0 +1,488 @@
+# Keep a log of exactly what is happening behind the scenes of your WordPress blog
+# Copyright (C) 2009 John Godley
+# This file is distributed under the same license as the Audit Trail package.
+# John Godley, http://urbangiraffe.com, 2009.
+#
+msgid "
+msgstr ""
+"Project-Id-Version: Audit Trail\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-04-08 12:05+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Andreas Beraz <pr@lichtprofi.de>\n"
+"Language-Team: Andreas Beraz <pr@lichtprofi.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: Germany\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: models/pager.php:463
+#, php-format
+msgid "%d per-page"
+msgstr "%d pro Seite"
+
+#: view/admin/version.php:5
+#, php-format
+msgid "%s ago"
+msgstr "%s zurück"
+
+#: models/auditor.php:432
+msgid "<strong>ERROR</strong>: Incorrect password."
+msgstr "<strong>FEHLER</strong>: Falsches Passwort."
+
+#: view/admin/trail.php:38
+#: view/admin/trail.php:48
+msgid "Action"
+msgstr "Aktion"
+
+#: view/admin/options.php:10
+msgid "Actions to monitor"
+msgstr "Aktionen zum Monitoring"
+
+#: models/auditor.php:368
+msgid "Add attachment"
+msgstr "Anhang hinzufügen"
+
+#: audit_display.php:52
+#, php-format
+msgid "Add attachment to post %d"
+msgstr "Anhang zum Beitrag hinzufügen  %d"
+
+#: models/auditor.php:335
+msgid "Add category"
+msgstr "Kategorie hinzufügen"
+
+#: audit_display.php:39
+#, php-format
+msgid "Add category %d"
+msgstr "Kategorie hinzufügen %d"
+
+#: models/auditor.php:318
+msgid "Add link"
+msgstr "Link hinzufügen"
+
+#: audit_display.php:34
+#, php-format
+msgid "Added link %d"
+msgstr "Link hinzugefügt %d"
+
+#: view/admin/trail.php:18
+msgid "Apply"
+msgstr "anwenden"
+
+#: audit-trail.php:180
+#: view/admin/edit_box.php:6
+#: view/admin/edit_box_25.php:3
+#: view/admin/submenu.php:3
+#: view/admin/trail.php:4
+msgid "Audit Trail"
+msgstr "Audit Trail"
+
+#: audit-trail.php:96
+msgid "Audit Trail Bug Tracker"
+msgstr "Audit Trail Bug Tracker"
+
+#: audit-trail.php:94
+msgid "Audit Trail Documentation"
+msgstr "Dokumentation Audit Trail "
+
+#: view/admin/version.php:2
+msgid "Audit Trail News"
+msgstr "Nachrichten Audit Trail"
+
+#: view/admin/options.php:3
+msgid "Audit Trail Options"
+msgstr "Einstellungen Audit Trail"
+
+#: audit-trail.php:95
+msgid "Audit Trail Support Forum"
+msgstr "Support Forum Audit Trail"
+
+#: models/auditor.php:60
+msgid "Audit Trail actions"
+msgstr "Aktionen Audit Trail"
+
+#: view/admin/details/edit_comment.php:1
+msgid "Author"
+msgstr "Autor"
+
+#: view/admin/options.php:29
+msgid "Auto-expire"
+msgstr "Automatischer Ablauf"
+
+#: view/admin/trail.php:14
+msgid "Bulk Actions"
+msgstr "Massen Aktionen"
+
+#: view/admin/view_post.php:5
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: models/auditor.php:57
+msgid "Category management"
+msgstr "Kategorien Verwaltung"
+
+#: models/auditor.php:58
+msgid "Comment management"
+msgstr "Kommentar-Verwaltung"
+
+#: view/admin/details/edit_comment.php:5
+#: view/admin/details/save_post.php:9
+msgid "Content"
+msgstr "Inhalt"
+
+#: audit_display.php:38
+#, php-format
+msgid "Create category %d"
+msgstr "Erstellen einer Kategorie %d"
+
+#: view/admin/trail.php:40
+#: view/admin/trail.php:50
+msgid "Date"
+msgstr "Datum"
+
+#: view/admin/trail.php:15
+#: view/admin/view_post.php:6
+msgid "Delete"
+msgstr "Löschen"
+
+#: audit_display.php:51
+#, php-format
+msgid "Delete attachment from post %d"
+msgstr "Entfernen des Anhangs im Beitrag %d"
+
+#: models/auditor.php:339
+msgid "Delete category"
+msgstr "Kategorie entfernen"
+
+#: audit_display.php:40
+#, php-format
+msgid "Delete category %d"
+msgstr "Kategorie entfernen %d"
+
+#: models/auditor.php:347
+msgid "Delete comment"
+msgstr "Kommentar entfernen "
+
+#: audit_display.php:48
+#, php-format
+msgid "Delete comment %d"
+msgstr "Kommentar entfernen %d"
+
+#: models/auditor.php:327
+msgid "Delete link"
+msgstr "Link entfernen"
+
+#: models/auditor.php:351
+msgid "Delete post"
+msgstr "Beitrag entfernen"
+
+#: audit_display.php:56
+#, php-format
+msgid "Delete post %d"
+msgstr "Beitrag entfernen %d"
+
+#: models/auditor.php:314
+msgid "Delete user"
+msgstr "Benutzer entfernen"
+
+#: audit_display.php:44
+#, php-format
+msgid "Delete user %d"
+msgstr "Benutzer entfernen %d"
+
+#: audit_display.php:35
+#, php-format
+msgid "Deleted link %d"
+msgstr "gelöschter Link %d"
+
+#: view/admin/details/edit_category.php:9
+#: view/admin/details/edit_link.php:9
+msgid "Description"
+msgstr "Beschreibung"
+
+#: view/admin/details/save_post.php:15
+msgid "Difference between this and current version"
+msgstr "Unterschiede zwischen dieser und der aktuellen Version "
+
+#: models/pager.php:472
+#, php-format
+msgid "Displaying %s&#8211;%s of %s"
+msgstr "Abbildung %s&#8211;%s von %s"
+
+#: models/auditor.php:376
+msgid "Edit attachment"
+msgstr "Bearbeiten des Anhangs"
+
+#: audit_display.php:53
+#, php-format
+msgid "Edit attachment of post %d"
+msgstr "Bearbeiten des Anhangs im Beitrag %d"
+
+#: models/auditor.php:331
+msgid "Edit category "
+msgstr "Kategorie bearbeiten"
+
+#: audit_display.php:37
+#, php-format
+msgid "Edit category %d"
+msgstr "Kategorie bearbeiten %d"
+
+#: models/auditor.php:343
+msgid "Edit comment"
+msgstr "Kommentar bearbeiten"
+
+#: audit_display.php:47
+#, php-format
+msgid "Edit comment %d"
+msgstr "Kommentar bearbeiten %d"
+
+#: models/auditor.php:323
+msgid "Edit link"
+msgstr "Link bearbeiten"
+
+#: audit_display.php:33
+#, php-format
+msgid "Edit link %d"
+msgstr "Link bearbeiten %d"
+
+#: view/admin/edit_box.php:14
+#: view/admin/edit_box_25.php:8
+#, php-format
+msgid "Edited by %s on %s at %s"
+msgstr "Bearbeitet von %s auf % bei %s"
+
+#: view/admin/details/profile_update.php:5
+msgid "Email"
+msgstr "Email"
+
+#: models/auditor.php:53
+msgid "File attachments"
+msgstr "Datei-Anhänge"
+
+#: view/admin/trail.php:22
+msgid "Filter"
+msgstr "Filter"
+
+#: view/admin/pager.php:16
+msgid "Go"
+msgstr "Weiter"
+
+#: audit-trail.php:93
+msgid "HeadSpace Help"
+msgstr "HeadSpace Hilfe"
+
+#: view/admin/trail.php:41
+#: view/admin/trail.php:51
+msgid "IP"
+msgstr "IP"
+
+#: view/admin/options.php:33
+msgid "Ignore users"
+msgstr "die Benutzer ignorieren"
+
+#: models/auditor.php:56
+msgid "Link management"
+msgstr "Link-Verwaltung"
+
+#: models/auditor.php:294
+msgid "Logged In"
+msgstr "angemeldet"
+
+#: models/auditor.php:298
+msgid "Logged Out"
+msgstr "abgemeldet"
+
+#: view/admin/details/profile_update.php:1
+msgid "Login"
+msgstr "Anmeldung"
+
+#: models/auditor.php:302
+msgid "Login failed"
+msgstr "Fehler bei der Anmeldung "
+
+#: view/admin/details/edit_category.php:1
+#: view/admin/details/edit_link.php:1
+msgid "Name"
+msgstr "Name"
+
+#: models/auditor.php:306
+msgid "New user registration"
+msgstr "Registrierung eines neuen Benutzers"
+
+#: models/pager.php:405
+msgid "Next"
+msgstr "Weiter"
+
+#: view/admin/submenu.php:4
+msgid "Options"
+msgstr "Einstellungen"
+
+#: audit-trail.php:271
+msgid "Options have been updated"
+msgstr "Einstellungen wurden aktualisiert"
+
+#: view/admin/options.php:25
+msgid "Other Options"
+msgstr "andere Einstellungen"
+
+#: audit_display.php:45
+msgid "Password retrieval"
+msgstr "Kennwort abrufen "
+
+#: audit-trail.php:97
+msgid "Please read the documentation and check the bug tracker before asking a question."
+msgstr "Bitte lesen Sie die Dokumentation und überprüfen die Bug-Tracker, bevor Sie die Fragen stellen."
+
+#: audit_display.php:58
+#, php-format
+msgid "Post %d restored to previous version"
+msgstr "Beitrag %d zur vorherigen version wiederhergestellt"
+
+#: models/auditor.php:52
+msgid "Post & page management"
+msgstr "Verwaltung der Beiträge und Seiten "
+
+#: models/pager.php:404
+msgid "Previous"
+msgstr "zurück"
+
+#: audit_display.php:43
+msgid "Profile update"
+msgstr "Aktualisierung des Profils"
+
+#: models/auditor.php:288
+msgid "Profile updated"
+msgstr "Profil aktualisiert"
+
+#: models/auditor.php:286
+msgid "Profile updated for deleted user"
+msgstr "Profil für die entfernten Benutzer aktualisiert"
+
+#: audit_display.php:57
+#, php-format
+msgid "Publish post %d"
+msgstr "Beitrag veröffentlichen %d"
+
+#: view/admin/view_post.php:7
+msgid "Restore"
+msgstr "Wiederherstellen"
+
+#: models/auditor.php:384
+msgid "Restored"
+msgstr "wiederhergestellt"
+
+#: view/admin/pager.php:9
+msgid "Results per page"
+msgstr "Ergebnisse pro Seite"
+
+#: models/auditor.php:310
+msgid "Retrieve password"
+msgstr "Kennwort wiederherstellen"
+
+#: view/admin/options.php:38
+msgid "Save Options"
+msgstr "Optionen speichern"
+
+#: models/auditor.php:359
+msgid "Save page"
+msgstr "Seite speichern"
+
+#: models/auditor.php:357
+msgid "Save post"
+msgstr "Seite speichern"
+
+#: audit_display.php:55
+#, php-format
+msgid "Save post %d"
+msgstr "Seite speichern %d"
+
+#: view/admin/pager.php:6
+msgid "Search"
+msgstr "Suche"
+
+#: audit_display.php:49
+#, php-format
+msgid "Set comment status of %d"
+msgstr "Status des Kommentars einstellen von %d"
+
+#: audit_display.php:31
+msgid "Switched theme"
+msgstr "das gewechselte Thema"
+
+#: view/admin/trail.php:39
+#: view/admin/trail.php:49
+msgid "Target"
+msgstr "Ziel"
+
+#: models/auditor.php:280
+msgid "Theme switch"
+msgstr "das Thema wechseln"
+
+#: models/auditor.php:55
+msgid "Theme switching"
+msgstr "Wechseln des Themas"
+
+#: view/admin/options.php:22
+msgid "There are no actions to monitor"
+msgstr "Hier sind keine Maßnahmen zur Überwachung"
+
+#: view/admin/trail.php:72
+msgid "There is nothing to display!"
+msgstr "Es gibt nichts anzuzeigen!"
+
+#: view/admin/details/save_post.php:1
+msgid "Title"
+msgstr "Überschrift"
+
+#: audit-trail.php:105
+msgid "Trail"
+msgstr "Weg"
+
+#: view/admin/details/edit_category.php:5
+#: view/admin/details/edit_link.php:5
+#: view/admin/details/profile_update.php:9
+#: view/admin/details/save_post.php:5
+msgid "URL"
+msgstr "URL"
+
+#: view/admin/trail.php:37
+#: view/admin/trail.php:47
+msgid "User"
+msgstr "Benutzer"
+
+#: audit_display.php:28
+msgid "User logged in"
+msgstr "Benutzer ist angemeldet"
+
+#: audit_display.php:29
+msgid "User logged out"
+msgstr "Benutzer ist abgemeldet"
+
+#: models/auditor.php:59
+msgid "User page visits"
+msgstr "Benutzer Seite besucht"
+
+#: models/auditor.php:54
+msgid "User profiles & logins"
+msgstr "Benutzerprofile und Anmeldungen"
+
+#: audit_display.php:42
+msgid "User registration"
+msgstr "Benutzer Registrierung"
+
+#: view/admin/edit_box.php:18
+#: view/admin/edit_box_25.php:13
+msgid "View"
+msgstr "Anzeigen"
+
+#: view/admin/options.php:30
+msgid "days (0 for no expiry)"
+msgstr "Tage (0 ohne Ablauf)"
+
+#: view/admin/options.php:34
+msgid "separate user IDs with a comma"
+msgstr "trenne Benutzer ID mit Komma"
+

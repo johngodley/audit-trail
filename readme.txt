@@ -24,9 +24,10 @@ To summarise:
 Audit Trail is available in:
 
 * English
-* Estonian by [Lembit Kivisik](http://designux.com/)
-* Belorussian by [Marcis G](http://pc.de/)
-* Simplified Chinese by [maoanyuan](http://www.fotomen.cn)
+* Estonian by Lembit Kivisik
+* Belorussian by Marcis G
+* Simplified Chinese by maoanyuan
+* German by Andreas Beraz
 
 == Installation ==
 
