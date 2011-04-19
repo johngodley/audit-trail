@@ -99,8 +99,6 @@ class AT_Auditor extends AT_Plugin
 			$actions = array ('edit_comment', 'delete_comment');
 		else if ($method == 'viewing')
 			$actions = array ('template_redirect');
-		else if ($method == 'audit')
-			$actions = array ('audit_restore');
 		
 		foreach ($actions AS $name)
 			$this->add_action ($name);
@@ -114,8 +112,6 @@ class AT_Auditor extends AT_Plugin
 	 * @return AT_Audit
 	 **/
 	function audit_show_details ($item) {
-		include_once dirname( __FILE__ ).'/diff.php';
-		
 		global $wpdb;
 
 		switch ($item->operation)
@@ -127,15 +123,6 @@ class AT_Auditor extends AT_Plugin
 				$item->message = '<br/>'.$this->capture_admin ('details/profile_update', array ('item' => $item, 'user' => $user));
 				break;
 			
-			case 'audit_restore' :
-				$audit    = AT_Audit::get ($item->item_id);
-				$original = get_post ($audit->item_id);
-				$post     = unserialize ($audit->data);
-			
-				$diff = new AT_Diff ($original->post_content, $post->post_content);
-				$item->message = '<br/>'.$this->capture_admin ('details/save_post', array ('item' => $item, 'post' => $post, 'diff' => $diff));
-				break;
-				
 			case 'add_link' :
 			case 'edit_link' :
 				$link = unserialize ($item->data);
@@ -154,16 +141,14 @@ class AT_Auditor extends AT_Plugin
 				$original = get_comment ($item->item_id);
 				$comment  = unserialize ($item->data);
 				
-				$diff = new AT_Diff ($original->comment_content, $comment->comment_content);
-				$item->message = '<br/>'.$this->capture_admin ('details/'.$item->operation, array ('item' => $item, 'comment' => $comment, 'diff' => $diff));
+				$item->message = '<br/>'.$this->capture_admin ('details/'.$item->operation, array ('item' => $item, 'comment' => $comment));
 				break;
 				
 			case 'save_post' :
 				$original = get_post ($item->item_id);
 				$post     = unserialize ($item->data);
-				
-				$diff = new AT_Diff ($original->post_content, $post->post_content);
-				$item->message = '<br/>'.$this->capture_admin ('details/'.$item->operation, array ('item' => $item, 'post' => $post, 'diff' => $diff));
+
+				$item->message = '<br/>'.$this->capture_admin ('details/'.$item->operation, array ('item' => $item, 'post' => $post));
 				break;
 		}
 		
@@ -232,12 +217,6 @@ class AT_Auditor extends AT_Plugin
 				$post = unserialize ($item->data);
 				if ( $post )
 					$item->message = '<a href="post.php?action=edit&amp;post='.$post->ID.'">'.$post->post_title.'</a>';
-				break;
-				
-			case 'audit_restore' :
-				$audit = AT_Audit::get ($item->item_id);
-				$post = get_post ($audit->item_id);
-				$item->message = '<a href="post.php?action=edit&amp;post='.$post->ID.'">'.$post->post_title.'</a>';
 				break;
 				
 			case 'private_to_published':
@@ -381,10 +360,6 @@ class AT_Auditor extends AT_Plugin
 			case 'template_redirect' :
 				$item->message = __( 'View page', 'audit-trail' );
 				break;
-				
-			case 'audit_restore' :
-				$item->message = '<a href="#'.$item->id.'" class="audit-view">'.__ ('Restored','audit-trail').'</a>';
-				break;
 		}
 		
 		return $item;
@@ -394,11 +369,6 @@ class AT_Auditor extends AT_Plugin
 	/**
 	 * Default listening methods
 	 **/
-	
-	function audit_restore ($id)
-	{
-		AT_Audit::create ('audit_restore', $id);
-	}
 	
 	// Actions to track	
 	function delete_post ($id)
@@ -414,7 +384,7 @@ class AT_Auditor extends AT_Plugin
 	function save_post ($id)
 	{
 		if (!defined ('DOING_AJAX'))
-			AT_Audit::create ('save_post', $id );
+			AT_Audit::create ('save_post', $id, get_post( $id ) );
 	}
 	
 	function wp_login ($user)

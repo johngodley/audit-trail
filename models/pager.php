@@ -80,18 +80,6 @@ class AT_Pager
 		if (isset ($data['curpage']))
 			$this->current_page = intval ($data['curpage']);
 
-		global $user_ID;
-		$per_page = get_usermeta ($user_ID, 'ug_per_page');
-		if (isset ($data['perpage']))
-		{
-			$this->per_page = intval ($data['perpage']);
-			$per_page[get_class ($this)][$this->id] = $this->per_page;
-			
-			update_usermeta ($user_ID, 'ug_per_page', $per_page);
-		}
-		else if (isset ($per_page[get_class ($this)]) && isset ($per_page[get_class ($this)][$this->id]))
-			$this->per_page = $per_page[get_class ($this)][$this->id];
-
 		if ($orderby != '')
 			$this->order_by = $orderby;
 		

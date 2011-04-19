@@ -7,9 +7,9 @@
 
 	<?php $this->submenu (true); ?>
 	
-	<form method="post" action="<?php echo $this->url ($pager->url) ?>">
-		<?php $this->render_admin ('pager', array ('pager' => $pager)); ?>
+	<?php $this->render_admin ('pager', array ('pager' => $pager)); ?>
 	
+	<form method="post" action="<?php echo $this->url ($pager->url) ?>">
 		<div id="pager" class="tablenav">
 			<div class="alignleft actions">
 				<select name="action2" id="action2_select">
@@ -69,13 +69,13 @@
 				<?php echo $pager->page_links (); ?>
 			</div>
 		</div>
-		</form>
 		
 		<div style="clear: both"></div>
 	<?php else : ?>
 		<p><?php _e ('There is nothing to display!', 'audit-trail') ?></p>
 	<?php endif; ?>
 </div>
+</form>
 
 <script type="text/javascript" charset="utf-8">
 	jQuery(document).ready( function() {

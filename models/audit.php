@@ -170,22 +170,14 @@ class AT_Audit
 		else if (isset ($_SERVER['HTTP_X_FORWARDED_FOR']))
 		  $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
 		
-		$operation = $wpdb->escape ($operation);
-		$ip        = sprintf ('%u', ip2long ($ip));
-		if ($data != '')
-			$data = "'".$wpdb->escape ($data)."'";
-		else
-			$data = 'NULL';
-			
-		if ($title != '')
-			$title = "'".$wpdb->escape ($title)."'";
-		else
-			$title = 'NULL';	
-			
+		$ip = sprintf ('%u', ip2long ($ip));
+
 		if ($user == '')
 			$user = $user_ID;
 
-		$wpdb->query ("INSERT INTO {$wpdb->prefix}audit_trail (user_id,ip,operation,item_id,happened_at,data,title) VALUES ('$user','$ip','$operation','$item',NOW(),$data,$title)");
+		$data = maybe_serialize( $data );
+
+		$wpdb->query( $wpdb->prepare( "INSERT INTO {$wpdb->prefix}audit_trail (user_id,ip,operation,item_id,happened_at,data,title) VALUES(%d,%s,%s,%s,NOW(),%s,%s)", $user, $ip, $operation, $item, $data, $title ) );
 	}
 	
 	

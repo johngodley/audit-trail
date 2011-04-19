@@ -1,0 +1,416 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Audit Trail 1.1.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-01-23 23:46+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: BNG NET <webmaster@bng.net>\n"
+"Language-Team: BNG NET <webmaster@bng.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"X-Poedit-Language: Japanese\n"
+"X-Poedit-Country: JAPAN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Bookmarks: -1,65,-1,-1,-1,-1,-1,-1,-1,-1\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../audit-trail.php:93
+msgid "Audit Trail Help"
+msgstr "オーディットトレイルのヘルプ"
+
+#: ../audit-trail.php:94
+msgid "Audit Trail Documentation"
+msgstr "オーディットトレイルのドキュメント"
+
+#: ../audit-trail.php:95
+msgid "Audit Trail Support Forum"
+msgstr "オーディットトレイルのサポートフォーラム"
+
+#: ../audit-trail.php:96
+msgid "Audit Trail Bug Tracker"
+msgstr "オーディットトレイルのバグトラッカー"
+
+#: ../audit-trail.php:97
+msgid "Please read the documentation and check the bug tracker before asking a question."
+msgstr "ドキュメントをお読みになり、バグトラッカーで確認してからご質問ください。"
+
+# ?
+#: ../audit-trail.php:105
+msgid "Trail"
+msgstr "追跡"
+
+#: ../audit-trail.php:180
+msgid "Audit Trail"
+msgstr "オーディットトレイル（動作記録）"
+
+#: ../audit-trail.php:278
+msgid "Options have been updated"
+msgstr "設定を更新しました"
+
+#: ../models/auditor.php:52
+msgid "Post & page management"
+msgstr "記事・ページ管理"
+
+#: ../models/auditor.php:53
+msgid "File attachments"
+msgstr "ファイル添付"
+
+#: ../models/auditor.php:54
+msgid "User profiles & logins"
+msgstr "ユーザプロフィール・ログイン"
+
+#: ../models/auditor.php:55
+msgid "Theme switching"
+msgstr "テーマ切替"
+
+#: ../models/auditor.php:56
+msgid "Link management"
+msgstr "リンク管理"
+
+#: ../models/auditor.php:57
+msgid "Category management"
+msgstr "カテゴリ管理"
+
+#: ../models/auditor.php:58
+msgid "Comment management"
+msgstr "コメント管理"
+
+#: ../models/auditor.php:59
+msgid "User page visits"
+msgstr "ユーザによるページ訪問"
+
+#: ../models/auditor.php:60
+msgid "Audit Trail actions"
+msgstr "オーディットトレイル操作"
+
+#: ../models/auditor.php:282
+msgid "Theme switch"
+msgstr "テーマの切り替え"
+
+# ?
+#: ../models/auditor.php:288
+msgid "Profile updated for deleted user"
+msgstr "ユーザ削除に伴うプロフィールの更新"
+
+#: ../models/auditor.php:290
+msgid "Profile updated"
+msgstr "プロフィールを更新しました"
+
+#: ../models/auditor.php:296
+msgid "Logged In"
+msgstr "ログイン"
+
+#: ../models/auditor.php:300
+msgid "Logged Out"
+msgstr "ログアウト"
+
+#: ../models/auditor.php:304
+msgid "Login failed"
+msgstr "ログイン失敗"
+
+#: ../models/auditor.php:308
+msgid "New user registration"
+msgstr "新規ユーザ登録"
+
+#: ../models/auditor.php:312
+msgid "Retrieve password"
+msgstr "パスワード復旧"
+
+#: ../models/auditor.php:316
+msgid "Delete user"
+msgstr "ユーザ削除"
+
+#: ../models/auditor.php:320
+msgid "Add link"
+msgstr "リンク追加"
+
+#: ../models/auditor.php:325
+msgid "Edit link"
+msgstr "リンク編集"
+
+#: ../models/auditor.php:329
+msgid "Delete link"
+msgstr "リンク削除"
+
+#: ../models/auditor.php:333
+msgid "Edit category "
+msgstr "カテゴリ編集"
+
+#: ../models/auditor.php:337
+msgid "Add category"
+msgstr "カテゴリ追加"
+
+#: ../models/auditor.php:341
+msgid "Delete category"
+msgstr "カテゴリ削除"
+
+#: ../models/auditor.php:345
+msgid "Edit comment"
+msgstr "コメント編集"
+
+#: ../models/auditor.php:349
+msgid "Delete comment"
+msgstr "コメント削除"
+
+#: ../models/auditor.php:353
+msgid "Delete post"
+msgstr "記事削除"
+
+#: ../models/auditor.php:359
+msgid "Save post"
+msgstr "記事保存"
+
+#: ../models/auditor.php:361
+msgid "Save page"
+msgstr "ページ保存"
+
+#: ../models/auditor.php:370
+msgid "Add attachment"
+msgstr "添付ファイル追加"
+
+#: ../models/auditor.php:378
+msgid "Edit attachment"
+msgstr "添付ファイル編集"
+
+#: ../models/auditor.php:382
+msgid "View page"
+msgstr "ページ閲覧"
+
+#: ../models/auditor.php:386
+msgid "Restored"
+msgstr "復旧"
+
+#: ../models/auditor.php:434
+msgid "<strong>ERROR</strong>: Incorrect password."
+msgstr "<strong>エラー</strong>: パスワードが違います。"
+
+#: ../models/pager.php:404
+msgid "Previous"
+msgstr "前"
+
+#: ../models/pager.php:405
+msgid "Next"
+msgstr "次"
+
+#: ../models/pager.php:463
+#, php-format
+msgid "%d per-page"
+msgstr "%d 件／ページ"
+
+# ?
+#: ../models/pager.php:472
+#, php-format
+msgid "Displaying %s&#8211;%s of %s"
+msgstr "%s&#8211;%s件（%s件中）を表示中"
+
+#: ../view/admin/options.php:4
+msgid "Audit Trail Options"
+msgstr "オーディットトレイルの設定"
+
+#: ../view/admin/options.php:11
+msgid "Actions to monitor"
+msgstr "監視する操作"
+
+#: ../view/admin/options.php:23
+msgid "There are no actions to monitor"
+msgstr "監視する操作がありません"
+
+#: ../view/admin/options.php:26
+msgid "Other Options"
+msgstr "その他設定"
+
+#: ../view/admin/options.php:30
+msgid "Plugin Support"
+msgstr "プラグイン支援"
+
+#: ../view/admin/options.php:33
+#, php-format
+msgid "Click this if you have <a href=\"%s\">supported</a> the author"
+msgstr "すでに作者を<a href=\"%s\">支援</a>したことがあったらクリックしてください"
+
+#: ../view/admin/options.php:37
+msgid "Auto-expire"
+msgstr "自動消去"
+
+#: ../view/admin/options.php:38
+msgid "days (0 for no expiry)"
+msgstr "日（0 で無期限）"
+
+#: ../view/admin/options.php:41
+msgid "Ignore users"
+msgstr "除外するユーザ"
+
+#: ../view/admin/options.php:42
+msgid "separate user IDs with a comma"
+msgstr "複数指定はユーザIDをコンマ区切りで"
+
+#: ../view/admin/options.php:46
+msgid "Save Options"
+msgstr "設定保存"
+
+#: ../view/admin/pager.php:6
+msgid "Search"
+msgstr "検索"
+
+#: ../view/admin/pager.php:9
+msgid "Results per page"
+msgstr "１ページあたり表示する結果件数"
+
+#: ../view/admin/pager.php:16
+msgid "Go"
+msgstr "実行"
+
+#: ../view/admin/submenu.php:4
+msgid "Options"
+msgstr "設定"
+
+#: ../view/admin/submenu.php:5
+msgid "Support"
+msgstr "支援"
+
+#: ../view/admin/support.php:5
+msgid "Audit Trail | Support"
+msgstr "オーディットトレイル | 支援"
+
+#: ../view/admin/support.php:9
+msgid "Audit Trail is free to use - life is wonderful and lovely!  However, it has required a great deal of time and effort to develop and if it has been useful you can help support this development by <strong>making a small donation</strong>."
+msgstr "オーディットトレイルは無料でご利用いただけます - 人生とはなんと素晴らしくも美しいことでしょう！しかしながら、開発には並々ならぬ時間と労力が必要なものです。このプラグインが有益だと思われましたら、<strong>小さな寄付</strong>で開発の支援をお願いします。"
+
+#: ../view/admin/support.php:10
+msgid "This will act as an incentive for me to carry on developing, providing countless hours of support, and including new features and suggestions. You get some useful software and I get to carry on making it.  Everybody wins."
+msgstr "さらなる開発への動機付けにもなりますし、何時間にもおよぶサポートや新機能の追加もできるようになります。あなたは有益なソフトウェアを手にすることができ、わたしはそれをさらに開発し続けることができる。誰もが得をするのです。"
+
+#: ../view/admin/support.php:13
+msgid "If you are using this plugin in a commercial setup, or feel that it's been particularly useful, then you may want to consider a <strong>commercial donation</strong>.  If you really really want to show your appreciation then there is the <strong>Super Smashing Great</strong> donation which, along with making my day, will earn you a badge of honour (125x125 image of your choosing + nofollow link) to be displayed on the Audit Trail page for a period of two months."
+msgstr "このプラグインを商用で使ったり、格段に利用価値があると思われましたら、<strong>商用寄付</strong>をご検討ください。本当に心の底から感謝の意を表したいならば、<strong>この上ない最大の</strong>寄付があります。わたしが大喜びするだけでなく、あなたには名誉勲章（125x125のお好きな画像＋nofollowリンク）を与えて、オーディットトレイルのページに２ヶ月間表示させていただきます。"
+
+#: ../view/admin/support.php:36
+msgid "Individual<br/>Donation"
+msgstr "個人<br />寄付"
+
+#: ../view/admin/support.php:57
+msgid "Commercial<br/>Donation"
+msgstr "商用<br />寄付"
+
+#: ../view/admin/support.php:78
+msgid "Super Smashing<br/>Great Donation"
+msgstr "この上ない<br />最大の寄付"
+
+#: ../view/admin/support.php:82
+msgid "Translations"
+msgstr "翻訳"
+
+#: ../view/admin/support.php:84
+msgid "If you're multi-lingual then you may want to consider donating a translation:"
+msgstr "外国語ができる方なら、翻訳という形での貢献もできます:"
+
+#: ../view/admin/support.php:92
+msgid "All translators will have a link to their website placed on the plugin homepage at <a href=\"http://urbangiraffe.com/plugins/audit-trail/\">UrbanGiraffe</a>, in addition to being an individual supporter."
+msgstr "翻訳していただけると、個人的なサポータとして表するだけでなく、プラグインのホームページである<a href=\"http://urbangiraffe.com/plugins/audit-trail/\">UrbanGiraffe</a>に翻訳者の方のウェブサイトへのリンクを表示します。"
+
+#: ../view/admin/support.php:93
+msgid "Full details of producing a translation can be found in this <a href=\"http://urbangiraffe.com/articles/translating-wordpress-themes-and-plugins/\">guide to translating WordPress plugins</a>."
+msgstr "翻訳の仕方に関する詳細は、<a href=\"http://urbangiraffe.com/articles/translating-wordpress-themes-and-plugins/\">WordPressプラグインの翻訳ガイド</a>を参照してください。"
+
+#: ../view/admin/trail.php:16
+msgid "Bulk Actions"
+msgstr "一括操作"
+
+#: ../view/admin/trail.php:17
+msgid "Delete"
+msgstr "削除"
+
+#: ../view/admin/trail.php:20
+msgid "Apply"
+msgstr "適用"
+
+#: ../view/admin/trail.php:24
+msgid "Filter"
+msgstr "フィルタ"
+
+#: ../view/admin/trail.php:39
+#: ../view/admin/trail.php:50
+msgid "User"
+msgstr "ユーザ"
+
+#: ../view/admin/trail.php:40
+#: ../view/admin/trail.php:51
+msgid "Action"
+msgstr "操作"
+
+#: ../view/admin/trail.php:41
+#: ../view/admin/trail.php:52
+msgid "Target"
+msgstr "場所"
+
+#: ../view/admin/trail.php:42
+#: ../view/admin/trail.php:53
+msgid "Date"
+msgstr "日付"
+
+#: ../view/admin/trail.php:43
+#: ../view/admin/trail.php:54
+msgid "IP"
+msgstr "IP"
+
+#: ../view/admin/trail.php:76
+msgid "There is nothing to display!"
+msgstr "表示するものがありません！"
+
+#: ../view/admin/version.php:2
+msgid "Audit Trail News"
+msgstr "オーディットトレイル・ニュース"
+
+# ?
+#: ../view/admin/version.php:5
+#, php-format
+msgid "%s ago"
+msgstr "%s前"
+
+#: ../view/admin/details/edit_category.php:1
+#: ../view/admin/details/edit_link.php:1
+msgid "Name"
+msgstr "名前"
+
+#: ../view/admin/details/edit_category.php:5
+#: ../view/admin/details/edit_link.php:5
+#: ../view/admin/details/profile_update.php:9
+#: ../view/admin/details/save_post.php:5
+msgid "URL"
+msgstr "URL"
+
+#: ../view/admin/details/edit_category.php:9
+#: ../view/admin/details/edit_link.php:9
+msgid "Description"
+msgstr "説明"
+
+#: ../view/admin/details/edit_comment.php:1
+msgid "Author"
+msgstr "作成者"
+
+#: ../view/admin/details/edit_comment.php:5
+#: ../view/admin/details/save_post.php:9
+msgid "Content"
+msgstr "コンテンツ"
+
+# ?
+#: ../view/admin/details/profile_update.php:1
+msgid "Login"
+msgstr "ログイン"
+
+#: ../view/admin/details/profile_update.php:5
+msgid "Email"
+msgstr "電子メール"
+
+#: ../view/admin/details/save_post.php:1
+msgid "Title"
+msgstr "タイトル"
+
+#: ../view/admin/details/save_post.php:15
+msgid "Difference between this and current version"
+msgstr "現行バージョンとの違い"
+

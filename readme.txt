@@ -16,7 +16,6 @@ To summarise:
 
 * Log of user actions inside your blog - useful for finding out who did what in a multi-user system
 * Post/page revisions and restorations - every change to a post or page is recorded and can be instantly restored to a previous version
-* Differences are shown graphically
 * Extensible, allowing other plugins the ability to add and display items in the Audit Trail
 * Ability to track registered user page visits
 * Fully localized
@@ -28,6 +27,7 @@ Audit Trail is available in:
 * Belorussian by Marcis G
 * Simplified Chinese by maoanyuan
 * German by Andreas Beraz
+* Japanese by Chestnut
 
 == Installation ==
 
@@ -44,7 +44,6 @@ You can find full details of installing a plugin on the [plugin installation pag
 == Screenshots ==
 
 1. Audit trail
-2. Graphical difference between posts
 
 == Documentation ==
 
@@ -121,3 +120,8 @@ Full documentation can be found on the [Audit Trail Page](http://urbangiraffe.co
 
 = 1.1.7 =
 * Add Chinese translation, thanks to maoanyuan!
+
+= 1.1.9 =
+* Add Japanese translation, thanks to Chestnut
+* Fix bug with display post details
+* Fix delete button
