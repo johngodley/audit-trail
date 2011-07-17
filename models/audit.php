@@ -177,7 +177,7 @@ class AT_Audit
 
 		$data = maybe_serialize( $data );
 
-		$wpdb->query( $wpdb->prepare( "INSERT INTO {$wpdb->prefix}audit_trail (user_id,ip,operation,item_id,happened_at,data,title) VALUES(%d,%s,%s,%s,NOW(),%s,%s)", $user, $ip, $operation, $item, $data, $title ) );
+		$wpdb->query( $wpdb->prepare( "INSERT INTO {$wpdb->prefix}audit_trail (user_id,ip,operation,item_id,happened_at,data,title) VALUES(%d,%s,%s,%s,%s,%s,%s)", $user, $ip, $operation, $item, current_time( 'mysql' ), $data, $title ) );
 	}
 	
 	

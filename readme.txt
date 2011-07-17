@@ -52,7 +52,10 @@ Full documentation can be found on the [Audit Trail Page](http://urbangiraffe.co
 
 == Changelog ==
 
-= 1.1.1 =
+= 1.1.11 =
+* Use WP local time to for audit trail
+
+= 1.1.10 =
 * 3.2 compat
 * Romanian translation, thanks to Mikalay Lisica
 
