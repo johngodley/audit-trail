@@ -1,0 +1,415 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Audit Trail ET\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-01-23 23:46+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Alexandr K.\n"
+"Language-Team: Mikalay Lisica <Lisica.Mikalay@gmx.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"X-Poedit-Language: Romanian\n"
+"X-Poedit-Country: MOLDOVA, REPUBLIC OF\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../audit-trail.php:93
+msgid "Audit Trail Help"
+msgstr "Audit Trail Ajutor"
+
+#: ../audit-trail.php:94
+msgid "Audit Trail Documentation"
+msgstr "Audit Trail Documentaţie"
+
+#: ../audit-trail.php:95
+msgid "Audit Trail Support Forum"
+msgstr "Audit Trail Forum"
+
+#: ../audit-trail.php:96
+msgid "Audit Trail Bug Tracker"
+msgstr "Audit Trail Bug Tracker"
+
+#: ../audit-trail.php:97
+msgid "Please read the documentation and check the bug tracker before asking a question."
+msgstr "Vă rugăm să citiţi documentaţia şi verificaţi bug tracker-ul înainte de a pune o întrebare."
+
+# ?
+#: ../audit-trail.php:105
+msgid "Trail"
+msgstr "Traseu"
+
+#: ../audit-trail.php:180
+msgid "Audit Trail"
+msgstr "Audit Trail"
+
+#: ../audit-trail.php:278
+msgid "Options have been updated"
+msgstr "Opţiuni au fost actualizate"
+
+#: ../models/auditor.php:52
+msgid "Post & page management"
+msgstr "Post & management pagina"
+
+#: ../models/auditor.php:53
+msgid "File attachments"
+msgstr "Ataşările de fişiere"
+
+#: ../models/auditor.php:54
+msgid "User profiles & logins"
+msgstr "Profiluri de utilizator şi login-uri"
+
+#: ../models/auditor.php:55
+msgid "Theme switching"
+msgstr "Tema de comutare"
+
+#: ../models/auditor.php:56
+msgid "Link management"
+msgstr "Link-ul de management"
+
+#: ../models/auditor.php:57
+msgid "Category management"
+msgstr "Categoria de management"
+
+#: ../models/auditor.php:58
+msgid "Comment management"
+msgstr "Comentariu de management"
+
+#: ../models/auditor.php:59
+msgid "User page visits"
+msgstr "Pagina utilizatorului vizite"
+
+#: ../models/auditor.php:60
+msgid "Audit Trail actions"
+msgstr "Audit Trail acţiuni"
+
+#: ../models/auditor.php:282
+msgid "Theme switch"
+msgstr "Tema comutator"
+
+# ?
+#: ../models/auditor.php:288
+msgid "Profile updated for deleted user"
+msgstr "Profil actualizate pentru utilizator şters"
+
+#: ../models/auditor.php:290
+msgid "Profile updated"
+msgstr "Profil actualizat"
+
+#: ../models/auditor.php:296
+msgid "Logged In"
+msgstr "În autentificat"
+
+#: ../models/auditor.php:300
+msgid "Logged Out"
+msgstr "Conectat Out"
+
+#: ../models/auditor.php:304
+msgid "Login failed"
+msgstr "Conectarea a eşuat"
+
+#: ../models/auditor.php:308
+msgid "New user registration"
+msgstr "Inregistrare utilizator nou"
+
+#: ../models/auditor.php:312
+msgid "Retrieve password"
+msgstr "Recupera parola"
+
+#: ../models/auditor.php:316
+msgid "Delete user"
+msgstr "Ştergeţi utilizator"
+
+#: ../models/auditor.php:320
+msgid "Add link"
+msgstr "Add link"
+
+#: ../models/auditor.php:325
+msgid "Edit link"
+msgstr "Link-ul modificaţi"
+
+#: ../models/auditor.php:329
+msgid "Delete link"
+msgstr "Ştergeţi link"
+
+#: ../models/auditor.php:333
+msgid "Edit category "
+msgstr "Editare categorie"
+
+#: ../models/auditor.php:337
+msgid "Add category"
+msgstr "Adăugaţi o categorie"
+
+#: ../models/auditor.php:341
+msgid "Delete category"
+msgstr "Ştergere categorie"
+
+#: ../models/auditor.php:345
+msgid "Edit comment"
+msgstr "Editare comentariu"
+
+#: ../models/auditor.php:349
+msgid "Delete comment"
+msgstr "Şterge comentariul"
+
+#: ../models/auditor.php:353
+msgid "Delete post"
+msgstr "Ştergeţi post"
+
+#: ../models/auditor.php:359
+msgid "Save post"
+msgstr "Salvaţi post"
+
+#: ../models/auditor.php:361
+msgid "Save page"
+msgstr "Salvaţi pagina"
+
+#: ../models/auditor.php:370
+msgid "Add attachment"
+msgstr "Adaugă ataşament"
+
+#: ../models/auditor.php:378
+msgid "Edit attachment"
+msgstr "Editare ataşament"
+
+#: ../models/auditor.php:382
+msgid "View page"
+msgstr "Vezi pagina"
+
+#: ../models/auditor.php:386
+msgid "Restored"
+msgstr "Restored"
+
+#: ../models/auditor.php:434
+msgid "<strong>ERROR</strong>: Incorrect password."
+msgstr "<strong>EROARE:</strong> parola incorectă."
+
+#: ../models/pager.php:404
+msgid "Previous"
+msgstr "Anterioare"
+
+#: ../models/pager.php:405
+msgid "Next"
+msgstr "Următorul"
+
+#: ../models/pager.php:463
+#, php-format
+msgid "%d per-page"
+msgstr "%d pe pagină"
+
+# ?
+#: ../models/pager.php:472
+#, php-format
+msgid "Displaying %s&#8211;%s of %s"
+msgstr "Afiseaza %s&#8211;%s / %s"
+
+#: ../view/admin/options.php:4
+msgid "Audit Trail Options"
+msgstr "Audit Trail Opţiuni"
+
+#: ../view/admin/options.php:11
+msgid "Actions to monitor"
+msgstr "Acţiuni pentru a monitoriza"
+
+#: ../view/admin/options.php:23
+msgid "There are no actions to monitor"
+msgstr "Nu există acţiuni pentru a monitoriza"
+
+#: ../view/admin/options.php:26
+msgid "Other Options"
+msgstr "Alte opţiuni"
+
+#: ../view/admin/options.php:30
+msgid "Plugin Support"
+msgstr "Suport pentru plug-in"
+
+#: ../view/admin/options.php:33
+#, php-format
+msgid "Click this if you have <a href=\"%s\">supported</a> the author"
+msgstr "Faceţi clic pe acest dacă aveţi <a href=\"%s\">sprijinit</a> de autor"
+
+#: ../view/admin/options.php:37
+msgid "Auto-expire"
+msgstr "Auto-expiră"
+
+#: ../view/admin/options.php:38
+msgid "days (0 for no expiry)"
+msgstr "zile (0 pentru nu expirare)"
+
+#: ../view/admin/options.php:41
+msgid "Ignore users"
+msgstr "Ignoraţi utilizatori"
+
+#: ../view/admin/options.php:42
+msgid "separate user IDs with a comma"
+msgstr "ID-urile de utilizator separate cu o virgulă"
+
+#: ../view/admin/options.php:46
+msgid "Save Options"
+msgstr "Salvare opţiuni"
+
+#: ../view/admin/pager.php:6
+msgid "Search"
+msgstr "Căutare"
+
+#: ../view/admin/pager.php:9
+msgid "Results per page"
+msgstr "Rezultate pe pagină"
+
+#: ../view/admin/pager.php:16
+msgid "Go"
+msgstr "Du-te"
+
+#: ../view/admin/submenu.php:4
+msgid "Options"
+msgstr "Opţiuni"
+
+#: ../view/admin/submenu.php:5
+msgid "Support"
+msgstr "Sprijin"
+
+#: ../view/admin/support.php:5
+msgid "Audit Trail | Support"
+msgstr "Piste de audit | Suport"
+
+#: ../view/admin/support.php:9
+msgid "Audit Trail is free to use - life is wonderful and lovely!  However, it has required a great deal of time and effort to develop and if it has been useful you can help support this development by <strong>making a small donation</strong>."
+msgstr "Audit Trail este liber de a utiliza - viata este minunat şi minunat! Cu toate acestea, ea are nevoie de o mare de timp şi efort pentru a dezvolta şi dacă a fost utilă vă pot sprijini această dezvoltare de <strong>a face o donatie mica.</strong>"
+
+#: ../view/admin/support.php:10
+msgid "This will act as an incentive for me to carry on developing, providing countless hours of support, and including new features and suggestions. You get some useful software and I get to carry on making it.  Everybody wins."
+msgstr "Acest lucru va acţiona ca un stimulent pentru mine de a desfăşura în curs de dezvoltare, oferind nenumarate ore de sprijin, inclusiv şi de noi caracteristici şi sugestii. Ai unele software-ul util şi I a lua de a continua ceea ce face. Toata lumea castiga."
+
+#: ../view/admin/support.php:13
+msgid "If you are using this plugin in a commercial setup, or feel that it's been particularly useful, then you may want to consider a <strong>commercial donation</strong>.  If you really really want to show your appreciation then there is the <strong>Super Smashing Great</strong> donation which, along with making my day, will earn you a badge of honour (125x125 image of your choosing + nofollow link) to be displayed on the Audit Trail page for a period of two months."
+msgstr "Dacă utilizaţi acest plug-in intr-o structura comerciala, sau simt că a fost deosebit de util, atunci poate doriţi să ia în considerare o <strong>donatie comercial.</strong> Dacă chiar vrei cu adevărat să arate aprecierea dvs., atunci există <strong>Super Smashing</strong> donarea <strong>Mare,</strong> care, impreuna cu luare ziua mea, va câştiga o medalie de onoare (125x125 imagine aleasă de dvs. + link-ul nofollow) să fie afişat pe pagina de Audit Trail pentru o perioadă de două luni."
+
+#: ../view/admin/support.php:36
+msgid "Individual<br/>Donation"
+msgstr "Individuale <br/> Donaţie"
+
+#: ../view/admin/support.php:57
+msgid "Commercial<br/>Donation"
+msgstr "Comerciale <br/> Donaţie"
+
+#: ../view/admin/support.php:78
+msgid "Super Smashing<br/>Great Donation"
+msgstr "Super Smashing <br/> Mare donatie"
+
+#: ../view/admin/support.php:82
+msgid "Translations"
+msgstr "Traduceri"
+
+#: ../view/admin/support.php:84
+msgid "If you're multi-lingual then you may want to consider donating a translation:"
+msgstr "Daca esti multi-lingvistice, atunci poate doriţi să ia în considerare donarea de o traducere:"
+
+#: ../view/admin/support.php:92
+msgid "All translators will have a link to their website placed on the plugin homepage at <a href=\"http://urbangiraffe.com/plugins/audit-trail/\">UrbanGiraffe</a> and <a href=\"http://wordpress.org/extend/plugins/audit-trail/\">WordPress.org</a>, in addition to being an individual supporter."
+msgstr "All translators will have a link to their website placed on the plugin homepage at <a href=\"http://urbangiraffe.com/plugins/audit-trail/\">UrbanGiraffe</a> and <a href=\"http://wordpress.org/extend/plugins/audit-trail/\">WordPress.org</a>, in addition to being an individual supporter."
+
+#: ../view/admin/support.php:93
+msgid "Full details of producing a translation can be found in this <a href=\"http://urbangiraffe.com/articles/translating-wordpress-themes-and-plugins/\">guide to translating WordPress plugins</a>."
+msgstr "Detalii complete de producere a unei traduceri pot fi găsite în acest <a href=\"http://urbangiraffe.com/articles/translating-wordpress-themes-and-plugins/\">ghid pentru traducerea plugin-uri WordPress</a> ."
+
+#: ../view/admin/trail.php:16
+msgid "Bulk Actions"
+msgstr "Acţiuni în masă."
+
+#: ../view/admin/trail.php:17
+msgid "Delete"
+msgstr "Şterge"
+
+#: ../view/admin/trail.php:20
+msgid "Apply"
+msgstr "Se aplică"
+
+#: ../view/admin/trail.php:24
+msgid "Filter"
+msgstr "Filtru"
+
+#: ../view/admin/trail.php:39
+#: ../view/admin/trail.php:50
+msgid "User"
+msgstr "Utilizator"
+
+#: ../view/admin/trail.php:40
+#: ../view/admin/trail.php:51
+msgid "Action"
+msgstr "Acţiune"
+
+#: ../view/admin/trail.php:41
+#: ../view/admin/trail.php:52
+msgid "Target"
+msgstr "Ţintă"
+
+#: ../view/admin/trail.php:42
+#: ../view/admin/trail.php:53
+msgid "Date"
+msgstr "Data"
+
+#: ../view/admin/trail.php:43
+#: ../view/admin/trail.php:54
+msgid "IP"
+msgstr "IP"
+
+#: ../view/admin/trail.php:76
+msgid "There is nothing to display!"
+msgstr "Nu este nimic pentru a afişa!"
+
+#: ../view/admin/version.php:2
+msgid "Audit Trail News"
+msgstr "Audit Trail News"
+
+# ?
+#: ../view/admin/version.php:5
+#, php-format
+msgid "%s ago"
+msgstr "%s în urmă"
+
+#: ../view/admin/details/edit_category.php:1
+#: ../view/admin/details/edit_link.php:1
+msgid "Name"
+msgstr "Numele"
+
+#: ../view/admin/details/edit_category.php:5
+#: ../view/admin/details/edit_link.php:5
+#: ../view/admin/details/profile_update.php:9
+#: ../view/admin/details/save_post.php:5
+msgid "URL"
+msgstr "URL"
+
+#: ../view/admin/details/edit_category.php:9
+#: ../view/admin/details/edit_link.php:9
+msgid "Description"
+msgstr "Descriere"
+
+#: ../view/admin/details/edit_comment.php:1
+msgid "Author"
+msgstr "Autor"
+
+#: ../view/admin/details/edit_comment.php:5
+#: ../view/admin/details/save_post.php:9
+msgid "Content"
+msgstr "Conţinut"
+
+# ?
+#: ../view/admin/details/profile_update.php:1
+msgid "Login"
+msgstr "Login"
+
+#: ../view/admin/details/profile_update.php:5
+msgid "Email"
+msgstr "Email"
+
+#: ../view/admin/details/save_post.php:1
+msgid "Title"
+msgstr "Titlu"
+
+#: ../view/admin/details/save_post.php:15
+msgid "Difference between this and current version"
+msgstr "Diferenţa dintre aceasta şi versiunea curentă"
+

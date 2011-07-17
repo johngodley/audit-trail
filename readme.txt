@@ -3,7 +3,7 @@ Contributors: johnny5
 Donate link: http://urbangiraffe.com/contact/#donate
 Tags: admin, audit, log, version, diff
 Requires at least: 2.8
-Tested up to: 3.1.2
+Tested up to: 3.2.1
 Stable tag: trunk
 
 Audit Trail is a plugin to keep track of what is going on inside your blog by monitoring administration functions.
@@ -28,6 +28,7 @@ Audit Trail is available in:
 * Simplified Chinese by maoanyuan
 * German by Andreas Beraz
 * Japanese by Chestnut
+* Romanian by Mikalay Lisica
 
 == Installation ==
 
@@ -51,77 +52,94 @@ Full documentation can be found on the [Audit Trail Page](http://urbangiraffe.co
 
 == Changelog ==
 
-= 0.1    = 
-* Initial release
+= 1.1.1 =
+* 3.2 compat
+* Romanian translation, thanks to Mikalay Lisica
 
-= 0.2    = 
-* Added versioning history
+= 1.1.9 =
+* Add Japanese translation, thanks to Chestnut
+* Fix bug with display post details
+* Fix delete button
 
-= 0.3    = 
-* Made work with different database prefixes
+= 1.1.7 =
+* Add Chinese translation, thanks to maoanyuan!
 
-= 1.0    = 
-* Revised code
-* More AJAX action
-* Extensible auditors
+= 1.1.6 =
+* Add Belorussian translation
 
-= 1.0.3  = 
-* Fix typos.
-* Add option to reverse post edit order
+= 1.1.5 =
+* Fix actions to monitor
 
-= 1.0.4  = 
-* Support for Admin SSL
+= 1.1.4 =
+* Add Estonian
+* Put delete item back
 
-= 1.0.5  = 
-* Fix expiry
-* Stop logging auto-saves
+= 1.1.3 =
+* Remove deep slashes
 
-= 1.0.6  = 
-* Fix warning
-* Allow searching by username
+= 1.1.2 =
+* Don't save post differences
+* Fix username in CSV export
+
+= 1.1.1 =
+* jQueryify
+* Remove post edit difference - this has been built into WordPress for several versions now
+
+= 1.1    = 
+* WP 2.8 compatibility
+
+= 1.0.10 = 
+* Only include prototype on AT pages
+
+= 1.0.9  = 
+* WP 2.5 compatibility
+
+= 1.0.8  = 
+* Show log items according to blog timezone offset
 
 = 1.0.7  = 
 * Fix favicon.ico logs
 * Ignore certain users
 * Track failed login attempts
 
-= 1.0.8  = 
-* Show log items according to blog timezone offset
+= 1.0.6  = 
+* Fix warning
+* Allow searching by username
 
-= 1.0.9  = 
-* WP 2.5 compatibility
+= 1.0.5  = 
+* Fix expiry
+* Stop logging auto-saves
 
-= 1.0.10 = 
-* Only include prototype on AT pages
+= 1.0.4  = 
+* Support for Admin SSL
 
-= 1.1    = 
-* WP 2.8 compatibility
+= 1.0.3  = 
+* Fix typos.
+* Add option to reverse post edit order
 
-= 1.1.1 =
-* jQueryify
-* Remove post edit difference - this has been built into WordPress for several versions now
+= 1.0    = 
+* Revised code
+* More AJAX action
+* Extensible auditors
 
-= 1.1.2 =
-* Don't save post differences
-* Fix username in CSV export
+= 0.3    = 
+* Made work with different database prefixes
 
-= 1.1.3 =
-* Remove deep slashes
+= 0.2    = 
+* Added versioning history
 
-= 1.1.4 =
-* Add Estonian
-* Put delete item back
+= 0.1    = 
+* Initial release
 
-= 1.1.5 =
-* Fix actions to monitor
 
-= 1.1.6 =
-* Add Belorussian translation
 
-= 1.1.7 =
-* Add Chinese translation, thanks to maoanyuan!
 
-= 1.1.9 =
-* Add Japanese translation, thanks to Chestnut
-* Fix bug with display post details
-* Fix delete button
+
+
+
+
+
+
+
+
+

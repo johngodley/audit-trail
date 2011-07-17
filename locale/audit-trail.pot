@@ -1,0 +1,425 @@
+# Copyright (C) 2010 Audit Trail
+# This file is distributed under the same license as the Audit Trail package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Audit Trail 1.1.9\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/audit-trail\n"
+"POT-Creation-Date: 2011-07-17 10:30:39+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#. #-#-#-#-#  plugin.pot (Audit Trail 1.1.9)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: view/admin/submenu.php:3 view/admin/trail.php:6 audit-trail.php:176
+msgid "Audit Trail"
+msgstr ""
+
+#: view/admin/submenu.php:4
+msgid "Options"
+msgstr ""
+
+#: view/admin/submenu.php:5
+msgid "Support"
+msgstr ""
+
+#: view/admin/trail.php:16
+msgid "Bulk Actions"
+msgstr ""
+
+#: view/admin/trail.php:17
+msgid "Delete"
+msgstr ""
+
+#: view/admin/trail.php:20
+msgid "Apply"
+msgstr ""
+
+#: view/admin/trail.php:24
+msgid "Filter"
+msgstr ""
+
+#: view/admin/trail.php:39 view/admin/trail.php:50
+msgid "User"
+msgstr ""
+
+#: view/admin/trail.php:40 view/admin/trail.php:51
+msgid "Action"
+msgstr ""
+
+#: view/admin/trail.php:41 view/admin/trail.php:52
+msgid "Target"
+msgstr ""
+
+#: view/admin/trail.php:42 view/admin/trail.php:53
+msgid "Date"
+msgstr ""
+
+#: view/admin/trail.php:43 view/admin/trail.php:54
+msgid "IP"
+msgstr ""
+
+#: view/admin/trail.php:75
+msgid "There is nothing to display!"
+msgstr ""
+
+#: view/admin/version.php:2
+msgid "Audit Trail News"
+msgstr ""
+
+#: view/admin/version.php:5
+msgid "%s ago"
+msgstr ""
+
+#: view/admin/support.php:5
+msgid "Audit Trail | Support"
+msgstr ""
+
+#: view/admin/support.php:9
+msgid ""
+"Audit Trail is free to use - life is wonderful and lovely!  However, it has "
+"required a great deal of time and effort to develop and if it has been "
+"useful you can help support this development by <strong>making a small "
+"donation</strong>."
+msgstr ""
+
+#: view/admin/support.php:10
+msgid ""
+"This will act as an incentive for me to carry on developing, providing "
+"countless hours of support, and including new features and suggestions. You "
+"get some useful software and I get to carry on making it.  Everybody wins."
+msgstr ""
+
+#: view/admin/support.php:13
+msgid ""
+"If you are using this plugin in a commercial setup, or feel that it's been "
+"particularly useful, then you may want to consider a <strong>commercial "
+"donation</strong>.  If you really really want to show your appreciation then "
+"there is the <strong>Super Smashing Great</strong> donation which, along "
+"with making my day, will earn you a badge of honour (125x125 image of your "
+"choosing + nofollow link) to be displayed on the Audit Trail page for a "
+"period of two months."
+msgstr ""
+
+#: view/admin/support.php:36
+msgid "Individual<br/>Donation"
+msgstr ""
+
+#: view/admin/support.php:57
+msgid "Commercial<br/>Donation"
+msgstr ""
+
+#: view/admin/support.php:78
+msgid "Super Smashing<br/>Great Donation"
+msgstr ""
+
+#: view/admin/support.php:82
+msgid "Translations"
+msgstr ""
+
+#: view/admin/support.php:84
+msgid ""
+"If you're multi-lingual then you may want to consider donating a translation:"
+msgstr ""
+
+#: view/admin/support.php:92
+msgid ""
+"All translators will have a link to their website placed on the plugin "
+"homepage at <a href=\"http://urbangiraffe.com/plugins/audit-trail/"
+"\">UrbanGiraffe</a>, in addition to being an individual supporter."
+msgstr ""
+
+#: view/admin/support.php:93
+msgid ""
+"Full details of producing a translation can be found in this <a href="
+"\"http://urbangiraffe.com/articles/translating-wordpress-themes-and-plugins/"
+"\">guide to translating WordPress plugins</a>."
+msgstr ""
+
+#: view/admin/options.php:4
+msgid "Audit Trail Options"
+msgstr ""
+
+#: view/admin/options.php:11
+msgid "Actions to monitor"
+msgstr ""
+
+#: view/admin/options.php:23
+msgid "There are no actions to monitor"
+msgstr ""
+
+#: view/admin/options.php:26
+msgid "Other Options"
+msgstr ""
+
+#: view/admin/options.php:30
+msgid "Plugin Support"
+msgstr ""
+
+#: view/admin/options.php:33
+msgid "Click this if you have <a href=\"%s\">supported</a> the author"
+msgstr ""
+
+#: view/admin/options.php:37
+msgid "Auto-expire"
+msgstr ""
+
+#: view/admin/options.php:38
+msgid "days (0 for no expiry)"
+msgstr ""
+
+#: view/admin/options.php:41
+msgid "Ignore users"
+msgstr ""
+
+#: view/admin/options.php:42
+msgid "separate user IDs with a comma"
+msgstr ""
+
+#: view/admin/options.php:46
+msgid "Save Options"
+msgstr ""
+
+#: view/admin/pager.php:6
+msgid "Search"
+msgstr ""
+
+#: view/admin/pager.php:9
+msgid "Results per page"
+msgstr ""
+
+#: view/admin/pager.php:16
+msgid "Go"
+msgstr ""
+
+#: view/admin/details/profile_update.php:1
+msgid "Login"
+msgstr ""
+
+#: view/admin/details/profile_update.php:5
+msgid "Email"
+msgstr ""
+
+#: view/admin/details/profile_update.php:9 view/admin/details/save_post.php:6
+#: view/admin/details/edit_link.php:5 view/admin/details/edit_category.php:5
+msgid "URL"
+msgstr ""
+
+#: view/admin/details/save_post.php:1
+msgid "Title"
+msgstr ""
+
+#: view/admin/details/save_post.php:10 view/admin/details/edit_comment.php:5
+msgid "Content"
+msgstr ""
+
+#: view/admin/details/edit_link.php:1 view/admin/details/edit_category.php:1
+msgid "Name"
+msgstr ""
+
+#: view/admin/details/edit_link.php:9 view/admin/details/edit_category.php:9
+msgid "Description"
+msgstr ""
+
+#: view/admin/details/edit_comment.php:1
+msgid "Author"
+msgstr ""
+
+#: models/auditor.php:52
+msgid "Post & page management"
+msgstr ""
+
+#: models/auditor.php:53
+msgid "File attachments"
+msgstr ""
+
+#: models/auditor.php:54
+msgid "User profiles & logins"
+msgstr ""
+
+#: models/auditor.php:55
+msgid "Theme switching"
+msgstr ""
+
+#: models/auditor.php:56
+msgid "Link management"
+msgstr ""
+
+#: models/auditor.php:57
+msgid "Category management"
+msgstr ""
+
+#: models/auditor.php:58
+msgid "Comment management"
+msgstr ""
+
+#: models/auditor.php:59
+msgid "User page visits"
+msgstr ""
+
+#: models/auditor.php:60
+msgid "Audit Trail actions"
+msgstr ""
+
+#: models/auditor.php:261
+msgid "Theme switch"
+msgstr ""
+
+#: models/auditor.php:267
+msgid "Profile updated for deleted user"
+msgstr ""
+
+#: models/auditor.php:269
+msgid "Profile updated"
+msgstr ""
+
+#: models/auditor.php:275
+msgid "Logged In"
+msgstr ""
+
+#: models/auditor.php:279
+msgid "Logged Out"
+msgstr ""
+
+#: models/auditor.php:283
+msgid "Login failed"
+msgstr ""
+
+#: models/auditor.php:287
+msgid "New user registration"
+msgstr ""
+
+#: models/auditor.php:291
+msgid "Retrieve password"
+msgstr ""
+
+#: models/auditor.php:295
+msgid "Delete user"
+msgstr ""
+
+#: models/auditor.php:299
+msgid "Add link"
+msgstr ""
+
+#: models/auditor.php:304
+msgid "Edit link"
+msgstr ""
+
+#: models/auditor.php:308
+msgid "Delete link"
+msgstr ""
+
+#: models/auditor.php:312
+msgid "Edit category "
+msgstr ""
+
+#: models/auditor.php:316
+msgid "Add category"
+msgstr ""
+
+#: models/auditor.php:320
+msgid "Delete category"
+msgstr ""
+
+#: models/auditor.php:324
+msgid "Edit comment"
+msgstr ""
+
+#: models/auditor.php:328
+msgid "Delete comment"
+msgstr ""
+
+#: models/auditor.php:332
+msgid "Delete post"
+msgstr ""
+
+#: models/auditor.php:338
+msgid "Save post"
+msgstr ""
+
+#: models/auditor.php:340
+msgid "Save page"
+msgstr ""
+
+#: models/auditor.php:349
+msgid "Add attachment"
+msgstr ""
+
+#: models/auditor.php:357
+msgid "Edit attachment"
+msgstr ""
+
+#: models/auditor.php:361
+msgid "View page"
+msgstr ""
+
+#: models/auditor.php:404
+msgid "<strong>ERROR</strong>: Incorrect password."
+msgstr ""
+
+#: models/pager.php:392
+msgid "Previous"
+msgstr ""
+
+#: models/pager.php:393
+msgid "Next"
+msgstr ""
+
+#: models/pager.php:451
+msgid "%d per-page"
+msgstr ""
+
+#: models/pager.php:460
+msgid "Displaying %s&#8211;%s of %s"
+msgstr ""
+
+#: audit-trail.php:89
+msgid "Audit Trail Help"
+msgstr ""
+
+#: audit-trail.php:90
+msgid "Audit Trail Documentation"
+msgstr ""
+
+#: audit-trail.php:91
+msgid "Audit Trail Support Forum"
+msgstr ""
+
+#: audit-trail.php:92
+msgid "Audit Trail Bug Tracker"
+msgstr ""
+
+#: audit-trail.php:93
+msgid ""
+"Please read the documentation and check the bug tracker before asking a "
+"question."
+msgstr ""
+
+#: audit-trail.php:101
+msgid "Trail"
+msgstr ""
+
+#: audit-trail.php:274
+msgid "Options have been updated"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://urbangiraffe.com/plugins/audit-trail/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Keep a log of exactly what is happening behind the scenes of your WordPress "
+"blog"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "John Godley"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://urbangiraffe.com"
+msgstr ""
