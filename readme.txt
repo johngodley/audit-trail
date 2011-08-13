@@ -52,6 +52,11 @@ Full documentation can be found on the [Audit Trail Page](http://urbangiraffe.co
 
 == Changelog ==
 
+= 1.1.12 =
+* Add bulk action to bottom of trail list
+* Fix pager
+* Updated Romanian translation
+
 = 1.1.11 =
 * Use WP local time to for audit trail
 

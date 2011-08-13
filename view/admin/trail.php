@@ -21,7 +21,7 @@
 				
 				<?php $pager->per_page ('audit-trail'); ?>
 
-				<input type="submit" value="<?php _e('Filter'); ?>" class="button-secondary" />
+				<input type="submit" name="filter" value="<?php _e('Filter'); ?>" class="button-secondary" />
 
 				<br class="clear" />
 			</div>
@@ -65,6 +65,17 @@
 		</table>
 		
 		<div class="tablenav">
+			<div class="alignleft actions">
+				<select name="action2" id="action2_select">
+					<option value="-1" selected="selected"><?php _e('Bulk Actions'); ?></option>
+					<option value="delete"><?php _e('Delete'); ?></option>
+				</select>
+				
+				<input type="submit" value="<?php _e('Apply'); ?>" name="doaction2"class="button-secondary action" />
+
+				<br class="clear" />
+			</div>
+		
 			<div class="tablenav-pages">
 				<?php echo $pager->page_links (); ?>
 			</div>
@@ -77,15 +88,21 @@
 </div>
 </form>
 
-<script type="text/javascript" charset="utf-8">
-	jQuery(document).ready( function() {
+<script type="text/javascript">
+	( function($) {
+		$( document ).ready( function() {
 		var ajaxurl = '<?php echo admin_url( 'admin-ajax.php' ); ?>';
 		
-		function clickers() {
-			jQuery( '.audit-view' ).click( function() {
-				jQuery( '.audit-view' ).unbind( 'click' );
+		$( 'input[name=filter]' ).click( function() {
+			document.location.href = document.location.href.replace( /&perpage=\d*/, '' ) + '&perpage=' + $( 'select[name=perpage]' ).val();
+			return false;
+		} );
 
-				var item   = jQuery( this ).parents( 'tr' );
+		function clickers() {
+			$( '.audit-view' ).click( function() {
+				$( '.audit-view' ).unbind( 'click' );
+
+				var item   = $( this ).parents( 'tr' );
 				var itemid = this.href.replace( /.*?#(.*)/, '$1' );
 				var nonce  = '<?php echo wp_create_nonce( 'audittrail_view' )?>';
 			
@@ -94,7 +111,7 @@
 					id: itemid,
 					_ajax_nonce: nonce
 				}, function() {
-					jQuery( item ).find( 'a' ).click( function() {
+					$( item ).find( 'a' ).click( function() {
 						item.load( ajaxurl, {
 							action: 'at_close',
 							id: itemid,
@@ -112,5 +129,7 @@
 		}
 		
 		clickers();
-	});
+		} );
+	})( jQuery );
 </script>
+

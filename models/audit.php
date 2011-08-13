@@ -30,10 +30,8 @@ class AT_Audit
 	 * @return void
 	 **/
 	
-	function AT_Audit ($details = '')
-	{
-		if (is_array ($details))
-		{
+	function AT_Audit ($details = '') {
+		if (is_array ($details)) {
 			foreach ($details AS $key => $value)
 				$this->$key = $value;
 		}
@@ -49,8 +47,7 @@ class AT_Audit
 	 * @return AT_Audit
 	 **/
 	
-	function get ($id)
-	{
+	function get ($id) {
 		global $wpdb;
 		
 		$row = $wpdb->get_row ("SELECT {$wpdb->prefix}audit_trail.*,{$wpdb->users}.user_nicename AS username FROM {$wpdb->prefix}audit_trail LEFT JOIN {$wpdb->users} ON {$wpdb->users}.ID={$wpdb->prefix}audit_trail.user_id WHERE {$wpdb->prefix}audit_trail.id='$id'", ARRAY_A);
@@ -66,14 +63,12 @@ class AT_Audit
 	 * @return array Array of AT_Audit items
 	 **/
 	
-	function get_everything ()
-	{
+	function get_everything () {
 		global $wpdb;
 		
 		$rows = $wpdb->get_results ("SELECT {$wpdb->prefix}audit_trail.*,{$wpdb->users}.user_nicename AS username FROM {$wpdb->prefix}audit_trail LEFT JOIN {$wpdb->users} ON {$wpdb->users}.ID={$wpdb->prefix}audit_trail.user_id", ARRAY_A);
 		$data = array ();
-		if ($rows)
-		{
+		if ($rows) {
 			foreach ($rows AS $row)
 				$data[] = new AT_Audit ($row);
 		}
@@ -89,15 +84,13 @@ class AT_Audit
 	 * @return array Array of AT_Audit items
 	 **/
 	
-	function get_all (&$pager)
-	{
+	function get_all (&$pager) {
 		global $wpdb;
 		
 		$pager->set_total ($wpdb->get_var ("SELECT COUNT(*) FROM {$wpdb->prefix}audit_trail ".$pager->to_conditions ('', array ('data'))));
 		$rows = $wpdb->get_results ("SELECT {$wpdb->prefix}audit_trail.*,{$wpdb->users}.user_nicename AS username FROM {$wpdb->prefix}audit_trail LEFT JOIN {$wpdb->users} ON {$wpdb->users}.ID={$wpdb->prefix}audit_trail.user_id ".$pager->to_limits ('', array ('data', "{$wpdb->users}.user_nicename")), ARRAY_A);
 		$data = array ();
-		if ($rows)
-		{
+		if ($rows) {
 			foreach ($rows AS $row)
 				$data[] = new AT_Audit ($row);
 		}
@@ -114,8 +107,7 @@ class AT_Audit
 	 * @return array Array of AT_Audit items
 	 **/
 	
-	function get_by_post ($id, $max = 10)
-	{
+	function get_by_post ($id, $max = 10) {
 		global $wpdb;
 		
 		if (get_option ('audit_post_order') == true)
@@ -125,8 +117,7 @@ class AT_Audit
 
 		$rows = $wpdb->get_results ("SELECT {$wpdb->prefix}audit_trail.*,{$wpdb->users}.user_nicename AS username FROM {$wpdb->prefix}audit_trail LEFT JOIN {$wpdb->users} ON {$wpdb->users}.ID={$wpdb->prefix}audit_trail.user_id WHERE item_id=$id AND operation='save_post' ORDER BY happened_at $order LIMIT 1,$max", ARRAY_A);
 		$data = array ();
-		if ($rows)
-		{
+		if ($rows) {
 			foreach ($rows AS $row)
 				$data[] = new AT_Audit ($row);
 		}
@@ -142,8 +133,7 @@ class AT_Audit
 	 * @return void
 	 **/
 	
-	function delete ($id)
-	{
+	function delete ($id) {
 		global $wpdb;
 		$wpdb->query ("DELETE FROM {$wpdb->prefix}audit_trail WHERE id=$id");
 	}
@@ -160,8 +150,7 @@ class AT_Audit
 	 * @return void
 	 **/
 	
-	function create ($operation, $item = '', $data = '', $title = '', $user = '')
-	{
+	function create ($operation, $item = '', $data = '', $title = '', $user = '') {
 		global $wpdb, $user_ID;
 
 		$ip = 0;
@@ -187,12 +176,10 @@ class AT_Audit
 	 * @return void
 	 **/
 	
-	function get_operation ($open = true)
-	{
+	function get_operation ($open = true) {
 		$this->message = '';
 		$obj = apply_filters ('audit_show_operation', $this);
-		if (is_object ($obj) && !empty ($obj->message))
-		{
+		if (is_object ($obj) && !empty ($obj->message)) {
 			if ($open == true)
 				return str_replace ('view_audit', 'view_audit_open', $obj->message);
 			return str_replace ('view_audit', 'view_audit_close', $obj->message);
@@ -209,8 +196,7 @@ class AT_Audit
 	 * @return void
 	 **/
 	
-	function get_item ()
-	{
+	function get_item () {
 		$this->message = '';
 		$obj = apply_filters ('audit_show_item', $this);
 		if (is_object ($obj) && !empty ($obj->message))
@@ -226,8 +212,7 @@ class AT_Audit
 	 * @return void
 	 **/
 	
-	function get_details ()
-	{
+	function get_details () {
 		$this->message = '';
 		$obj = apply_filters ('audit_show_details', $this);
 		if (is_object ($obj) && !empty ($obj->message))
@@ -243,8 +228,7 @@ class AT_Audit
 	 * @return void
 	 **/
 	
-	function expire ($days)
-	{
+	function expire ($days) {
 		global $wpdb;
 		
 		if ($days > 0)

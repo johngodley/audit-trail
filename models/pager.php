@@ -71,8 +71,7 @@ class AT_Pager
 	 * @param string $id An ID for the pager to separate it from other pagers (typically the plugin name)
 	 * @return void
 	 **/
-	function AT_Pager ($data, $url, $orderby = '', $direction = 'DESC', $id = 'default', $tags = '')
-	{
+	function AT_Pager ($data, $url, $orderby = '', $direction = 'DESC', $id = 'default', $tags = '') {
 		// Remove all pager params from the url
 		$this->id  = $id;
 		$this->url = $url;
@@ -86,8 +85,7 @@ class AT_Pager
 		if (isset ($data['orderby']))
 			$this->order_by = $data['orderby'];
 		
-		if (!empty ($tags))
-		{
+		if (!empty ($tags)) {
 			$this->order_tags = $tags;
 			if (isset ($this->order_tags[$this->order_by]))
 				$this->order_by = $this->order_tags[$this->order_by];
@@ -100,8 +98,6 @@ class AT_Pager
 		
 		$this->search = isset($data['search']) ? $data['search'] : '';
 		$this->steps = array (10, 25, 50, 100, 250);
-		$this->url = str_replace ('&', '&amp;', $this->url);
-		$this->url = str_replace ('&&amp;', '&amp;', $this->url);
 	}
 	
 	
@@ -112,8 +108,7 @@ class AT_Pager
 	 * @return void
 	 **/
 	
-	function set_total ($total)
-	{
+	function set_total ($total) {
 		$this->total = $total;
 
 		if ($this->current_page <= 0 || $this->current_page > $this->total_pages ())
@@ -127,8 +122,7 @@ class AT_Pager
 	 * @return int Current page offset
 	 **/
 	
-	function offset ()
-	{
+	function offset () {
 		return ($this->current_page - 1) * $this->per_page;
 	}
 	
@@ -139,8 +133,7 @@ class AT_Pager
 	 **/
 	// XXX
 	
-	function is_secondary_sort ()
-	{
+	function is_secondary_sort () {
 		return substr ($this->order_by, 0, 1) == '_' ? true : false;
 	}
 	
@@ -154,15 +147,13 @@ class AT_Pager
 	 * @return string SQL
 	 **/
 	
-	function to_conditions ($conditions, $searches = '', $filters = '')
-	{
+	function to_conditions ($conditions, $searches = '', $filters = '') {
 		$sql = '';
 		if ($conditions != '')
 			$sql .= ' WHERE '.$conditions;
 		
 		// Add on search conditions
-		if (is_array ($searches) && $this->search != '')
-		{
+		if (is_array ($searches) && $this->search != '') {
 			if ($sql == '')
 				$sql .= ' WHERE (';
 			else
@@ -177,20 +168,16 @@ class AT_Pager
 		}
 		
 		// Add filters
-		if (is_array ($filters) && !empty ($this->filters))
-		{
+		if (is_array ($filters) && !empty ($this->filters)) {
 			$searchbits = array ();
-			foreach ($filters AS $filter)
-			{
-				if (isset ($this->filters[$filter]))
-				{
+			foreach ($filters AS $filter) {
+				if (isset ($this->filters[$filter])) {
 					if ($this->filters[$filter] != '')
 						$searchbits[] = sprintf ("%s = '%s'", $filter, $this->filters[$filter]);
 				}
 			}
 
-			if (count ($searchbits) > 0)
-			{
+			if (count ($searchbits) > 0) {
 				if ($sql == '')
 					$sql .= ' WHERE (';
 				else
@@ -214,15 +201,13 @@ class AT_Pager
 	 * @return string SQL
 	 **/
 	
-	function to_limits ($conditions = '', $searches = '', $filters = '', $group_by = '')
-	{
+	function to_limits ($conditions = '', $searches = '', $filters = '', $group_by = '') {
 		$sql = $this->to_conditions ($conditions, $searches, $filters);
 		
 		if ($group_by)
 			$sql .= ' '.$group_by.' ';
 			
-		if (strlen ($this->order_by) > 0)
-		{
+		if (strlen ($this->order_by) > 0) {
 			if (!$this->is_secondary_sort ())
 				$sql .= " ORDER BY ".$this->order_by.' '.$this->order_direction;
 			else
@@ -243,8 +228,7 @@ class AT_Pager
 	 * @return string URL
 	 **/
 	
-	function url ($offset, $orderby = '')
-	{
+	function url ($offset, $orderby = '') {
 		// Position
 		if (strpos ($this->url, 'curpage=') !== false)
 			$url = preg_replace ('/curpage=\d*/', 'curpage='.$offset, $this->url);
@@ -252,8 +236,7 @@ class AT_Pager
 			$url = $this->url.'&amp;curpage='.$offset;
 			
 		// Order
-		if ($orderby != '')
-		{
+		if ($orderby != '') {
 			if (strpos ($url, 'orderby=') !== false)
 				$url = preg_replace ('/orderby=\w*/', 'orderby='.$orderby, $url);
 			else
@@ -291,8 +274,7 @@ class AT_Pager
 	 * @return int
 	 **/
 	
-	function total_pages ()
-	{
+	function total_pages () {
 		if ($this->per_page == 0)
 			return 1;
 		return ceil ($this->total / $this->per_page);
@@ -305,8 +287,7 @@ class AT_Pager
 	 * @return boolean
 	 **/
 	
-	function have_next_page ()
-	{
+	function have_next_page () {
 		if ($this->current_page < $this->total_pages ())
 			return true;
 		return false;
@@ -319,18 +300,15 @@ class AT_Pager
 	 * @return boolean
 	 **/
 
-	function have_previous_page ()
-	{
+	function have_previous_page () {
 		if ($this->current_page > 1)
 			return true;
 		return false;
 	}
 	
 	
-	function sortable_class ($column, $class = true)
-	{
-		if ($column == $this->order_by)
-		{
+	function sortable_class ($column, $class = true) {
+		if ($column == $this->order_by) {
 			if ($class)
 				printf (' class="sorted"');
 			else
@@ -347,16 +325,14 @@ class AT_Pager
 	 * @return string URL
 	 **/
 	
-	function sortable ($column, $text, $image = true)
-	{
+	function sortable ($column, $text, $image = true) {
 		$img = '';
 		$url = $this->url ($this->current_page, $column);
 		
 		if (isset ($this->order_tags[$column]))
 			$column = $this->order_tags[$column];
 			
-		if ($column == $this->order_by)
-		{
+		if ($column == $this->order_by) {
 			if (defined ('WP_PLUGIN_URL'))
 				$dir = WP_PLUGIN_URL.'/'.basename (dirname (dirname (__FILE__)));
 			else
@@ -381,14 +357,12 @@ class AT_Pager
 	 * @return array Array of page links
 	 **/
 	
-	function area_pages ()
-	{
+	function area_pages () {
 		// First page
 		$allow_dot = true;
 		$pages = array ();
 
-		if ($this->total_pages () > 1)
-		{
+		if ($this->total_pages () > 1) {
 			$previous = __ ('Previous', 'redirection');
 			$next     = __ ('Next', 'redirection');
 			
@@ -397,17 +371,14 @@ class AT_Pager
 			else
 				$pages[] = $previous.' |';
 				
-			for ($pos = 1; $pos <= $this->total_pages (); $pos++)
-			{
-				if ($pos == $this->current_page)
-				{
+			for ($pos = 1; $pos <= $this->total_pages (); $pos++) {
+				if ($pos == $this->current_page) {
 					$pages[] = '<span class="active">'.$pos.'</span>';
 					$allow_dot = true;
 				}
 				else if ($pos == 1 || abs ($this->current_page - $pos) <= 2 || $pos == $this->total_pages ())
 					$pages[] = '<a href="'.$this->url ($pos).'">'.$pos."</a>";
-				else if ($allow_dot)
-				{
+				else if ($allow_dot) {
 					$allow_dot = false;
 					$pages[] = '&hellip;';
 				}
@@ -428,8 +399,7 @@ class AT_Pager
 	 * @return boolean
 	 **/
 	
-	function filtered ($field, $value)
-	{
+	function filtered ($field, $value) {
 		if (isset ($this->filters[$field]) && $this->filters[$field] == $value)
 			return true;
 		return false;
@@ -442,8 +412,7 @@ class AT_Pager
 	 * @return void
 	 **/
 	
-	function per_page ($plugin = '')
-	{
+	function per_page ($plugin = '') {
 		?>
 		<select name="perpage">
 			<?php foreach ($this->steps AS $step) : ?>
@@ -455,8 +424,7 @@ class AT_Pager
 		<?php
 	}
 	
-	function page_links ()
-	{
+	function page_links () {
 		$text = sprintf( '<span class="displaying-num">' . __( 'Displaying %s&#8211;%s of %s' ) . '</span>',
 											number_format_i18n (($this->current_page () - 1) * $this->per_page + 1),
 											number_format_i18n ($this->current_page () * $this->per_page > $this->total ? $this->total : $this->current_page () * $this->per_page),

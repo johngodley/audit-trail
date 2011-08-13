@@ -11,5 +11,5 @@
 </td>
 <td><?php echo $item->get_operation () ?></td>
 <td><?php echo $item->get_item (); ?></td>
-<td><?php echo current_time($item->happened_at) ?> <?php echo date_i18n (get_option ('date_format'), $item->happened_at).' '.gmdate ('H:i', $item->happened_at) ?></td>
+<td><?php echo current_time($item->happened_at) ?> <?php echo date_i18n (get_option ('date_format'), $item->happened_at).' '.gmdate (get_option ('time_format'), $item->happened_at) ?></td>
 <td id="ip_<?php echo $item->id ?>"><a href="http://urbangiraffe.com/map/?ip=<?php echo long2ip ($item->ip); ?>&amp;from=audittrail"><?php echo long2ip ($item->ip); ?></a></td>
