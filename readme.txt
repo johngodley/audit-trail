@@ -29,6 +29,7 @@ Audit Trail is available in:
 * German by Andreas Beraz
 * Japanese by Chestnut
 * Romanian by Mikalay Lisica
+* Lithuanian by Nata Strazda
 
 == Installation ==
 
@@ -51,6 +52,10 @@ You can find full details of installing a plugin on the [plugin installation pag
 Full documentation can be found on the [Audit Trail Page](http://urbangiraffe.com/plugins/audit-trail/) page.
 
 == Changelog ==
+
+= 1.1.13 =
+* Lithuanuan
+* Russian
 
 = 1.1.12 =
 * Add bulk action to bottom of trail list
