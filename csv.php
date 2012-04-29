@@ -7,7 +7,7 @@
 	 use, data, or profits; or business interruption) however caused and on any theory of liability, whether in
 	 contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of
 	 this software, even if advised of the possibility of such damage.
-   
+
 	 This software is provided free-to-use, but is not free software.  The copyright and ownership remains
 	 entirely with the author.  Please distribute and use as necessary, in a personal or commercial environment,
 	 but it cannot be sold or re-used without express consent from the author.
@@ -29,7 +29,7 @@ if (!current_user_can ('edit_plugins'))
 $id = 0;
 if ( isset( $_GET['id'] ) )
 	$id   = intval ($_GET['id']);
-	
+
 header ("Content-Type: application/vnd.ms-excel");
 header ("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); // Date in the past
@@ -40,13 +40,13 @@ function escape ($value)
 	$double = false;
 	if (strpos ($value, ',') !== false)
 		$double = true;
-		
+
 	if (strpos ($value, '"') !== false)
 	{
 		$double = true;
 		$value  = str_replace ('"', '""', $value);
 	}
-	
+
 	if ($double)
 		$value = '"'.$value.'"';
 	return $value;
@@ -58,7 +58,7 @@ $trail = AT_Audit::get_everything ();
 if (count ($trail) > 0)
 {
 	echo "Date,Time,User,Operation,Item,IP\r\n";
-	
+
 	foreach ($trail AS $item) {
 		$csv = array();
 		$csv[] = escape( date ('Y-m-d', $item->happened_at));
@@ -67,9 +67,8 @@ if (count ($trail) > 0)
 		$csv[] = escape( strip_tags ($item->get_operation ()));
 		$csv[] = escape( strip_tags ($item->get_item ()));
 		$csv[] = escape( long2ip ($item->ip));
-		
+
 		echo implode( ',', $csv )."\r\n";
 	}
 }
 
-?>

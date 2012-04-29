@@ -2,9 +2,9 @@
 	<?php	$this->render_admin ('annoy'); ?>
 	<?php screen_icon(); ?>
 	<h2><?php _e ('Audit Trail Options', 'audit-trail'); ?></h2>
-	
+
 	<?php $this->submenu (true); ?>
-	
+
 	<form action="<?php echo $this->url ($_SERVER['REQUEST_URI']) ?>" method="post" accept-charset="utf-8" style="clear: both">
 		<?php wp_nonce_field ('audittrail-update_options'); ?>
 

@@ -1,14 +1,14 @@
 <?php if (!defined ('ABSPATH')) die (); ?><div class="wrap">
 	<?php	$this->render_admin ('annoy'); ?>
 	<?php screen_icon(); ?>
-	
+
 	<div class="csv"><a title="Download as CSV" href="<?php echo $this->url () ?>/csv.php"><img src="<?php echo $this->url () ?>/images/csv.png" width="16" height="16" alt="Csv"/></a></div>
 	<h2><?php _e ('Audit Trail', 'audit-trail'); ?></h2>
 
 	<?php $this->submenu (true); ?>
-	
+
 	<?php $this->render_admin ('pager', array ('pager' => $pager)); ?>
-	
+
 	<form method="post" action="<?php echo $this->url ($pager->url) ?>">
 		<div id="pager" class="tablenav">
 			<div class="alignleft actions">
@@ -16,21 +16,21 @@
 					<option value="-1" selected="selected"><?php _e('Bulk Actions'); ?></option>
 					<option value="delete"><?php _e('Delete'); ?></option>
 				</select>
-				
+
 				<input type="submit" value="<?php _e('Apply'); ?>" name="doaction2" id="doaction2" class="button-secondary action" />
-				
+
 				<?php $pager->per_page ('audit-trail'); ?>
 
 				<input type="submit" name="filter" value="<?php _e('Filter'); ?>" class="button-secondary" />
 
 				<br class="clear" />
 			</div>
-		
+
 			<div class="tablenav-pages">
 				<?php echo $pager->page_links (); ?>
 			</div>
 		</div>
-	
+
 	<?php if (count ($trail) > 0) : ?>
 	  <table  class="widefat post fixed" cellpadding="5">
 		<thead>
@@ -43,7 +43,7 @@
 				<th width="100"><?php echo $pager->sortable ('ip', __('IP','audit-trail')) ?></th>
 			</tr>
 		</thead>
-		
+
 		<tfoot>
 		  <tr>
 				<th style="" class="manage-column column-cb check-column" scope="col"><input type="checkbox"></th>
@@ -63,24 +63,24 @@
 			<?php endforeach; ?>
 			</tbody>
 		</table>
-		
+
 		<div class="tablenav">
 			<div class="alignleft actions">
 				<select name="action2" id="action2_select">
 					<option value="-1" selected="selected"><?php _e('Bulk Actions'); ?></option>
 					<option value="delete"><?php _e('Delete'); ?></option>
 				</select>
-				
+
 				<input type="submit" value="<?php _e('Apply'); ?>" name="doaction2"class="button-secondary action" />
 
 				<br class="clear" />
 			</div>
-		
+
 			<div class="tablenav-pages">
 				<?php echo $pager->page_links (); ?>
 			</div>
 		</div>
-		
+
 		<div style="clear: both"></div>
 	<?php else : ?>
 		<p><?php _e ('There is nothing to display!', 'audit-trail') ?></p>
@@ -92,7 +92,7 @@
 	( function($) {
 		$( document ).ready( function() {
 		var ajaxurl = '<?php echo admin_url( 'admin-ajax.php' ); ?>';
-		
+
 		$( 'input[name=filter]' ).click( function() {
 			document.location.href = document.location.href.replace( /&perpage=\d*/, '' ) + '&perpage=' + $( 'select[name=perpage]' ).val();
 			return false;
@@ -105,7 +105,7 @@
 				var item   = $( this ).parents( 'tr' );
 				var itemid = this.href.replace( /.*?#(.*)/, '$1' );
 				var nonce  = '<?php echo wp_create_nonce( 'audittrail_view' )?>';
-			
+
 				item.load( ajaxurl, {
 					action: 'at_view',
 					id: itemid,
@@ -119,15 +119,15 @@
 						}, function() {
 							clickers();
 						} );
-					
+
 						return false;
 					});
 				});
-			
+
 				return false;
 			});
 		}
-		
+
 		clickers();
 		} );
 	})( jQuery );

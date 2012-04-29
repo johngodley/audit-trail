@@ -135,7 +135,7 @@ class AT_Plugin {
 		$this->plugin_name = $name;
 
 		$this->add_action( 'init', 'load_locale' );
-		
+
 		global $wp_version;
 		if ( version_compare( $wp_version, '2.7', '<' ) )
 			$this->add_action( 'admin_menu', 'compatibility_27' );
@@ -185,7 +185,7 @@ class AT_Plugin {
 				return $url;
 			}
 		}
-		
+
 		if ( !function_exists( 'is_ssl' ) ) {
 			function is_ssl() {
 				if ( isset($_SERVER['HTTPS']) ) {
@@ -197,9 +197,9 @@ class AT_Plugin {
 						return true;
 					}
 					return false;
-				}		
+				}
 		}
-		
+
 		if ( !function_exists( 'site_url' ) ) {
 			function site_url($path = '', $scheme = null) {
 				$scheme = ( is_ssl() ? 'https' : 'http' );
@@ -213,7 +213,7 @@ class AT_Plugin {
 			}
 		}
 	}
-	
+
 	/**
 	 * Backwards compatible admin functions
 	 * @return void
@@ -223,12 +223,12 @@ class AT_Plugin {
 			function screen_icon() {
 			}
 		}
-		
+
 		if ( !function_exists( 'add_meta_box' ) ) {
 			function add_meta_box ( $id, $title, $callback, $page, $context = 'advanced', $priority = 'default', $callback_args=null ) {
 				add_action( 'dbx_post_advanced', $callback );
 			}
-		}	
+		}
 	}
 
 	/**
@@ -288,7 +288,7 @@ class AT_Plugin {
 	function register_ajax( $action, $function = '', $priority = 10 ) {
 		add_action( 'wp_ajax_'.$action, array( &$this, $function == '' ? $action : $function ), $priority );
 	}
-	
+
 	/**
 	 * Special deactivation function that takes into account the plugin directory
 	 *
@@ -299,7 +299,7 @@ class AT_Plugin {
 	function register_deactivation( $pluginfile, $function = '' ) {
 		add_action( 'deactivate_'.basename( dirname( $pluginfile ) ).'/'.basename( $pluginfile ), array( &$this, $function == '' ? 'deactivate' : $function ) );
 	}
-	
+
 	function register_plugin_settings( $pluginfile, $function = '' ) {
 		add_action( 'plugin_action_links_'.basename( dirname( $pluginfile ) ).'/'.basename( $pluginfile ), array( &$this, $function == '' ? 'plugin_settings' : $function ), 10, 4 );
 	}
@@ -424,7 +424,7 @@ class AT_Plugin {
 		$parts = explode( '?', basename( $_SERVER['REQUEST_URI'] ) );
 		return $parts[0];
 	}
-	
+
 	/**
 	 * Get a URL to the plugin.  Useful for specifying JS and CSS files
 	 *

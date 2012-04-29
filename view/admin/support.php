@@ -1,17 +1,17 @@
 <?php if (!defined ('ABSPATH')) die ('No direct access allowed'); ?>
 <div class="wrap supporter">
 	<?php screen_icon(); ?>
-	
+
 	<h2><?php _e ('Audit Trail | Support', 'audit-trail'); ?></h2>
 	<?php $this->submenu (true); ?>
-	
+
 	<p style="clear: both">
 		<?php _e( 'Audit Trail is free to use - life is wonderful and lovely!  However, it has required a great deal of time and effort to develop and if it has been useful you can help support this development by <strong>making a small donation</strong>.', 'audit-trail'); ?>
 		<?php _e( 'This will act as an incentive for me to carry on developing, providing countless hours of support, and including new features and suggestions. You get some useful software and I get to carry on making it.  Everybody wins.', 'audit-trail'); ?>
 	</p>
-	
+
 	<p><?php _e( 'If you are using this plugin in a commercial setup, or feel that it\'s been particularly useful, then you may want to consider a <strong>commercial donation</strong>.  If you really really want to show your appreciation then there is the <strong>Super Smashing Great</strong> donation which, along with making my day, will earn you a badge of honour (125x125 image of your choosing + nofollow link) to be displayed on the Audit Trail page for a period of two months.', 'audit-trail' )?>
-	
+
 	<ul class="donations">
 		<li>
 			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -32,7 +32,7 @@
 				<input type="hidden" name="bn" value="PP-DonationsBF">
 				<input type="image" style="border: none" src="<?php echo $this->url () ?>/images/donate.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!"/>
 			</form>
-			
+
 			<p><strong>$12</strong><br/><?php _e( 'Individual<br/>Donation', 'audit-trail' ); ?></p>
 		</li>
 		<li>
@@ -78,11 +78,11 @@
 			<p><strong>$142</strong><br/><?php _e( 'Super Smashing<br/>Great Donation', 'audit-trail' ); ?></p>
 		</li>
 	</ul>
-	
+
 	<h3 style="clear: both"><?php _e( 'Translations', 'audit-trail' )?></h3>
-	
+
 	<p><?php _e( 'If you\'re multi-lingual then you may want to consider donating a translation:', 'audit-trail' )?>
-		
+
 	<ul class="translators">
 		<?php foreach( $this->locales() AS $language => $author ) : ?>
 			<li><?php echo $language ?> &mdash; <?php echo $author; ?></li>
