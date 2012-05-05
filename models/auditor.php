@@ -500,14 +500,16 @@ class AT_Auditor extends AT_Plugin
 	function add_attachment ($postid)
 	{
 		global $wpdb;
-		$attach = $wpdb->get_row ("SELECT * FROM {$wpdb->postmeta} WHERE post_id=$postid AND meta_key='_wp_attached_file' ORDER BY meta_id DESC LIMIT 1");
+
+		$attach = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->postmeta} WHERE post_id=%d AND meta_key='_wp_attached_file' ORDER BY meta_id DESC LIMIT 1", $postid ) );
 		AT_Audit::create ('add_attachment', $postid, $attach->meta_value);
 	}
 
 	function edit_attachment ($postid)
 	{
 		global $wpdb;
-		$attach = $wpdb->get_row ("SELECT * FROM {$wpdb->postmeta} WHERE post_id=$postid AND meta_key='_wp_attached_file' ORDER BY meta_id DESC LIMIT 1");
+
+		$attach = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->postmeta} WHERE post_id=%d AND meta_key='_wp_attached_file' ORDER BY meta_id DESC LIMIT 1", $postid ) );
 		AT_Audit::create ('edit_attachment', $postid, $attach->meta_value);
 	}
 

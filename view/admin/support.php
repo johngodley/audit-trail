@@ -30,7 +30,7 @@
 				<input type="hidden" name="tax" value="0">
 				<input type="hidden" name="lc" value="US">
 				<input type="hidden" name="bn" value="PP-DonationsBF">
-				<input type="image" style="border: none" src="<?php echo $this->url () ?>/images/donate.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!"/>
+				<input type="image" style="border: none" src="<?php echo plugins_url( '/images/donate.gif', $this->base_url() ); ?>" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!"/>
 			</form>
 
 			<p><strong>$12</strong><br/><?php _e( 'Individual<br/>Donation', 'audit-trail' ); ?></p>
@@ -52,7 +52,7 @@
 				<input type="hidden" name="tax" value="0">
 				<input type="hidden" name="lc" value="US">
 				<input type="hidden" name="bn" value="PP-DonationsBF">
-				<input type="image" style="border: none" src="<?php echo $this->url () ?>/images/donate.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!"/>
+				<input type="image" style="border: none" src="<?php echo plugins_url( '/images/donate.gif', $this->base_url() ); ?>" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!"/>
 			</form>
 			<p><strong>$42</strong><br/><?php _e( 'Commercial<br/>Donation', 'audit-trail' ); ?></p>
 		</li>
@@ -73,7 +73,7 @@
 				<input type="hidden" name="tax" value="0">
 				<input type="hidden" name="lc" value="US">
 				<input type="hidden" name="bn" value="PP-DonationsBF">
-				<input type="image" style="border: none" src="<?php echo $this->url () ?>/images/donate.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!"/>
+				<input type="image" style="border: none" src="<?php echo plugins_url( '/images/donate.gif', $this->base_url() ); ?>" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!"/>
 			</form>
 			<p><strong>$142</strong><br/><?php _e( 'Super Smashing<br/>Great Donation', 'audit-trail' ); ?></p>
 		</li>
@@ -81,14 +81,7 @@
 
 	<h3 style="clear: both"><?php _e( 'Translations', 'audit-trail' )?></h3>
 
-	<p><?php _e( 'If you\'re multi-lingual then you may want to consider donating a translation:', 'audit-trail' )?>
+	<p><?php _e( 'If you\'re multi-lingual then you may want to consider donating a translation.', 'audit-trail' )?>
 
-	<ul class="translators">
-		<?php foreach( $this->locales() AS $language => $author ) : ?>
-			<li><?php echo $language ?> &mdash; <?php echo $author; ?></li>
-		<?php endforeach; ?>
-	</ul>
-
-	<p style="clear: both"><br/><?php _e( 'All translators will have a link to their website placed on the plugin homepage at <a href="http://urbangiraffe.com/plugins/audit-trail/">UrbanGiraffe</a>, in addition to being an individual supporter.', 'audit-trail' )?></p>
 	<p><?php _e( 'Full details of producing a translation can be found in this <a href="http://urbangiraffe.com/articles/translating-wordpress-themes-and-plugins/">guide to translating WordPress plugins</a>.', 'audit-trail' )?>
 </div>

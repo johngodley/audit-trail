@@ -21,8 +21,14 @@
  * @copyright Copyright (C) John Godley
  **/
 
-class AT_Audit
-{
+class AT_Audit {
+	var $happened_at;
+	var $id;
+	var $operation;
+	var $ip;
+	var $item_id;
+	var $user_id;
+
 	/**
 	 * Constructor accepts an array of values with which to seed the object
 	 *
@@ -31,14 +37,13 @@ class AT_Audit
 	 **/
 
 	function AT_Audit ($details = '') {
-		if (is_array ($details)) {
+		if (is_object ($details)) {
 			foreach ($details AS $key => $value)
 				$this->$key = $value;
 		}
 
 		$this->happened_at = mysql2date ('U', $this->happened_at);
 	}
-
 
 	/**
 	 * Get a log item (username is filled in)
@@ -50,7 +55,7 @@ class AT_Audit
 	function get ($id) {
 		global $wpdb;
 
-		$row = $wpdb->get_row ("SELECT {$wpdb->prefix}audit_trail.*,{$wpdb->users}.user_nicename AS username FROM {$wpdb->prefix}audit_trail LEFT JOIN {$wpdb->users} ON {$wpdb->users}.ID={$wpdb->prefix}audit_trail.user_id WHERE {$wpdb->prefix}audit_trail.id='$id'", ARRAY_A);
+		$row = $wpdb->get_row( $wpdb->prepare( "SELECT {$wpdb->prefix}audit_trail.*,{$wpdb->users}.user_nicename AS username FROM {$wpdb->prefix}audit_trail LEFT JOIN {$wpdb->users} ON {$wpdb->users}.ID={$wpdb->prefix}audit_trail.user_id WHERE {$wpdb->prefix}audit_trail.id=%d", $id ) );
 		if ($row)
 			return new AT_Audit ($row);
 		return false;
@@ -66,29 +71,7 @@ class AT_Audit
 	function get_everything () {
 		global $wpdb;
 
-		$rows = $wpdb->get_results ("SELECT {$wpdb->prefix}audit_trail.*,{$wpdb->users}.user_nicename AS username FROM {$wpdb->prefix}audit_trail LEFT JOIN {$wpdb->users} ON {$wpdb->users}.ID={$wpdb->prefix}audit_trail.user_id", ARRAY_A);
-		$data = array ();
-		if ($rows) {
-			foreach ($rows AS $row)
-				$data[] = new AT_Audit ($row);
-		}
-
-		return $data;
-	}
-
-
-	/**
-	 * Get all log items restricted by a pager (username is filled in)
-	 *
-	 * @param AT_Pager $pager Pager object
-	 * @return array Array of AT_Audit items
-	 **/
-
-	function get_all (&$pager) {
-		global $wpdb;
-
-		$pager->set_total ($wpdb->get_var ("SELECT COUNT(*) FROM {$wpdb->prefix}audit_trail ".$pager->to_conditions ('', array ('data'))));
-		$rows = $wpdb->get_results ("SELECT {$wpdb->prefix}audit_trail.*,{$wpdb->users}.user_nicename AS username FROM {$wpdb->prefix}audit_trail LEFT JOIN {$wpdb->users} ON {$wpdb->users}.ID={$wpdb->prefix}audit_trail.user_id ".$pager->to_limits ('', array ('data', "{$wpdb->users}.user_nicename")), ARRAY_A);
+		$rows = $wpdb->get_results ("SELECT {$wpdb->prefix}audit_trail.*,{$wpdb->users}.user_nicename AS username FROM {$wpdb->prefix}audit_trail LEFT JOIN {$wpdb->users} ON {$wpdb->users}.ID={$wpdb->prefix}audit_trail.user_id" );
 		$data = array ();
 		if ($rows) {
 			foreach ($rows AS $row)
@@ -115,7 +98,7 @@ class AT_Audit
 		else
 			$order = 'DESC';
 
-		$rows = $wpdb->get_results ("SELECT {$wpdb->prefix}audit_trail.*,{$wpdb->users}.user_nicename AS username FROM {$wpdb->prefix}audit_trail LEFT JOIN {$wpdb->users} ON {$wpdb->users}.ID={$wpdb->prefix}audit_trail.user_id WHERE item_id=$id AND operation='save_post' ORDER BY happened_at $order LIMIT 1,$max", ARRAY_A);
+		$rows = $wpdb->get_results( $wpdb->prepare( "SELECT {$wpdb->prefix}audit_trail.*,{$wpdb->users}.user_nicename AS username FROM {$wpdb->prefix}audit_trail LEFT JOIN {$wpdb->users} ON {$wpdb->users}.ID={$wpdb->prefix}audit_trail.user_id WHERE item_id=%d AND operation='save_post' ORDER BY happened_at $order LIMIT 1,%d", $id, $max ) );
 		$data = array ();
 		if ($rows) {
 			foreach ($rows AS $row)
@@ -135,7 +118,8 @@ class AT_Audit
 
 	function delete ($id) {
 		global $wpdb;
-		$wpdb->query ("DELETE FROM {$wpdb->prefix}audit_trail WHERE id=$id");
+
+		$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->prefix}audit_trail WHERE id=%d", $id ) );
 	}
 
 
@@ -215,6 +199,8 @@ class AT_Audit
 	function get_details () {
 		$this->message = '';
 		$obj = apply_filters ('audit_show_details', $this);
+
+		$details = '';
 		if (is_object ($obj) && !empty ($obj->message))
 			$details = $obj->message;
 		return $this->get_operation (false).'<br/>'.$details;
@@ -232,7 +218,7 @@ class AT_Audit
 		global $wpdb;
 
 		if ($days > 0)
-			$wpdb->query ("DELETE FROM {$wpdb->prefix}audit_trail WHERE DATE_SUB(CURDATE(),INTERVAL $days DAY) > happened_at");
+			$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->prefix}audit_trail WHERE DATE_SUB(CURDATE(),INTERVAL %d DAY) > happened_at", $days ) );
 	}
 }
 

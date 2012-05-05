@@ -4,7 +4,7 @@ Plugin Name: Audit Trail
 Plugin URI: http://urbangiraffe.com/plugins/audit-trail/
 Description: Keep a log of exactly what is happening behind the scenes of your WordPress blog
 Author: John Godley
-Version: 1.1.13
+Version: 1.1.14
 Author URI: http://urbangiraffe.com
 ============================================================================================================
 This software is provided "as is" and any express or implied warranties, including, but not limited to, the
@@ -53,6 +53,9 @@ class Audit_Trail extends AT_Plugin {
 		include( dirname( __FILE__).'/models/audit.php' );
 
 		if ( is_admin() ) {
+			if ( !class_exists( 'WP_List_Table' ) )
+			    require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
+
 			include( dirname( __FILE__).'/models/pager.php' );
 
 			$this->register_plugin( 'audit-trail', __FILE__);
@@ -60,10 +63,8 @@ class Audit_Trail extends AT_Plugin {
 			$this->add_action( 'admin_menu' );
 			$this->add_action( 'activate_audit-trail/audit-trail.php', 'activate' );
 
-			$this->add_action( 'admin_head', 'wp_print_styles' );
-			$this->add_action( 'admin_print_styles', 'wp_print_styles' );
-//			$this->add_filter( 'contextual_help', 'contextual_help', 10, 2 );
-			$this->add_action( 'admin_footer' );
+			$this->add_action( 'load-tools_page_audit-trail', 'admin_head' );
+			$this->add_action( 'admin_footer-tools_page_audit-trail', 'admin_footer' );
 
 			// Ajax functions
 			if (  defined( 'DOING_AJAX' ) ) {
@@ -78,19 +79,6 @@ class Audit_Trail extends AT_Plugin {
 		$this->auditor = new AT_Auditor;
 
 		$this->add_action( 'plugins_loaded' );
-	}
-
-	function contextual_help($help, $screen) {
-		if ( $screen == 'settings_page_audittrail' ) {
-			$help .= '<h5>' . __('Audit Trail Help', 'audit-trail' ) . '</h5><div class="metabox-prefs">';
-			$help .= '<a href="http://urbangiraffe.com/plugins/audit-trail/">'.__( 'Audit Trail Documentation', 'audit-trail' ).'</a><br/>';
-			$help .= '<a href="http://urbangiraffe.com/support/forum/audit-trail">'.__( 'Audit Trail Support Forum', 'audit-trail' ).'</a><br/>';
-			$help .= '<a href="http://urbangiraffe.com/tracker/projects/audit-trail/issues?set_filter=1&amp;tracker_id=1">'.__( 'Audit Trail Bug Tracker', 'audit-trail' ).'</a><br/>';
-			$help .= __( 'Please read the documentation and check the bug tracker before asking a question.', 'audit-trail' );
-			$help .= '</div>';
-		}
-
-		return $help;
 	}
 
 	function plugin_settings( $links) {
@@ -111,6 +99,10 @@ class Audit_Trail extends AT_Plugin {
 			foreach( $methods AS $name)
 				do_action( 'audit_listen', $name);
 		}
+	}
+
+	function base_url() {
+		return __FILE__;
 	}
 
 
@@ -147,14 +139,6 @@ class Audit_Trail extends AT_Plugin {
 	}
 
 
-	function is_25() {
-		global $wp_version;
-		if ( version_compare( '2.5', $wp_version) <= 0)
-			return true;
-		return false;
-	}
-
-
 	/**
 	 * Inject Audit Trail into the menu
 	 *
@@ -163,7 +147,7 @@ class Audit_Trail extends AT_Plugin {
 
 	function admin_menu() {
 		if ( current_user_can( 'edit_plugins' ) || current_user_can( 'audit_trail' ) )
-  		add_management_page( __("Audit Trail",'audit-trail' ), __("Audit Trail",'audit-trail' ), "publish_posts", basename( __FILE__), array( $this, "admin_screen") );
+  			add_management_page( __("Audit Trail",'audit-trail' ), __("Audit Trail",'audit-trail' ), "publish_posts", basename( __FILE__), array( $this, "admin_screen") );
 	}
 
 
@@ -186,13 +170,11 @@ class Audit_Trail extends AT_Plugin {
 	function submenu( $inwrap = false) {
 		// Decide what to do
 		$sub = isset( $_GET['sub']) ? $_GET['sub'] : '';
-	  $url = explode( '&', $_SERVER['REQUEST_URI']);
-	  $url = $url[0];
+		if ( !in_array( $sub, array( 'options', 'support' ) ) )
+			$sub = '';
 
-		if ( !$this->is_25() && $inwrap == false)
-			$this->render_admin( 'submenu', array( 'url' => $url, 'sub' => $sub, 'class' => 'id="subsubmenu"' ) );
-		else if ( $this->is_25() && $inwrap == true)
-			$this->render_admin( 'submenu', array( 'url' => $url, 'sub' => $sub, 'class' => 'class="subsubsub"', 'trail' => ' | ' ) );
+		if ( $inwrap == true)
+			$this->render_admin( 'submenu', array( 'sub' => $sub, 'class' => 'class="subsubsub"', 'trail' => ' | ' ) );
 
 		return $sub;
 	}
@@ -228,18 +210,10 @@ class Audit_Trail extends AT_Plugin {
 	 **/
 
 	function screen_trail() {
-		if (  isset( $_POST['item'] ) && isset( $_POST['action2'] ) && $_POST['action2'] == 'delete' ) {
-			foreach(  $_POST['item'] AS $id ) {
-//				AT_Audit::delete( intval( $id ) );
-			}
-		}
+		$table = new Audit_Trail_Table();
+		$table->prepare_items();
 
-		$pager = new AT_Pager( $_REQUEST, $_SERVER['REQUEST_URI'], 'happened_at', 'DESC' );
-
-		if ( isset( $_REQUEST['perpage'] ) && in_array( $_REQUEST['perpage'], array( 10, 25, 50, 100, 250 ) ) )
-			$pager->per_page = intval( $_REQUEST['perpage'] );
-
-		$this->render_admin( 'trail', array( 'trail' => AT_Audit::get_all( $pager), 'pager' => $pager) );
+		$this->render_admin( 'trail', array( 'table' => $table ) );
 	}
 
 
@@ -279,51 +253,14 @@ class Audit_Trail extends AT_Plugin {
 		$this->render_admin( 'options', array( 'methods' => $methods, 'current' => $current, 'support' => $support, 'expiry' => $expiry, 'post' => get_option( 'audit_post' ), 'post_order' => get_option( 'audit_post_order' ), 'version' => get_option( 'audit_version' ) == 'false' ? false : true, 'ignore_users' => get_option( 'audit_ignore' ) ));
 	}
 
-	function wp_print_styles() {
-		if ( (  isset( $_GET['page']) && $_GET['page'] == 'audit-trail.php' ) ) {
-			echo '<link rel="stylesheet" href="'.$this->url().'/admin.css" type="text/css" media="screen" title="no title" charset="utf-8"/>';
-
-			if ( !function_exists( 'wp_enqueue_style' ) )
-				echo '<style type="text/css" media="screen">
-				.subsubsub {
-					list-style: none;
-					margin: 8px 0 5px;
-					padding: 0;
-					white-space: nowrap;
-					font-size: 11px;
-					float: left;
-				}
-				.subsubsub li {
-					display: inline;
-					margin: 0;
-					padding: 0;
-				}
-				</style>';
-		}
-	}
-
-
-	function locales() {
-		$locales = array();
-		$readme  = @file_get_contents( dirname( __FILE__ ).'/readme.txt' );
-
-		if (  $readme ) {
-			if (  preg_match_all( '/^\*( .*?) by \[(.*?)\]\((.*?)\)/m', $readme, $matches ) ) {
-				foreach(  $matches[1] AS $pos => $match ) {
-					$locales[$match] = '<a href="'.$matches[3][$pos].'">'.$matches[2][$pos].'</a>';
-				}
-			}
-		}
-
-		ksort( $locales );
-		return $locales;
+	function admin_head() {
+		wp_enqueue_style( 'audit-trail', plugin_dir_url( __FILE__ ).'admin.css' );
 	}
 
 	function admin_footer() {
-			if (  isset($_GET['page']) && $_GET['page'] == basename( __FILE__ ) ) {
-				$support = get_option( 'audit_support' );
+		$support = get_option( 'audit_support' );
 
-				if (  $support == false ) {
+		if ( $support == false ) {
 	?>
 	<script type="text/javascript" charset="utf-8">
 		jQuery(function() {
@@ -331,7 +268,6 @@ class Audit_Trail extends AT_Plugin {
 		});
 	</script>
 	<?php
-				}
 			}
 		}
 
