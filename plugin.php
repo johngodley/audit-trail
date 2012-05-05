@@ -13,7 +13,6 @@
 // ======================================================================================
 // @author     John Godley(http://urbangiraffe.com)
 // @version    0.2.4
-// @copyright  Copyright &copy; 2009 John Godley, All Rights Reserved
 // ======================================================================================
 // 0.1.6  - Corrected WP locale functions
 // 0.1.7  - Add phpdoc comments

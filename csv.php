@@ -18,7 +18,6 @@
  *
  * @package Audit Trail
  * @author John Godley
- * @copyright Copyright (C) John Godley
  **/
 
 include ('../../../wp-config.php');

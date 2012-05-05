@@ -19,7 +19,6 @@
  *
  * @package Audit Trail
  * @author John Godley
- * @copyright Copyright (C) John Godley
  **/
 
 class AuditAjax extends AT_Plugin {
