@@ -52,6 +52,9 @@ Full documentation can be found on the [Audit Trail Page](http://urbangiraffe.co
 
 == Changelog ==
 
+= 1.1.15 =
+* Restore per-page for logs to 25
+
 = 1.1.14 =
 * Clean up all code
 * XSS review

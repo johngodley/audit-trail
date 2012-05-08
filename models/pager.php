@@ -83,7 +83,7 @@ class Audit_Trail_Table extends WP_List_Table {
 	function prepare_items() {
 		global $wpdb;
 
-		$per_page = 4;
+		$per_page = 25;
 		$hidden   = array();
 		$columns  = $this->get_columns();
 		$sortable = $this->get_sortable_columns();
