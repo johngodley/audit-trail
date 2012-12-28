@@ -103,7 +103,7 @@ class Audit_Trail_Table extends WP_List_Table {
 			$order = 'desc';
 
 		$current_page = $this->get_pagenum();
-		$total_items  = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}audit_trail" ) );
+		$total_items  = $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}audit_trail" );
 
 		global $wpdb;
 
