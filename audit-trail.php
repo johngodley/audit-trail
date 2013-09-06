@@ -232,6 +232,7 @@ class Audit_Trail extends AT_Plugin {
 			update_option( 'audit_version',    isset( $_POST['version']) ? 'true' : 'false' );
 			update_option( 'audit_ignore',     preg_replace( '/[^0-9,]/', '', $_POST['ignore_users']) );
 			update_option( 'audit_support',    isset( $_POST['support'] ) ? true : false );
+			update_option( 'audit_error_log',  isset( $_POST['error_log'] ) ? true : false );
 
 			$this->render_message( __( 'Options have been updated', 'audit-trail' ) );
 		}
@@ -244,13 +245,14 @@ class Audit_Trail extends AT_Plugin {
 		if ( is_array( $methods) )
 			ksort( $methods);
 
-		$support = get_option( 'audit_support' );
+		$error_log = get_option( 'audit_error_log' );
+		$support   = get_option( 'audit_support' );
 
 		$expiry = get_option( 'audit_expiry' );
 		if ( $expiry === false)
 			$expiry = 30;
 
-		$this->render_admin( 'options', array( 'methods' => $methods, 'current' => $current, 'support' => $support, 'expiry' => $expiry, 'post' => get_option( 'audit_post' ), 'post_order' => get_option( 'audit_post_order' ), 'version' => get_option( 'audit_version' ) == 'false' ? false : true, 'ignore_users' => get_option( 'audit_ignore' ) ));
+		$this->render_admin( 'options', array( 'methods' => $methods, 'current' => $current, 'support' => $support, 'expiry' => $expiry, 'error_log' => $error_log, 'post' => get_option( 'audit_post' ), 'post_order' => get_option( 'audit_post_order' ), 'version' => get_option( 'audit_version' ) == 'false' ? false : true, 'ignore_users' => get_option( 'audit_ignore' ) ));
 	}
 
 	function admin_head() {

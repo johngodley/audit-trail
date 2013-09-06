@@ -93,21 +93,20 @@ class Audit_Trail_Table extends WP_List_Table {
 		// Process any stuff
 		$this->process_bulk_action();
 
-		$orderby = ( ! empty( $_GET['orderby'] ) ) ? $_GET['orderby'] : 'happened_at';
+		$orderby = ( ! empty( $_GET['orderby'] ) ) ? $_GET['orderby'] : 'id';
 		$order   = ( ! empty($_GET['order'] ) ) ? strtolower( $_GET['order'] ) : 'desc';
 
 		if ( !in_array( $orderby, array_keys( $this->get_sortable_columns() ) ) )
-			$orderby = 'happened_at';
+			$orderby = 'id';
 
 		if ( !in_array( $order, array( 'asc', 'desc' ) ) )
 			$order = 'desc';
 
-		$current_page = $this->get_pagenum();
 		$total_items  = $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}audit_trail" );
 
 		global $wpdb;
 
-		$rows = $wpdb->get_results( $wpdb->prepare( "SELECT {$wpdb->prefix}audit_trail.*,{$wpdb->users}.user_nicename AS username FROM {$wpdb->prefix}audit_trail LEFT JOIN {$wpdb->users} ON {$wpdb->users}.ID={$wpdb->prefix}audit_trail.user_id ORDER BY ".$orderby.' '.$order." LIMIT %d,%d", $this->get_pagenum(), $per_page ) );
+		$rows = $wpdb->get_results( $wpdb->prepare( "SELECT {$wpdb->prefix}audit_trail.*,{$wpdb->users}.user_nicename AS username FROM {$wpdb->prefix}audit_trail LEFT JOIN {$wpdb->users} ON {$wpdb->users}.ID={$wpdb->prefix}audit_trail.user_id ORDER BY ".$orderby.' '.$order." LIMIT %d,%d", ( $this->get_pagenum() - 1 ) * $per_page, $per_page ) );
 		$data = array();
 		foreach ( (array)$rows AS $row ) {
 			$data[] = new AT_Audit( $row );

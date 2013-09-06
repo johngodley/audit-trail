@@ -35,13 +35,14 @@ class AT_Audit {
 	 * @return void
 	 **/
 
-	function AT_Audit ($details = '') {
-		if (is_object ($details)) {
-			foreach ($details AS $key => $value)
+	function AT_Audit( $details = '' ) {
+		if ( is_object( $details ) ) {
+			foreach ($details AS $key => $value ) {
 				$this->$key = $value;
+			}
 		}
 
-		$this->happened_at = mysql2date ('U', $this->happened_at);
+		$this->happened_at = mysql2date( 'U', $this->happened_at );
 	}
 
 	/**
@@ -51,12 +52,12 @@ class AT_Audit {
 	 * @return AT_Audit
 	 **/
 
-	function get ($id) {
+	function get( $id ) {
 		global $wpdb;
 
 		$row = $wpdb->get_row( $wpdb->prepare( "SELECT {$wpdb->prefix}audit_trail.*,{$wpdb->users}.user_nicename AS username FROM {$wpdb->prefix}audit_trail LEFT JOIN {$wpdb->users} ON {$wpdb->users}.ID={$wpdb->prefix}audit_trail.user_id WHERE {$wpdb->prefix}audit_trail.id=%d", $id ) );
-		if ($row)
-			return new AT_Audit ($row);
+		if ( $row )
+			return new AT_Audit( $row );
 		return false;
 	}
 
@@ -67,14 +68,15 @@ class AT_Audit {
 	 * @return array Array of AT_Audit items
 	 **/
 
-	function get_everything () {
+	function get_everything() {
 		global $wpdb;
 
-		$rows = $wpdb->get_results ("SELECT {$wpdb->prefix}audit_trail.*,{$wpdb->users}.user_nicename AS username FROM {$wpdb->prefix}audit_trail LEFT JOIN {$wpdb->users} ON {$wpdb->users}.ID={$wpdb->prefix}audit_trail.user_id" );
-		$data = array ();
-		if ($rows) {
-			foreach ($rows AS $row)
-				$data[] = new AT_Audit ($row);
+		$rows = $wpdb->get_results( "SELECT {$wpdb->prefix}audit_trail.*,{$wpdb->users}.user_nicename AS username FROM {$wpdb->prefix}audit_trail LEFT JOIN {$wpdb->users} ON {$wpdb->users}.ID={$wpdb->prefix}audit_trail.user_id" );
+		$data = array();
+		if ( $rows ) {
+			foreach ( $rows AS $row ) {
+				$data[] = new AT_Audit( $row );
+			}
 		}
 
 		return $data;
@@ -89,19 +91,19 @@ class AT_Audit {
 	 * @return array Array of AT_Audit items
 	 **/
 
-	function get_by_post ($id, $max = 10) {
+	function get_by_post( $id, $max = 10 ) {
 		global $wpdb;
 
-		if (get_option ('audit_post_order') == true)
+		$order = 'DESC';
+		if ( get_option( 'audit_post_order' ) == true )
 			$order = 'ASC';
-		else
-			$order = 'DESC';
 
 		$rows = $wpdb->get_results( $wpdb->prepare( "SELECT {$wpdb->prefix}audit_trail.*,{$wpdb->users}.user_nicename AS username FROM {$wpdb->prefix}audit_trail LEFT JOIN {$wpdb->users} ON {$wpdb->users}.ID={$wpdb->prefix}audit_trail.user_id WHERE item_id=%d AND operation='save_post' ORDER BY happened_at $order LIMIT 1,%d", $id, $max ) );
 		$data = array ();
-		if ($rows) {
-			foreach ($rows AS $row)
-				$data[] = new AT_Audit ($row);
+		if ( $rows ) {
+			foreach ( $rows AS $row ) {
+				$data[] = new AT_Audit( $row );
+			}
 		}
 
 		return $data;
@@ -115,12 +117,19 @@ class AT_Audit {
 	 * @return void
 	 **/
 
-	function delete ($id) {
+	function delete( $id ) {
 		global $wpdb;
 
 		$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->prefix}audit_trail WHERE id=%d", $id ) );
 	}
 
+	static function get_ip() {
+		if ( isset( $_SERVER['REMOTE_ADDR'] ) )
+		  return $_SERVER['REMOTE_ADDR'];
+		elseif ( isset( $_SERVER['HTTP_X_FORWARDED_FOR'] ) )
+		  return $_SERVER['HTTP_X_FORWARDED_FOR'];
+		return '';
+	}
 
 	/**
 	 * Create a new log item
@@ -133,23 +142,28 @@ class AT_Audit {
 	 * @return void
 	 **/
 
-	function create ($operation, $item = '', $data = '', $title = '', $user = '') {
+	static function create( $operation, $item = '', $data = '', $title = '', $user = false ) {
 		global $wpdb, $user_ID;
 
-		$ip = 0;
-		if (isset ($_SERVER['REMOTE_ADDR']))
-		  $ip = $_SERVER['REMOTE_ADDR'];
-		else if (isset ($_SERVER['HTTP_X_FORWARDED_FOR']))
-		  $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+		$ip = AT_Audit::get_ip();
+		$ip = sprintf( '%u', ip2long( $ip ) );
 
-		$ip = sprintf ('%u', ip2long ($ip));
-
-		if ($user == '')
+		if ( $user === false )
 			$user = $user_ID;
 
 		$data = maybe_serialize( $data );
 
-		$wpdb->query( $wpdb->prepare( "INSERT INTO {$wpdb->prefix}audit_trail (user_id,ip,operation,item_id,happened_at,data,title) VALUES(%d,%s,%s,%s,%s,%s,%s)", $user, $ip, $operation, $item, current_time( 'mysql' ), $data, $title ) );
+		$values = array(
+			'user_id'     => $user,
+			'ip'          => $ip,
+			'operation'   => $operation,
+			'item_id'     => $item,
+			'happened_at' => current_time( 'mysql' ),
+			'data'        => maybe_serialize( $data ),
+			'title'       => $title
+		);
+
+		$wpdb->insert( $wpdb->prefix.'audit_trail', $values );
 	}
 
 
@@ -159,13 +173,14 @@ class AT_Audit {
 	 * @return void
 	 **/
 
-	function get_operation ($open = true) {
+	function get_operation( $open = true ) {
 		$this->message = '';
-		$obj = apply_filters ('audit_show_operation', $this);
-		if (is_object ($obj) && !empty ($obj->message)) {
-			if ($open == true)
-				return str_replace ('view_audit', 'view_audit_open', $obj->message);
-			return str_replace ('view_audit', 'view_audit_close', $obj->message);
+		$obj = apply_filters( 'audit_show_operation', $this );
+
+		if ( is_object( $obj ) && !empty( $obj->message ) ) {
+			if ( $open == true )
+				return str_replace( 'view_audit', 'view_audit_open', $obj->message );
+			return str_replace( 'view_audit', 'view_audit_close', $obj->message );
 		}
 
 		return $this->operation;
@@ -179,10 +194,11 @@ class AT_Audit {
 	 * @return void
 	 **/
 
-	function get_item () {
+	function get_item() {
 		$this->message = '';
-		$obj = apply_filters ('audit_show_item', $this);
-		if (is_object ($obj) && !empty ($obj->message))
+		$obj = apply_filters( 'audit_show_item', $this );
+
+		if ( is_object( $obj ) && !empty( $obj->message ) )
 			return $obj->message;
 		return $this->item_id;
 	}
@@ -195,14 +211,14 @@ class AT_Audit {
 	 * @return void
 	 **/
 
-	function get_details () {
+	function get_details() {
 		$this->message = '';
-		$obj = apply_filters ('audit_show_details', $this);
+		$obj = apply_filters( 'audit_show_details', $this );
 
 		$details = '';
-		if (is_object ($obj) && !empty ($obj->message))
+		if ( is_object( $obj ) && !empty( $obj->message ) )
 			$details = $obj->message;
-		return $this->get_operation (false).'<br/>'.$details;
+		return $this->get_operation( false ).'<br/>'.$details;
 	}
 
 
@@ -213,10 +229,10 @@ class AT_Audit {
 	 * @return void
 	 **/
 
-	function expire ($days) {
+	static function expire( $days ) {
 		global $wpdb;
 
-		if ($days > 0)
+		if ( $days > 0 )
 			$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->prefix}audit_trail WHERE DATE_SUB(CURDATE(),INTERVAL %d DAY) > happened_at", $days ) );
 	}
 }

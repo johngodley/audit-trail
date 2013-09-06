@@ -41,9 +41,19 @@
 				<th><?php _e ('Ignore users', 'audit-trail');?></th>
 				<td><input type="text" name="ignore_users" value="<?php echo esc_attr( $ignore_users ) ?>"/> (<?php _e( 'separate user IDs with a comma', 'audit-trail'); ?>)</td>
 			</tr>
+
+			<tr>
+				<th>Error log on failed actions*</th>
+				<td>
+					<input type="checkbox" name="error_log"<?php if ($error_log) echo ' checked="checked"' ?>/>
+					This calls <code>error_log( 'WordPress Login Failure: &lt;name&gt; from &lt;ip&gt;' )</code> if 'User profiles &amp; logins' is enabled and a login failed. You can use this to ban IP addresses with <a href="http://www.fail2ban.org/">fail2ban</a>.
+
+					<em>* experimental</em>
+				</td>
+			</tr>
 		</table>
 
-	<p><input class="button-primary" type="submit" name="save" value="<?php _e ('Save Options', 'audit-trail'); ?>"/></p>
+	<p><input class="button-primary" type="submit" name="save" value="<?php esc_attr_e( 'Save Options', 'audit-trail' ); ?>"/></p>
 
 	</form>
 </div>
