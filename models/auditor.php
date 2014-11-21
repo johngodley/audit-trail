@@ -68,7 +68,7 @@ class AT_Auditor extends AT_Plugin {
 
 	function audit_listen( $method ) {
 		$ignore = get_option( 'audit_ignore' );
-		if ( $ignore ) {
+		if ( $ignore != '' ) {
 			$current = wp_get_current_user();
 			$users   = explode( ',', $ignore );
 
