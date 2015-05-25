@@ -21,7 +21,7 @@
  * @author John Godley
  **/
 
-class AuditAjax extends AT_Plugin {
+class AuditAjax {
 	function AuditAjax() {
 		$this->register_plugin( 'audit-trail', __FILE__ );
 
@@ -57,4 +57,3 @@ class AuditAjax extends AT_Plugin {
 		}
 	}
 }
-

@@ -1,5 +1,4 @@
 <?php if (!defined ('ABSPATH')) die (); ?><div class="wrap">
-	<?php	$this->render_admin ('annoy'); ?>
 	<?php screen_icon(); ?>
 	<h2><?php _e ('Audit Trail Options', 'audit-trail'); ?></h2>
 

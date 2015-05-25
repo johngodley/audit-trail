@@ -1,26 +1,6 @@
 <?php
-/* ============================================================================================================
-	 This software is provided "as is" and any express or implied warranties, including, but not limited to, the
-	 implied warranties of merchantibility and fitness for a particular purpose are disclaimed. In no event shall
-	 the copyright owner or contributors be liable for any direct, indirect, incidental, special, exemplary, or
-	 consequential damages (including, but not limited to, procurement of substitute goods or services; loss of
-	 use, data, or profits; or business interruption) however caused and on any theory of liability, whether in
-	 contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of
-	 this software, even if advised of the possibility of such damage.
 
-	 This software is provided free-to-use, but is not free software.  The copyright and ownership remains
-	 entirely with the author.  Please distribute and use as necessary, in a personal or commercial environment,
-	 but it cannot be sold or re-used without express consent from the author.
-   ============================================================================================================ */
-
-/**
- * Default monitoring class
- *
- * @package Audit Trail
- * @author John Godley
- **/
-
-class AT_Auditor extends AT_Plugin {
+class AT_Auditor {
 	/**
 	 * Register appropriate hooks
 	 *
@@ -28,13 +8,11 @@ class AT_Auditor extends AT_Plugin {
 	 **/
 
 	function __construct() {
-		$this->register_plugin( 'audit-trail', dirname( __FILE__ ) );
-
-		$this->add_filter( 'audit_collect' );
-		$this->add_action( 'audit_listen' );
-		$this->add_filter( 'audit_show_operation' );
-		$this->add_filter( 'audit_show_item' );
-		$this->add_filter( 'audit_show_details' );
+		add_filter( 'audit_collect', array( $this, 'audit_collect' ) );
+		add_action( 'audit_listen', array( $this, 'audit_listen' ) );
+		add_filter( 'audit_show_operation', array( $this, 'audit_show_operation' ) );
+		add_filter( 'audit_show_item', array( $this, 'audit_show_item' ) );
+		add_filter( 'audit_show_details', array( $this, 'audit_show_details' ) );
 	}
 
 
@@ -121,7 +99,7 @@ class AT_Auditor extends AT_Plugin {
 
 		if ( isset( $map[$method] ) ) {
 			foreach ( $map[$method] AS $name ) {
-				$this->add_action( $name );
+				add_action( $name, array( $this, $name ) );
 			}
 		}
 	}
@@ -511,5 +489,3 @@ class AT_Auditor extends AT_Plugin {
 		}
 	}
 }
-
-?>

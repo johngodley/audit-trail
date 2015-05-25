@@ -1,5 +1,4 @@
 <?php if (!defined ('ABSPATH')) die (); ?><div class="wrap">
-	<?php $this->render_admin ('annoy'); ?>
 	<?php screen_icon(); ?>
 
 	<div class="csv">
@@ -53,4 +52,3 @@
 		} );
 	})( jQuery );
 </script>
-
