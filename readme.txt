@@ -52,6 +52,9 @@ Full documentation can be found on the [Audit Trail Page](http://urbangiraffe.co
 
 == Changelog ==
 
+= 1.2.3 =
+* Fix ajax bugs introduced by 1.2.2
+
 = 1.2.2 =
 * Fix double-serialization of audit data
 * Fix ignore user 0 to ignore all anonymous users

@@ -22,16 +22,12 @@
  **/
 
 class AuditAjax {
-	function AuditAjax() {
-		$this->register_plugin( 'audit-trail', __FILE__ );
-
+	function __construct() {
 		add_action( 'init', array( &$this, 'init' ) );
-	}
 
-	function init() {
 		if ( current_user_can( 'manage_options' ) ) {
-			$this->register_ajax( 'at_view' );
-			$this->register_ajax( 'at_close' );
+			add_action( 'wp_ajax_at_view', array( &$this, 'at_view' ) );
+			add_action( 'wp_ajax_at_close', array( &$this, 'at_close' ) );
 		}
 	}
 
@@ -40,7 +36,7 @@ class AuditAjax {
 			$id = intval( $_POST['id'] );
 
 			$item = AT_Audit::get( $id );
-			$this->render_admin( 'trail_details', array( 'item' => $item ) );
+			$this->render( 'trail_details', array( 'item' => $item ) );
 
 			die();
 		}
@@ -51,9 +47,18 @@ class AuditAjax {
 			$id = intval( $_POST['id'] );
 
 			$item = AT_Audit::get ($id);
-			$this->render_admin ('trail_item', array ('item' => $item));
+			$this->render ('trail_item', array ('item' => $item));
 
 			die();
 		}
+	}
+
+	private function render( $template, $template_vars = array() ) {
+		foreach ( $template_vars AS $key => $val ) {
+			$$key = $val;
+		}
+
+		if ( file_exists( dirname( __FILE__ )."/view/admin/$template.php" ) )
+			include dirname( __FILE__ )."/view/admin/$template.php";
 	}
 }

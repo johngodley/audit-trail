@@ -117,35 +117,35 @@ class AT_Auditor {
 			case 'profile_update' :
 				$user = unserialize( $item->data );
 
-				$item->message = '<br/>'.$this->capture_admin( 'details/profile_update', array( 'item' => $item, 'user' => $user ) );
+				$item->message = '<br/>'.$this->capture( 'details/profile_update', array( 'item' => $item, 'user' => $user ) );
 				break;
 
 			case 'add_link' :
 			case 'edit_link' :
 				$link = unserialize( $item->data );
 
-				$item->message = '<br/>'.$this->capture_admin( 'details/edit_link', array( 'item' => $item, 'link' => $link ) );
+				$item->message = '<br/>'.$this->capture( 'details/edit_link', array( 'item' => $item, 'link' => $link ) );
 				break;
 
 			case 'add_category' :
 			case 'edit_category' :
 				$cat = unserialize( $item->data );
 
-				$item->message = '<br/>'.$this->capture_admin( 'details/edit_category', array( 'item' => $item, 'cat' => $cat ) );
+				$item->message = '<br/>'.$this->capture( 'details/edit_category', array( 'item' => $item, 'cat' => $cat ) );
 				break;
 
 			case 'edit_comment' :
 				$original = get_comment( $item->item_id );
 				$comment  = unserialize( $item->data );
 
-				$item->message = '<br/>'.$this->capture_admin( 'details/'.$item->operation, array( 'item' => $item, 'comment' => $comment ) );
+				$item->message = '<br/>'.$this->capture( 'details/'.$item->operation, array( 'item' => $item, 'comment' => $comment ) );
 				break;
 
 			case 'save_post' :
 				$original = get_post ($item->item_id);
 				$post     = unserialize ($item->data);
 
-				$item->message = '<br/>'.$this->capture_admin( 'details/'.$item->operation, array( 'item' => $item, 'post' => $post ) );
+				$item->message = '<br/>'.$this->capture( 'details/'.$item->operation, array( 'item' => $item, 'post' => $post ) );
 				break;
 
 			default:
@@ -487,5 +487,24 @@ class AT_Auditor {
 
 			AT_Audit::create( 'template_redirect', count( $posts ) > 1 ? 0 : $post->ID, $_SERVER['REQUEST_URI'] );
 		}
+	}
+
+	private function render( $template, $template_vars = array() ) {
+		foreach ( $template_vars AS $key => $val ) {
+			$$key = $val;
+		}
+
+		if ( file_exists( dirname( __FILE__ )."/view/admin/$template.php" ) )
+			include dirname( __FILE__ )."/view/admin/$template.php";
+	}
+
+	private function capture( $ug_name, $ug_vars = array() ) {
+		ob_start();
+
+		$this->render( $ug_name, $ug_vars );
+		$output = ob_get_contents();
+
+		ob_end_clean();
+		return $output;
 	}
 }
