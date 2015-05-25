@@ -21,12 +21,12 @@
  **/
 
 class AT_Audit {
-	var $happened_at;
-	var $id;
-	var $operation;
-	var $ip;
-	var $item_id;
-	var $user_id;
+	public $happened_at;
+	public $id;
+	public $operation;
+	public $ip;
+	public $item_id;
+	public $user_id;
 
 	/**
 	 * Constructor accepts an array of values with which to seed the object

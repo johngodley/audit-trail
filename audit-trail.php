@@ -28,7 +28,6 @@ Available actions are:
 
 define( 'AUDIT_TRAIL_VERSION', '0.3' );
 
-
 /**
  * Audit Trail plugin
  *
@@ -36,7 +35,8 @@ define( 'AUDIT_TRAIL_VERSION', '0.3' );
  **/
 
 class Audit_Trail {
-	var $auditor;
+	private static $instance = null;
+	private $auditor;
 
 	static function init() {
 		if ( is_null( self::$instance ) ) {
