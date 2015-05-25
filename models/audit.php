@@ -117,7 +117,7 @@ class AT_Audit {
 	 * @return void
 	 **/
 
-	function delete( $id ) {
+	static function delete( $id ) {
 		global $wpdb;
 
 		$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->prefix}audit_trail WHERE id=%d", $id ) );
