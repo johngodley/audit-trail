@@ -151,8 +151,6 @@ class AT_Audit {
 		if ( $user === false )
 			$user = $user_ID;
 
-		$data = maybe_serialize( $data );
-
 		$values = array(
 			'user_id'     => $user,
 			'ip'          => $ip,
@@ -236,4 +234,3 @@ class AT_Audit {
 			$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->prefix}audit_trail WHERE DATE_SUB(CURDATE(),INTERVAL %d DAY) > happened_at", $days ) );
 	}
 }
-
