@@ -38,6 +38,16 @@ define( 'AUDIT_TRAIL_VERSION', '0.3' );
 class Audit_Trail {
 	var $auditor;
 
+	static function init() {
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new Audit_Trail();
+
+			load_plugin_textdomain( 'audit-trail', false, dirname( plugin_basename( __FILE__ ) ).'/locale/' );
+		}
+
+		return self::$instance;
+	}
+
 	/**
 	 * Constructor hooks all the appropriate filters and actions for the plugin, as well as creating the auditor
 	 * object which monitors everything else
@@ -45,7 +55,7 @@ class Audit_Trail {
 	 * @return void
 	 **/
 
-	function Audit_Trail() {
+	function __construct() {
 		// Check database is setup
 		include( dirname( __FILE__).'/models/auditor.php' );
 		include( dirname( __FILE__).'/models/audit.php' );
@@ -280,11 +290,4 @@ class Audit_Trail {
 	}
 }
 
-
-/**
- * Instantiate the audit trail object
- *
- * @global
- **/
-
-$obj = new Audit_Trail;
+add_action( 'init', array( 'Audit_Trail', 'init' ) );
