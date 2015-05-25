@@ -39,7 +39,7 @@
 			</tr>
 			<tr>
 				<th><?php _e ('Ignore users', 'audit-trail');?></th>
-				<td><input type="text" name="ignore_users" value="<?php echo esc_attr( $ignore_users ) ?>"/> (<?php _e( 'separate user IDs with a comma', 'audit-trail'); ?>)</td>
+				<td><input type="text" name="ignore_users" value="<?php echo esc_attr( $ignore_users ) ?>"/> (<?php _e( 'separate user IDs with a comma, use 0 to ignore everyone', 'audit-trail'); ?>)</td>
 			</tr>
 
 			<tr>
