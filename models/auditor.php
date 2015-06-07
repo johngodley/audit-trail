@@ -32,6 +32,7 @@ class AT_Auditor {
 		$items['comment']  = __( 'Comment management', 'audit-trail' );
 		$items['viewing']  = __( 'User page visits', 'audit-trail' );
 		$items['audit']    = __( 'Audit Trail actions', 'audit-trail' );
+		$items['plugin']   = __( 'Plugin actions', 'audit-trail' );
 
 		return $items;
 	}
@@ -94,6 +95,10 @@ class AT_Auditor {
 			),
 			'viewing' => array(
 				'template_redirect'
+			),
+			'plugin' => array(
+				'activate_plugin',
+				'deactivate_plugin',
 			)
 		);
 
@@ -165,6 +170,16 @@ class AT_Auditor {
 
 	function audit_show_item( $item ) {
 		switch ( $item->operation )	{
+			case 'activate_plugin':
+			case 'deactivate_plugin':
+				$title = explode( '/', $item->data );
+				$title = str_replace( '-', ' ', $title[0] );
+				$title = str_replace( '.php', '', $title );
+				$title = ucwords( $title );
+
+				$item->message = esc_html( $title );
+				break;
+
 			case 'wp_login_failed' :
 			case 'delete_link' :
 			case 'switch_theme' :
@@ -268,6 +283,8 @@ class AT_Auditor {
 			'delete_category'      => __( 'Delete category', 'audit-trail' ),
 			'delete_attachment'    => __( 'Delete attachment', 'audit-trail' ),
 			'template_redirect'    => __( 'View page', 'audit-trail' ),
+			'activate_plugin'      => __( 'Activate plugin', 'audit-trail' ),
+			'deactivate_plugin'    => __( 'Deactivate plugin', 'audit-trail' ),
 		);
 
 		$item->message = false;
@@ -338,6 +355,15 @@ class AT_Auditor {
 	/**
 	 * Default listening methods
 	 **/
+
+	function activate_plugin( $plugin ) {
+		AT_Audit::create( 'activate_plugin', 0, $plugin );
+
+	}
+
+	function deactivate_plugin( $plugin ) {
+		AT_Audit::create( 'deactivate_plugin', 0, $plugin );
+	}
 
 	// Actions to track
 	function delete_post( $post_id ) {
