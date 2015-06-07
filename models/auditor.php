@@ -349,8 +349,12 @@ class AT_Auditor {
 	}
 
 	function save_post( $post_id ) {
-		if ( !defined( 'DOING_AJAX' ) )
-			AT_Audit::create( 'save_post', $post_id, get_post( $post_id ) );
+		if ( !defined( 'DOING_AJAX' ) ) {
+			$post = get_post( $post_id ) ;
+
+			if ( $post && $post->post_status !== 'inherit' )
+				AT_Audit::create( 'save_post', $post_id, $post );
+		}
 	}
 
 	function wp_login ($user) {
