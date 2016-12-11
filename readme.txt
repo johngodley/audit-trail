@@ -2,8 +2,8 @@
 Contributors: johnny5
 Donate link: http://urbangiraffe.com/contact/#donate
 Tags: admin, audit, log, version, diff
-Requires at least: 3.5
-Tested up to: 4.2
+Requires at least: 4.3
+Tested up to: 4.7
 Stable tag: trunk
 
 Audit Trail is a plugin to keep track of what is going on inside your blog by monitoring administration functions.
@@ -51,6 +51,10 @@ You can find full details of installing a plugin on the [plugin installation pag
 Full documentation can be found on the [Audit Trail Page](http://urbangiraffe.com/plugins/audit-trail/) page.
 
 == Changelog ==
+
+= 1.3 =
+* Switch to JSON when saving data
+* Fix creation of database on activation
 
 = 1.2.4 =
 * Don't include revisions in a post update log entry

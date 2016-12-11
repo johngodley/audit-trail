@@ -1,5 +1,18 @@
 <?php
 
+function maybe_unjsonize( $thing ) {
+	if ( is_serialized( $thing ) ) {
+		return unserialize( $thing );
+	}
+
+	$json = json_decode( $thing );
+	if ( json_last_error() === JSON_ERROR_NONE ) {
+		return $json;
+	}
+
+	return $thing;
+}
+
 class AT_Auditor {
 	/**
 	 * Register appropriate hooks
@@ -120,35 +133,35 @@ class AT_Auditor {
 		switch ( $item->operation ) {
 			case 'user_register' :
 			case 'profile_update' :
-				$user = unserialize( $item->data );
+				$user = maybe_unjsonize( $item->data );
 
 				$item->message = '<br/>'.$this->capture( 'details/profile_update', array( 'item' => $item, 'user' => $user ) );
 				break;
 
 			case 'add_link' :
 			case 'edit_link' :
-				$link = unserialize( $item->data );
+				$link = maybe_unjsonize( $item->data );
 
 				$item->message = '<br/>'.$this->capture( 'details/edit_link', array( 'item' => $item, 'link' => $link ) );
 				break;
 
 			case 'add_category' :
 			case 'edit_category' :
-				$cat = unserialize( $item->data );
+				$cat = maybe_unjsonize( $item->data );
 
 				$item->message = '<br/>'.$this->capture( 'details/edit_category', array( 'item' => $item, 'cat' => $cat ) );
 				break;
 
 			case 'edit_comment' :
 				$original = get_comment( $item->item_id );
-				$comment  = unserialize( $item->data );
+				$comment  = maybe_unjsonize( $item->data );
 
 				$item->message = '<br/>'.$this->capture( 'details/'.$item->operation, array( 'item' => $item, 'comment' => $comment ) );
 				break;
 
 			case 'save_post' :
 				$original = get_post ($item->item_id);
-				$post     = unserialize ($item->data);
+				$post     = maybe_unjsonize ($item->data);
 
 				$item->message = '<br/>'.$this->capture( 'details/'.$item->operation, array( 'item' => $item, 'post' => $post ) );
 				break;
@@ -198,7 +211,7 @@ class AT_Auditor {
 				break;
 
 			case 'user_register' :
-				$user = unserialize( $item->data );
+				$user = maybe_unjsonize( $item->data );
 				$item->message = '<a href="user-edit.php?user_id='.esc_attr( $user->ID ).'">'.esc_html( $user->user_nicename )."</a>";
 				break;
 
@@ -213,13 +226,13 @@ class AT_Auditor {
 
 			case 'add_link' :
 			case 'edit_link' :
-				$link = unserialize( $item->data );
+				$link = maybe_unjsonize( $item->data );
 			 	$item->message = '<a href="link.php?link_id='.esc_attr( $link->link_id ).'&action=edit">'.esc_html( $link->link_name ).'</a>';
 				break;
 
 			case 'edit_category' :
 			case 'add_category' :
-				$cat = unserialize( $item->data );
+				$cat = maybe_unjsonize( $item->data );
 		 		$item->message = '<a href="categories.php?action=edit&amp;cat_ID='.esc_attr( $cat->cat_ID ).'">'.esc_html( $cat->cat_name ).'</a>';
 				break;
 
@@ -228,7 +241,7 @@ class AT_Auditor {
 				break;
 
 			case 'save_post' :
-				$post = unserialize( $item->data );
+				$post = maybe_unjsonize( $item->data );
 				if ( $post )
 					$item->message = '<a href="post.php?action=edit&amp;post='.esc_attr( $post->ID ).'">'.esc_html( $post->post_title ).'</a>';
 				break;
@@ -328,7 +341,7 @@ class AT_Auditor {
 				break;
 
 			case 'save_post' :
-				$post = unserialize( $item->data );
+				$post = maybe_unjsonize( $item->data );
 				if ($post && $post->post_type == 'post')
 					$text = __( 'Save post', 'audit-trail' );
 				else

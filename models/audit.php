@@ -13,6 +13,12 @@
 	 but it cannot be sold or re-used without express consent from the author.
    ============================================================================================================ */
 
+function maybe_jsonize( $thing ) {
+	if ( is_array( $thing ) || is_object( $thing ) )
+		return json_encode( $thing );
+	return $thing;
+}
+
 /**
  * Class to represent audit trail log items
  *
@@ -157,7 +163,7 @@ class AT_Audit {
 			'operation'   => $operation,
 			'item_id'     => $item,
 			'happened_at' => current_time( 'mysql' ),
-			'data'        => maybe_serialize( $data ),
+			'data'        => maybe_jsonize( $data ),
 			'title'       => $title
 		);
 
